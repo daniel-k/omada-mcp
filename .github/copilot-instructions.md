@@ -46,6 +46,8 @@ Reference `.env.example`. Primary variables:
 - `MCP_HTTP_ALLOW_CORS` (default: `true`) - enable CORS for the HTTP/SSE server.
 - `MCP_HTTP_ALLOWED_HOSTS` (optional) - comma-separated list of allowed hosts for requests.
 - `MCP_HTTP_ALLOWED_ORIGINS` (optional) - comma-separated list of allowed origins for CORS.
+- `MCP_HTTP_NGROK_ENABLED` (default: `false`) - whether to use ngrok to expose the HTTP/SSE server publicly.
+- `MCP_HTTP_NGROK_AUTH_TOKEN` (optional) - ngrok auth token, required if `MCP_HTTP_NGROK_ENABLED` is `true`.
 
 ## Code Structure
 

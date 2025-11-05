@@ -17,9 +17,9 @@ const listStringSchema = z
     .transform((value) =>
         value
             ? value
-                  .split(',')
-                  .map((s) => s.trim())
-                  .filter(Boolean)
+                .split(',')
+                .map((s) => s.trim())
+                .filter(Boolean)
             : undefined
     );
 
@@ -49,6 +49,8 @@ const envSchema = z.object({
     httpAllowCors: booleanStringSchema,
     httpAllowedHosts: listStringSchema,
     httpAllowedOrigins: listStringSchema,
+    httpNgrokEnabled: booleanStringSchema,
+    httpNgrokAuthToken: z.string().optional(),
 });
 
 export interface EnvironmentConfig {
@@ -77,6 +79,8 @@ export interface EnvironmentConfig {
     httpAllowCors: boolean;
     httpAllowedHosts?: string[];
     httpAllowedOrigins?: string[];
+    httpNgrokEnabled: boolean;
+    httpNgrokAuthToken?: string;
 }
 
 export function loadConfigFromEnv(env: NodeJS.ProcessEnv = process.env): EnvironmentConfig {
@@ -106,6 +110,8 @@ export function loadConfigFromEnv(env: NodeJS.ProcessEnv = process.env): Environ
         httpAllowCors: env.MCP_HTTP_ALLOW_CORS,
         httpAllowedHosts: env.MCP_HTTP_ALLOWED_HOSTS,
         httpAllowedOrigins: env.MCP_HTTP_ALLOWED_ORIGINS,
+        httpNgrokEnabled: env.MCP_HTTP_NGROK_ENABLED,
+        httpNgrokAuthToken: env.MCP_HTTP_NGROK_AUTH_TOKEN,
     });
 
     if (!parsed.success) {
@@ -139,5 +145,7 @@ export function loadConfigFromEnv(env: NodeJS.ProcessEnv = process.env): Environ
         httpAllowCors: parsed.data.httpAllowCors ?? true,
         httpAllowedHosts: parsed.data.httpAllowedHosts,
         httpAllowedOrigins: parsed.data.httpAllowedOrigins,
+        httpNgrokEnabled: parsed.data.httpNgrokEnabled ?? false,
+        httpNgrokAuthToken: parsed.data.httpNgrokAuthToken,
     };
 }

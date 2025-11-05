@@ -3,6 +3,7 @@ import http from 'node:http';
 import type { IncomingMessage, IncomingHttpHeaders, ServerResponse } from 'node:http';
 
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+import ngrok from '@ngrok/ngrok';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { logger } from '../utils/logger.js';
@@ -184,7 +185,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
         allowedOrigins,
     });
 
-    transport.onerror = (error) => {
+    transport.onerror = (error: Error) => {
         logger.error('Streamable HTTP transport error', { error });
     };
 
@@ -193,6 +194,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
     const port = resolvePort(config.httpPort?.toString(), DEFAULT_PORT);
     const host = config.httpHost ?? DEFAULT_HOST;
     const endpointPath = normalizePath(config.httpSsePath ?? DEFAULT_PATH);
+
 
     const httpServer = http.createServer(async (req, res) => {
         const url = getRequestUrl(req, port);
@@ -306,6 +308,26 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
             resolve();
         });
     });
+
+    // Start ngrok tunnel if configured
+    if (config.httpNgrokEnabled) {
+        if (!config.httpNgrokAuthToken) {
+            logger.warn('Ngrok enabled but no auth token provided; skipping tunnel setup');
+        } else {
+            try {
+                const listener = await ngrok.forward({
+                    addr: port,
+                    authtoken: config.httpNgrokAuthToken,
+                });
+                const url = listener.url();
+                logger.info('Ngrok tunnel established', { url });
+            } catch (error) {
+                logger.error('Failed to start ngrok tunnel', {
+                    error: error instanceof Error ? error.message : String(error),
+                });
+            }
+        }
+    }
 
     let shuttingDown = false;
     const closeHttp: ShutdownHandler = () =>

@@ -13,11 +13,11 @@
         8088,
         3000
     ],
-    "postCreateCommand": "npm install",
+    "postCreateCommand": "npm install -g npm && npm install",
     "customizations": {
         "vscode": {
             "settings": {
-                "typescript.tsdk": "/usr/local/share/nvm/versions/node/current/lib/node_modules/typescript/lib",
+                "typescript.tsdk": "node_modules/typescript/lib",
                 "eslint.useFlatConfig": true,
                 "eslint.nodePath": "./node_modules",
                 "editor.formatOnPaste": false,

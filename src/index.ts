@@ -1,3 +1,4 @@
+import './env.js';
 import { loadConfigFromEnv } from './config.js';
 import { OmadaClient } from './omadaClient/index.js';
 import { startHttpServer } from './server/http.js';
