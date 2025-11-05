@@ -36,6 +36,8 @@ MCP Server HTTP/SSE Configuration:
 - `MCP_HTTP_PORT` (default: `3000`) - port for the HTTP/SSE server.
 - `MCP_HTTP_HOST` (default: `0.0.0.0`) - host for the HTTP/SSE server.
 - `MCP_HTTP_SSE_PATH` (default: `/sse`) - base path for MCP HTTP/SSE endpoints.
+- `MCP_HTTP_ENABLE_HEALTHCHECK` (default: `true`) - enable a healthcheck endpoint at the path indicated on `MCP_HTTP_HEALTHCHECK_PATH`.
+- `MCP_HTTP_HEALTHCHECK_PATH` (default: `/healthz`) - path for the healthcheck endpoint.
 - `MCP_HTTP_ALLOW_CORS` (default: `true`) - enable CORS for the HTTP/SSE server.
 - `MCP_HTTP_ALLOWED_HOSTS` (optional) - comma-separated list of allowed hosts for requests.
 - `MCP_HTTP_ALLOWED_ORIGINS` (optional) - comma-separated list of allowed origins for CORS.
@@ -87,3 +89,4 @@ MCP Server HTTP/SSE Configuration:
 - IMPORTANT: Encapsulate the log implementation in `src/utils/logger.ts` to allow easy modification of the logging behavior in the future. Use this logger throughout the codebase instead of direct console.log statements.
 - Avoid using the TypeScript `any` type; prefer precise typings or `unknown` when necessary.
 - Any new implementation should be done in both servers, http server and stdio server, to maintain feature parity.
+- **DON'T** use `process.env.` to access environment variables directly. Access should be done outside of `src/config.ts`. All environment variables must be loaded and validated there using Zod, and then imported where needed.

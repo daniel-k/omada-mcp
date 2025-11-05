@@ -1,13 +1,29 @@
 import { loadConfigFromEnv } from './config.js';
 import { OmadaClient } from './omadaClient.js';
-import { startServer } from './server.js';
+import { startHttpServer } from './server/http.js';
+import { startStdioServer } from './server/stdio.js';
 import { logger } from './utils/logger.js';
 
 async function main(): Promise<void> {
-  logger.info('Starting stdio server');
   const config = loadConfigFromEnv();
+  logger.info('Loaded Omada configuration', {
+    baseUrl: config.baseUrl,
+    omadacId: config.omadacId,
+    siteId: config.siteId ?? null,
+    strictSsl: config.strictSsl,
+    requestTimeout: config.requestTimeout ?? null,
+    proxyConfigured: Boolean(config.proxyUrl)
+  });
+
   const client = new OmadaClient(config);
-  await startServer(client);
+
+  const useHttp = process.env.MCP_SERVER_USE_HTTP === 'true';
+
+  if (useHttp) {
+    await startHttpServer(client);
+  } else {
+    await startStdioServer(client);
+  }
 }
 
 main().catch((error) => {

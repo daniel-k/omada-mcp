@@ -4,10 +4,10 @@ import type { IncomingMessage, IncomingHttpHeaders, ServerResponse } from 'node:
 
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 
-import { loadConfigFromEnv } from './config.js';
-import { OmadaClient } from './omadaClient.js';
-import { createServer as createMcpServer } from './server.js';
-import { logger } from './utils/logger.js';
+import type { OmadaClient } from '../omadaClient.js';
+import { logger } from '../utils/logger.js';
+
+import { createServer } from './common.js';
 
 const DEFAULT_PORT = 3000;
 const DEFAULT_HOST = '0.0.0.0';
@@ -204,18 +204,9 @@ async function createShutdownHandler(
     }
 }
 
-async function main(): Promise<void> {
-    const config = loadConfigFromEnv();
-    logger.info('Loaded Omada configuration', {
-        baseUrl: config.baseUrl,
-        omadacId: config.omadacId,
-        siteId: config.siteId ?? null,
-        strictSsl: config.strictSsl,
-        requestTimeout: config.requestTimeout ?? null,
-        proxyConfigured: Boolean(config.proxyUrl)
-    });
-    const client = new OmadaClient(config);
-    const mcpServer = createMcpServer(client);
+export async function startHttpServer(client: OmadaClient): Promise<void> {
+    logger.info('Starting HTTP server');
+    const mcpServer = createServer(client);
 
     const allowedHosts = parseList(process.env.MCP_HTTP_ALLOWED_HOSTS);
     const allowedOrigins = parseList(process.env.MCP_HTTP_ALLOWED_ORIGINS);
@@ -235,7 +226,9 @@ async function main(): Promise<void> {
     const sessionIdGenerator = enableStatefulSessions ? () => randomUUID() : undefined;
 
     if (!enableStatefulSessions) {
-        logger.info('Starting HTTP transport in stateless mode; Mcp-Session-Id headers are optional');
+        logger.info(
+            'Starting HTTP transport in stateless mode; Mcp-Session-Id headers are optional'
+        );
     }
 
     const transport = new StreamableHTTPServerTransport({
@@ -258,7 +251,11 @@ async function main(): Promise<void> {
     const httpServer = http.createServer(async (req, res) => {
         const url = getRequestUrl(req, port);
         if (!url) {
-            logger.warn('HTTP request rejected', { reason: 'invalid-url', method: req.method, url: req.url });
+            logger.warn('HTTP request rejected', {
+                reason: 'invalid-url',
+                method: req.method,
+                url: req.url
+            });
             sendJson(res, 400, { error: 'Invalid request URL.' });
             return;
         }
@@ -381,9 +378,3 @@ async function main(): Promise<void> {
         });
     }
 }
-
-main().catch((error) => {
-    const message = error instanceof Error ? error.message : String(error);
-    logger.error('Failed to start MCP HTTP server', { error: message });
-    process.exitCode = 1;
-});
