@@ -23,15 +23,18 @@ Omada Client Configuration:
 - `OMADA_SITE_ID` (optional) - site ID for the Omada controller.
 - `OMADA_STRICT_SSL` (default: `true`) - whether to enforce strict SSL certificate validation.
 - `OMADA_TIMEOUT` (default: `30000`) - request timeout in milliseconds.
-- `OMADA_PROXY_URL` (optional) - URL of an HTTP proxy to route requests through.
 
 MCP Generic Server Configuration:
 
 - `MCP_SERVER_LOG_LEVEL` (default: `info`) - logging verbosity (`debug`, `info`, `warn`, `error`).
+- `MCP_SERVER_LOG_FORMAT` (default: `plain`) - log output format (`plain`,`json`, or `gcp-json`).
+  - `plain` - human-readable text format.
+  - `json` - structured JSON format.
+  - `gcp-json` - structured JSON format compatible with Google Cloud Logging.
 - `MCP_SERVER_USE_HTTP` (default: `false`) - whether to start the HTTP server instead of stdio.
 - `MCP_SERVER_STATEFUL` (default: `false`) - whether to maintain stateful sessions per client.
 
-MCP Server HTTP/SSE Configuration:
+MCP Server HTTP/SSE Configuration, if `MCP_SERVER_USE_HTTP` is `true`:
 
 - `MCP_HTTP_PORT` (default: `3000`) - port for the HTTP/SSE server.
 - `MCP_HTTP_HOST` (default: `0.0.0.0`) - host for the HTTP/SSE server.
@@ -45,10 +48,9 @@ MCP Server HTTP/SSE Configuration:
 ## Code Structure
 
 - `src/index.ts` — MCP Server startup, including both stdio and HTTP/SSE server initialization. The type of server is selected based on environment variables.
-- `src/omadaClient.ts` — Axios-based client for Omada controller REST APIs.
 - `src/config.ts` — Environment variable loading and validation via Zod.
 - `src/utils/` — Utility functions (e.g., logger, error handling).
-- `src/omadaClient/` — Omada API interaction layer, organized by API tag (e.g., `src/omadaClient/user.ts`, `src/omadaClient/device.ts`).
+- `src/omadaClient/` — Omada API interaction layer, organized by API tag (e.g., `src/omadaClient/user.ts`, `src/omadaClient/device.ts`). The main client class is in `src/omadaClient/index.ts`.
 - `src/server/` — Code for each implementation of the MCP server e.g. `src/server/http.ts`, `src/server/stdio.ts`. Any common server logic goes into `src/server/common.ts`.
 - `src/types/` - centralized type definitions (API, MCP, errors)
 - `src/tools/` - individual tool files and registration.

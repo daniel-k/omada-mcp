@@ -13,8 +13,6 @@ const DEFAULT_PORT = 3000;
 const DEFAULT_HOST = '0.0.0.0';
 const DEFAULT_PATH = '/mcp';
 const HEALTH_PATH = '/healthz';
-const TRUE_STRINGS = ['1', 'true', 'yes', 'y', 'on'];
-const FALSE_STRINGS = ['0', 'false', 'no', 'n', 'off'];
 
 type ShutdownHandler = () => Promise<void>;
 
@@ -44,40 +42,6 @@ function normalizePath(path: string): string {
     }
 
     return startsWithSlash;
-}
-
-function parseList(value: string | undefined): string[] | undefined {
-    if (!value) {
-        return undefined;
-    }
-
-    const items = value
-        .split(',')
-        .map((entry) => entry.trim())
-        .filter((entry) => entry.length > 0);
-
-    return items.length > 0 ? items : undefined;
-}
-
-function parseBoolean(value: string | undefined): boolean | undefined {
-    if (value === undefined) {
-        return undefined;
-    }
-
-    const normalized = value.trim().toLowerCase();
-    if (normalized.length === 0) {
-        return undefined;
-    }
-
-    if (TRUE_STRINGS.includes(normalized)) {
-        return true;
-    }
-
-    if (FALSE_STRINGS.includes(normalized)) {
-        return false;
-    }
-
-    return undefined;
 }
 
 function getRequestUrl(req: IncomingMessage, fallbackPort: number): URL | undefined {
@@ -204,25 +168,17 @@ async function createShutdownHandler(
     }
 }
 
-export async function startHttpServer(client: OmadaClient): Promise<void> {
+export async function startHttpServer(client: OmadaClient, config: import('../config.js').EnvironmentConfig): Promise<void> {
     logger.info('Starting HTTP server');
     const mcpServer = createServer(client);
 
-    const allowedHosts = parseList(process.env.MCP_HTTP_ALLOWED_HOSTS);
-    const allowedOrigins = parseList(process.env.MCP_HTTP_ALLOWED_ORIGINS);
+    const allowedHosts = config.httpAllowedHosts;
+    const allowedOrigins = config.httpAllowedOrigins;
     const enableDnsRebindingProtection =
-        parseBoolean(process.env.MCP_HTTP_ENABLE_DNS_PROTECTION) ??
+        config.httpEnableDnsProtection ??
         Boolean((allowedHosts?.length ?? 0) > 0 || (allowedOrigins?.length ?? 0) > 0);
 
-    const rawStateful = process.env.MCP_HTTP_STATEFUL;
-    const parsedStateful = parseBoolean(rawStateful);
-    if (rawStateful !== undefined && parsedStateful === undefined) {
-        logger.warn('Invalid MCP_HTTP_STATEFUL value provided; defaulting to stateful mode', {
-            provided: rawStateful
-        });
-    }
-
-    const enableStatefulSessions = parsedStateful ?? true;
+    const enableStatefulSessions = config.stateful;
     const sessionIdGenerator = enableStatefulSessions ? () => randomUUID() : undefined;
 
     if (!enableStatefulSessions) {
@@ -244,9 +200,9 @@ export async function startHttpServer(client: OmadaClient): Promise<void> {
 
     await mcpServer.connect(transport);
 
-    const port = resolvePort(process.env.MCP_HTTP_PORT ?? process.env.PORT, DEFAULT_PORT);
-    const host = process.env.MCP_HTTP_HOST ?? process.env.HOST ?? DEFAULT_HOST;
-    const endpointPath = normalizePath(process.env.MCP_HTTP_PATH ?? DEFAULT_PATH);
+    const port = resolvePort(config.httpPort?.toString(), DEFAULT_PORT);
+    const host = config.httpHost ?? DEFAULT_HOST;
+    const endpointPath = normalizePath(config.httpPath ?? DEFAULT_PATH);
 
     const httpServer = http.createServer(async (req, res) => {
         const url = getRequestUrl(req, port);

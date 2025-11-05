@@ -2,10 +2,17 @@ import { loadConfigFromEnv } from './config.js';
 import { OmadaClient } from './omadaClient.js';
 import { startHttpServer } from './server/http.js';
 import { startStdioServer } from './server/stdio.js';
-import { logger } from './utils/logger.js';
+import { initLogger, logger } from './utils/logger.js';
 
 async function main(): Promise<void> {
   const config = loadConfigFromEnv();
+
+  // When running in stdio mode, logs must go to stderr to avoid interfering with MCP protocol on stdout
+  const useStderr = !config.useHttp;
+
+  // Initialize logger with configured level, format, and output stream
+  initLogger(config.logLevel, config.logFormat, useStderr);
+
   logger.info('Loaded Omada configuration', {
     baseUrl: config.baseUrl,
     omadacId: config.omadacId,
@@ -17,16 +24,12 @@ async function main(): Promise<void> {
 
   const client = new OmadaClient(config);
 
-  const useHttp = process.env.MCP_SERVER_USE_HTTP === 'true';
-
-  if (useHttp) {
-    await startHttpServer(client);
+  if (config.useHttp) {
+    await startHttpServer(client, config);
   } else {
     await startStdioServer(client);
   }
-}
-
-main().catch((error) => {
+} main().catch((error) => {
   const message = error instanceof Error ? error.message : String(error);
   logger.error('Failed to start Omada MCP server', { error: message });
   process.exitCode = 1;
