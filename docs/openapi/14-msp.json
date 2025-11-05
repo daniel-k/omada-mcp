@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/msp/{mspId}/users/{userID}": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get msp user info",
                 "description": "Get msp user info. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager View Only",
                 "operationId": "getUser",
@@ -49,9 +47,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Modify an existing msp user",
                 "description": "Modify an existing msp user. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30103  -  Invalid email address.<br/>-30104  -  Invalid username.<br/>-30105  -  Invalid password.<br/>-30106  -  This username is already registered.<br/>-30108  -  This username does not exist.<br/>-30133  -  The administrator account should not have privileges to fewer sites than that of the viewer accounts it has created.<br/>-30134  -  Failed to add Site %Site name%. The viewer account should not have privileges to more sites thatn that of its immediate superior account.<br/>-30135  -  Are you sure you want to change the role of %Username% from Administrator to Viewer?If its role is changed, the viewer accounts it has created will be moved to your account.<br/>-30136  -  Failed to save. If the editing is saved, the viewer account will have privileges to more sites than that of its immediate superior account.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "modifyMspUser",
@@ -90,9 +86,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Delete an existing msp user",
                 "description": "Delete an existing msp user. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30112  -  This user does not exist.<br/>-30114  -  An error occurred while deleting the user.<br/>-30132  -  Are you sure you want to delete Administrator %Username%? When it is deleted, the viewer accounts it has created will be moved to your account.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "deleteMspUser",
@@ -133,9 +127,7 @@
         },
         "/openapi/v1/msp/{mspId}/sso/saml-idps/{idpId}": {
             "put": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Modify an existing msp idp",
                 "description": "Modify an existing msp idp.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml SSO Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30170  -  The SAML sso metadata entityId already exists.<br/>-30171  -  The SAML sso metadata name already exist.",
                 "operationId": "modifyIdpMetadata",
@@ -183,9 +175,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Delete an existing msp idp",
                 "description": "Delete an existing msp idp.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml SSO Manager Modify",
                 "operationId": "deleteIdpMetadata",
@@ -225,9 +215,7 @@
         },
         "/openapi/v1/msp/{mspId}/sso/external-user-groups/{externalUserGroupId}": {
             "put": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Modify an existing msp external user group",
                 "description": "Modify an existing msp external user group.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30172  -  The SAML role name already exists.",
                 "operationId": "modifyExternalUserGroup",
@@ -275,9 +263,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Delete an existing msp external user group",
                 "description": "Delete an existing msp external user group.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml Roles Manager Modify",
                 "operationId": "deleteExternalUserGroup",
@@ -317,9 +303,7 @@
         },
         "/openapi/v1/msp/{mspId}/roles/{roleId}": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get msp role info",
                 "description": "Get msp role info<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.",
                 "operationId": "getMspRole",
@@ -356,9 +340,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Modify an existing msp role",
                 "description": "Modify an existing msp role.<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30156  -  This role already exists.<br/>-30157  -  An error occurred while modifying the role.<br/>-30159  -  The default role cannot be modified.<br/>-30162  -  Cannot change the target account. Its role permission scope cannot be greater than its manager.",
                 "operationId": "modifyMspRole",
@@ -406,9 +388,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Delete an existing msp role",
                 "description": "Delete an existing msp role<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30153  -  The default role cannot be deleted.<br/>-30154  -  An error occurred while deleting the role.<br/>-30155  -  The role cannot be deleted since someone has bound to it.<br/>-30173  -  The SSO bound role cannot be deleted!",
                 "operationId": "deleteMspRole",
@@ -448,9 +428,7 @@
         },
         "/openapi/v1/msp/{mspId}/account/customer-roles/{roleId}": {
             "put": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Modify an existing customer role",
                 "description": "Modify an existing customer role.<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30156  -  This role already exists.<br/>-30157  -  An error occurred while modifying the role.<br/>-30159  -  The default role cannot be modified.<br/>-30162  -  Cannot change the target account. Its role permission scope cannot be greater than its manager.",
                 "operationId": "modifyCustomerRole",
@@ -498,9 +476,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Delete an existing customer role",
                 "description": "Delete an existing customer role<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30153  -  The default role cannot be deleted.<br/>-30154  -  An error occurred while deleting the role.<br/>-30155  -  The role cannot be deleted since someone has bound to it.<br/>-30173  -  The SSO bound role cannot be deleted!",
                 "operationId": "deleteCustomerRole",
@@ -540,9 +516,7 @@
         },
         "/openapi/v1/msp/{mspId}/webhook/settings": {
             "get": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Get MSP webhook setting list",
                 "description": "Get all MSP webhook setting.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager View Only",
                 "operationId": "getWebhookForMsp",
@@ -571,9 +545,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Create MSP webhook setting",
                 "description": "Create MSP webhook setting.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44200  -  The number of webhooks has reached the limit.<br/>-44201  -  This webhook name already exists.<br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "createWebhookForMsp",
@@ -614,9 +586,7 @@
         },
         "/openapi/v1/msp/{mspId}/webhook/settings/{webhookId}": {
             "post": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Test MSP webhook setting",
                 "description": "Test MSP webhook setting.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "testWebhookFormsp",
@@ -664,9 +634,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Delete MSP webhook setting",
                 "description": "Delete MSP webhook setting.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44202  -  This webhook entry does not exist.",
                 "operationId": "deleteWebhookForMsp",
@@ -704,9 +672,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Modify MSP webhook setting",
                 "description": "Modify MSP webhook setting.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44202  -  This webhook entry does not exist.<br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "modifyWebhookForMsp",
@@ -756,9 +722,7 @@
         },
         "/openapi/v1/msp/{mspId}/users": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get msp user list",
                 "description": "Get msp user list. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "getGridUsers",
@@ -852,9 +816,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Create new msp user",
                 "description": "Create new msp user. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30103  -  Invalid email address.<br/>-30104  -  Invalid username.<br/>-30105  -  Invalid password.<br/>-30106  -  This username is already registered.<br/>-30124  -  The number of users has reached the limit.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "createNewMspUser",
@@ -895,9 +857,7 @@
         },
         "/openapi/v1/msp/{mspId}/users/feedback/evaluates": {
             "post": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Evaluate MSP feedback",
                 "description": "Evaluate MSP feedback",
                 "operationId": "evaluateMspFeedback",
@@ -938,9 +898,7 @@
         },
         "/openapi/v1/msp/{mspId}/system/setting/ssl-key": {
             "post": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Upload msp SSL key",
                 "description": "Upload msp SSL key. Only support .pem files.",
                 "operationId": "uploadSSLKey",
@@ -967,9 +925,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "file"
-                                ],
+                                "required": ["file"],
                                 "type": "object",
                                 "properties": {
                                     "file": {
@@ -997,9 +953,7 @@
         },
         "/openapi/v1/msp/{mspId}/system/setting/certificate": {
             "post": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Upload msp certificate",
                 "description": "Upload msp certificate. Only support .pem, .pfx, .pem files. Certificate name should be the same as the file name.",
                 "operationId": "uploadCertificate",
@@ -1026,9 +980,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "file"
-                                ],
+                                "required": ["file"],
                                 "type": "object",
                                 "properties": {
                                     "file": {
@@ -1056,9 +1008,7 @@
         },
         "/openapi/v1/msp/{mspId}/sso/saml-idps": {
             "get": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Get msp idp list",
                 "description": "Get msp idp list.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml SSO Manager View Only",
                 "operationId": "getIdpMetadataList",
@@ -1116,9 +1066,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Create new msp idp",
                 "description": "Create new msp idp.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml SSO Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30170  -  The SAML sso metadata entityId already exists.<br/>-30171  -  The SAML sso metadata name already exist.<br/>-30178  -  The SAML sso number has reached the upper limit.",
                 "operationId": "createIdpMetadata",
@@ -1159,9 +1107,7 @@
         },
         "/openapi/v1/msp/{mspId}/sso/external-user-groups": {
             "get": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Get msp external user group list",
                 "description": "Get msp external user group list.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml Roles Manager View Only",
                 "operationId": "getExternalUserGroupList",
@@ -1228,9 +1174,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Create new msp external user group",
                 "description": "Create new msp external user group.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30172  -  The SAML role name already exists.<br/>-30179  -  The SAML roles number has reached the upper limit.",
                 "operationId": "createExternalUserGroup",
@@ -1271,9 +1215,7 @@
         },
         "/openapi/v1/msp/{mspId}/settings/test-mail": {
             "post": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Send test mail for MSP",
                 "description": "Send test mail for MSP<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "sendTestMailForMspV2",
@@ -1314,9 +1256,7 @@
         },
         "/openapi/v1/msp/{mspId}/roles": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get msp role list",
                 "description": "Get msp role list<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager View Only",
                 "operationId": "getAllMspRoles",
@@ -1345,9 +1285,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Create new msp role",
                 "description": "Create new msp role<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30156  -  This role already exists.<br/>-30158  -  An error occurred while creating the role.<br/>-30161  -  The number of roles has reached the limit.",
                 "operationId": "createNewMspRole",
@@ -1388,9 +1326,7 @@
         },
         "/openapi/v1/msp/{mspId}/reset/log-notification": {
             "post": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Reset MSP log notification",
                 "description": "Reset MSP log notification.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "resetLogSettingMsp",
@@ -1421,9 +1357,7 @@
         },
         "/openapi/v1/msp/{mspId}/notification/disable": {
             "post": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Turn off the software update push switch in MSP mode",
                 "description": "Turn off the software update push switch in MSP mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "disableMspControllerUpgradeNotification",
@@ -1454,9 +1388,7 @@
         },
         "/openapi/v1/msp/{mspId}/mfa/status": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get the status of the MSP system's Two-Factor Authentication.",
                 "description": "Get the status of the system's Two-Factor Authentication.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getMFAStatus",
@@ -1485,9 +1417,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Modify the status of the MSP system's Two-Factor Authentication.",
                 "description": "Modify the status of the system's Two-Factor Authentication.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyMspMFAStatus",
@@ -1528,9 +1458,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/export": {
             "post": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Export log list in MSP view",
                 "description": "Export log list in MSP view.<br/><br/>The interface requires one of the permissions: <br/>MSP Export Data Access",
                 "operationId": "exportLogListForMsp",
@@ -1571,9 +1499,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/audit/export": {
             "post": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Export audit log list in MSP view",
                 "description": "Export audit log list in MSP view.<br/><br/>The interface requires one of the permissions: <br/>MSP Export Data Access",
                 "operationId": "exportAuditLogListForGlobal",
@@ -1614,9 +1540,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/alerts/resolve": {
             "post": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Resolve MSP alert log",
                 "description": "Resolve MSP alert log.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "resolveAlertForMsp",
@@ -1657,9 +1581,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers": {
             "get": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Get customer list",
                 "description": "Get customer list<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard View Only",
                 "operationId": "getCustomerList",
@@ -1726,9 +1648,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Create new customer",
                 "description": "Create new customer(This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.)<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30145  -  The number of omadacs has reached the limit.<br/>-34706  -  This name already exists. Please enter another name for this customer.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "createCustomer",
@@ -1769,9 +1689,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/{customerId}/sites/{siteId}/devices/{deviceMac}/start-adopt": {
             "post": {
-                "tags": [
-                    "MSP Device"
-                ],
+                "tags": ["MSP Device"],
                 "summary": "Start adopt device For Msp",
                 "description": "Start adopt device in msp view.This interface does not return the actual adoptive result, you need to use the interface:Get device adopt result to obtain the adoptive result<br/><br/>The interface requires one of the permissions: <br/>MSP Adopt Device Manager Access<br/>MSP Add Device Manager Access",
                 "operationId": "adoptOneForMsp",
@@ -1830,9 +1748,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/{customerId}/sites/{siteId}/cmd/devices/batch-adopt": {
             "post": {
-                "tags": [
-                    "MSP Device"
-                ],
+                "tags": ["MSP Device"],
                 "summary": "batch adopt device in msp view",
                 "description": "batch adopt device in msp view.This interface does not return the actual adoptive result,you need to use the interface:Get device adopt result to obtain the adoptive result<br/><br/>The interface requires one of the permissions: <br/>MSP Adopt Device Manager Access<br/>MSP Add Device Manager Access",
                 "operationId": "batchAdoptForMsp",
@@ -1891,9 +1807,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/{customerId}/favorites": {
             "post": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Favorite a customer",
                 "description": "Favorite a customer",
                 "operationId": "favoriteCustomer",
@@ -1933,9 +1847,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/{customerId}/favorites/cancels": {
             "post": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Cancel a favorite customer",
                 "description": "Cancel a favorite customer",
                 "operationId": "cancelFavoriteCustomer",
@@ -1975,9 +1887,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/copy": {
             "post": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Create a customer by copying from existing customer",
                 "description": "Create a customer by copying from existing customer",
                 "operationId": "copyCustomer",
@@ -2018,9 +1928,7 @@
         },
         "/openapi/v1/msp/{mspId}/batch": {
             "post": {
-                "tags": [
-                    "MSP Batch OpenAPI"
-                ],
+                "tags": ["MSP Batch OpenAPI"],
                 "summary": "Batch Processing MSP OpenAPIs",
                 "description": "Batch processing of multiple OpenAPIs under the same MSP controller through this OpenAPI.<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-1600  -  Unsupported request path.<br/>-1619  -  Execution has been interrupted due to unsuccessful execution of the pre action request.<br/>-1620  -  Error occurred while executing action.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.<br/>-44113  -  The Access Token is Invalid.<br/>-7132  -  Our server is receiving too many requests now. Please try again later.",
                 "operationId": "mspBatchController",
@@ -2061,9 +1969,7 @@
         },
         "/openapi/v1/msp/{mspId}/account/customer-roles": {
             "post": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Create new customer role",
                 "description": "Create new customer role<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30156  -  This role already exists.<br/>-30158  -  An error occurred while creating the role.<br/>-30161  -  The number of roles has reached the limit.",
                 "operationId": "createCustomerRole",
@@ -2104,9 +2010,7 @@
         },
         "/openapi/v1/msp/{mspId}/users/batch-temporary-users": {
             "patch": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Batch modify MSP users.",
                 "description": "Batch modify MSP users.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager Modify",
                 "operationId": "modifyMspUserBatch",
@@ -2147,9 +2051,7 @@
         },
         "/openapi/v1/msp/{mspId}/ui-interface": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp ui interface",
                 "description": "Get msp ui interface<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-7131  -  Controller ID not exist.",
                 "operationId": "getUiInterface",
@@ -2179,9 +2081,7 @@
                 "deprecated": true
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify msp ui interface",
                 "description": "Modify msp ui interface<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-7131  -  Controller ID not exist.",
                 "operationId": "modifyUiInterface",
@@ -2223,9 +2123,7 @@
         },
         "/openapi/v1/msp/{mspId}/settings/user-interface": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp user interface",
                 "description": "Get msp user interface<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-7131  -  Controller ID not exist.",
                 "operationId": "getMspUserInterface",
@@ -2254,9 +2152,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify msp user interface",
                 "description": "Modify msp user interface<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-7131  -  Controller ID not exist.",
                 "operationId": "modifyMspUserInterface",
@@ -2297,9 +2193,7 @@
         },
         "/openapi/v1/msp/{mspId}/settings/network/radius-server": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get Msp Built-In RADIUS server setting",
                 "description": "Get Msp Built-In RADIUS server setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getMspRadiusServer",
@@ -2328,9 +2222,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify Msp Built-In RADIUS server setting",
                 "description": "Modify Msp Built-In RADIUS server setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyMspRadiusServer",
@@ -2371,9 +2263,7 @@
         },
         "/openapi/v1/msp/{mspId}/settings/network/radius-proxy": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get Msp RADIUS proxy server setting",
                 "description": "Get Msp RADIUS proxy server setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getMspRadiusProxy",
@@ -2402,9 +2292,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify Msp RADIUS proxy server setting",
                 "description": "Modify Msp RADIUS proxy server setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyRadiusProxy",
@@ -2445,9 +2333,7 @@
         },
         "/openapi/v1/msp/{mspId}/settings/mail-server": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get MSP mail server",
                 "description": "Get MSP mail server",
                 "operationId": "getMspMailServer",
@@ -2476,9 +2362,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify MSP mail server",
                 "description": "Modify MSP mail server.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyMspMailServer",
@@ -2519,9 +2403,7 @@
         },
         "/openapi/v1/msp/{mspId}/retention": {
             "get": {
-                "tags": [
-                    "MSP History Data Retention"
-                ],
+                "tags": ["MSP History Data Retention"],
                 "summary": "Get MSP history data retention configuration",
                 "description": "Get MSP history data retention configuration.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30001  -  Controller is not configured.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "getMspDataRetention",
@@ -2550,9 +2432,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "MSP History Data Retention"
-                ],
+                "tags": ["MSP History Data Retention"],
                 "summary": "Modify MSP history data retention configuration",
                 "description": "Modify MSP history data retention configuration.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30001  -  Controller is not configured.<br/>-30028  -  The system is busy. Please try again later.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "modifyMspRetention",
@@ -2593,9 +2473,7 @@
         },
         "/openapi/v1/msp/{mspId}/remote-logging": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp remote logging setting",
                 "description": "Get msp remote logging setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getRemoteLoggingSetting",
@@ -2624,9 +2502,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify msp remote logging setting",
                 "description": "Modify msp remote logging setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyRemoteLoggingSetting",
@@ -2667,9 +2543,7 @@
         },
         "/openapi/v1/msp/{mspId}/log-notification": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP log notification",
                 "description": "Get msp log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getLogSettingForMsp",
@@ -2699,9 +2573,7 @@
                 "deprecated": true
             },
             "patch": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Modify MSP log notification",
                 "description": "Modify MSP log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "modifyLogSettingMsp",
@@ -2743,9 +2615,7 @@
         },
         "/openapi/v1/msp/{mspId}/log-notification-setting": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP log notification",
                 "description": "Get msp log notification.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getLogSettingForMspV2",
@@ -2774,9 +2644,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Modify MSP log notification",
                 "description": "Modify MSP log notification.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "modifyLogSettingMspV2",
@@ -2817,9 +2685,7 @@
         },
         "/openapi/v1/msp/{mspId}/general-setting": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp general setting",
                 "description": "Get msp general setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getGeneralSetting",
@@ -2848,9 +2714,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Modify msp general setting",
                 "description": "Modify msp general setting<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify",
                 "operationId": "modifyGeneralSetting",
@@ -2891,9 +2755,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/{customerId}": {
             "get": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Get customer info",
                 "description": "Get customer info<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard View Only",
                 "operationId": "getCustomerDetail",
@@ -2931,9 +2793,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Delete an existing customer",
                 "description": "Delete an existing customer(This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.)<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34707  -  Need to delete all sites of this customer before deleting this customer.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "deleteCustomer",
@@ -2971,9 +2831,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Modify an existing customer",
                 "description": "Modify an existing customer<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34706  -  This name already exists. Please enter another name for this customer.",
                 "operationId": "modifyCustomer",
@@ -3023,9 +2881,7 @@
         },
         "/openapi/v1/msp/{mspId}/audit-notification": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP audit log notification",
                 "description": "Get msp audit log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getAuditLogSettingForMsp",
@@ -3054,9 +2910,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Modify MSP audit log notification",
                 "description": "Modify MSP audit log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "modifyAuditLogSettingMsp",
@@ -3097,9 +2951,7 @@
         },
         "/openapi/v1/{omadacId}/copy/site/template/batch/customers": {
             "get": {
-                "tags": [
-                    "Customer"
-                ],
+                "tags": ["Customer"],
                 "summary": "Obtain the customer ID with permission to modify site templates",
                 "description": "Obtain the IDs of customers whose site templates the current user has permission to modify.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "getCustomersInGlobalHaveSiteTemplateModify",
@@ -3130,9 +2982,7 @@
         },
         "/openapi/v1/msp/{mspId}/webhook/settings/dispatch-logs": {
             "get": {
-                "tags": [
-                    "Msp Webhook Setting"
-                ],
+                "tags": ["Msp Webhook Setting"],
                 "summary": "Get MSP webhook dispatch log list",
                 "description": "Get MSP webhook dispatch log list.<br/><br/>The interface requires one of the permissions: <br/>MSP Webhook Manager View Only",
                 "operationId": "getWebhookLogsForMsp",
@@ -3212,9 +3062,7 @@
         },
         "/openapi/v1/msp/{mspId}/users/local": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get all MSP local users exclude owner",
                 "description": "<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "getAllMspLocalUsersExcludeRoot",
@@ -3245,9 +3093,7 @@
         },
         "/openapi/v1/msp/{mspId}/users/cloud": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get all MSP cloud users exclude owner",
                 "description": "<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "getAllMspCloudUsersExcludeRoot",
@@ -3278,9 +3124,7 @@
         },
         "/openapi/v1/msp/{mspId}/sso/external-users": {
             "get": {
-                "tags": [
-                    "MSP SSO"
-                ],
+                "tags": ["MSP SSO"],
                 "summary": "Get msp external user list",
                 "description": "Get msp external user list.<br/><br/>The interface requires one of the permissions: <br/>MSP Saml Users Manager View Only",
                 "operationId": "getExternalUserList",
@@ -3349,9 +3193,7 @@
         },
         "/openapi/v1/msp/{mspId}/sites": {
             "get": {
-                "tags": [
-                    "MSP Site"
-                ],
+                "tags": ["MSP Site"],
                 "summary": "Get msp site list",
                 "description": "Get msp site list<br/><br/>The interface requires one of the permissions: <br/>MSP Site Manager View Only",
                 "operationId": "getSiteList",
@@ -3438,9 +3280,7 @@
         },
         "/openapi/v1/msp/{mspId}/sites/tags": {
             "get": {
-                "tags": [
-                    "MSP Site"
-                ],
+                "tags": ["MSP Site"],
                 "summary": "Get msp site tag list",
                 "description": "Get msp site tag list.<br/><br/>The interface requires one of the permissions: <br/>MSP Site Manager View Only",
                 "operationId": "getTags",
@@ -3474,9 +3314,7 @@
         },
         "/openapi/v1/msp/{mspId}/roles/customer/roles/available": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get available customer roles for creating new user",
                 "description": "Get available customer roles for creating new user.<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager View Only",
                 "operationId": "getAvailableCustomerRoles",
@@ -3507,9 +3345,7 @@
         },
         "/openapi/v1/msp/{mspId}/roles/available": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get available MSP roles for creating new user",
                 "description": "Get available MSP roles for creating new user.<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager View Only",
                 "operationId": "getAvailableMspRoles",
@@ -3540,9 +3376,7 @@
         },
         "/openapi/v1/msp/{mspId}/privacy-policy": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp privacy policy",
                 "description": "Get msp privacy policy<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only",
                 "operationId": "getPrivacyPolicyMsp",
@@ -3573,9 +3407,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/events": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP event log list",
                 "description": "Get logs in MSP event log page.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getEventLogsForMsp",
@@ -3655,9 +3487,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/alerts": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP alert log list",
                 "description": "Get logs in MSP alert log page.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getAlertLogsForMsp",
@@ -3746,9 +3576,7 @@
         },
         "/openapi/v1/msp/{mspId}/dst-info": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get msp DST",
                 "description": "Get msp DST",
                 "operationId": "getMspDstInfo",
@@ -3779,9 +3607,7 @@
         },
         "/openapi/v1/msp/{mspId}/devices/unknown-devices": {
             "get": {
-                "tags": [
-                    "MSP Device"
-                ],
+                "tags": ["MSP Device"],
                 "summary": "Get MSP unknown device list",
                 "description": "Get MSP unknown device list<br/><br/>The interface requires one of the permissions: <br/>MSP Device Manager View Only",
                 "operationId": "getMspUnknownDeviceList",
@@ -3868,9 +3694,7 @@
         },
         "/openapi/v1/msp/{mspId}/devices/tag": {
             "get": {
-                "tags": [
-                    "MSP Device"
-                ],
+                "tags": ["MSP Device"],
                 "summary": "Get tag list",
                 "description": "Get tag list.<br/><br/>The interface requires one of the permissions: <br/>Site Device Manager View Only<br/>MSP Device Manager View Only<br/>Site Map Manager View Only",
                 "operationId": "getTags_1",
@@ -3901,9 +3725,7 @@
         },
         "/openapi/v1/msp/{mspId}/devices/known-devices": {
             "get": {
-                "tags": [
-                    "MSP Device"
-                ],
+                "tags": ["MSP Device"],
                 "summary": "Get MSP known device list",
                 "description": "Get MSP known device list<br/><br/>The interface requires one of the permissions: <br/>MSP Device Manager View Only",
                 "operationId": "getMspKnownDeviceList",
@@ -4008,9 +3830,7 @@
         },
         "/openapi/v1/msp/{mspId}/customer-roles": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get customer role list in msp",
                 "description": "Get customer role list in msp<br/><br/>The interface requires one of the permissions: <br/>MSP Roles Manager View Only",
                 "operationId": "getAllCustomerRoles",
@@ -4041,9 +3861,7 @@
         },
         "/openapi/v1/msp/{mspId}/audit-logs": {
             "get": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Get MSP audit log list",
                 "description": "Get audit logs in msp audit page.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager View Only",
                 "operationId": "getAuditLogsForMsp",
@@ -4149,9 +3967,7 @@
         },
         "/openapi/v1/msp/{mspId}/all-users": {
             "get": {
-                "tags": [
-                    "MSP User and Role"
-                ],
+                "tags": ["MSP User and Role"],
                 "summary": "Get msp user list for app",
                 "description": "Get msp user list. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>MSP Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "getMspAppGridUsers",
@@ -4247,9 +4063,7 @@
         },
         "/openapi/v1/msp/{mspId}/account/mail-status": {
             "get": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Get MSP mailServer status",
                 "description": "Get MSP mailServer status<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings View Only<br/>MSP Users Manager View Only<br/>MSP Export Data Access",
                 "operationId": "getMspMailServerStatusGlobal",
@@ -4280,9 +4094,7 @@
         },
         "/openapi/v1/msp/{mspId}/system/setting/ssl-key/{keyId}": {
             "delete": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Delete an existing msp SSL key",
                 "description": "Delete an existing msp SSL key.",
                 "operationId": "deleteSSLKey",
@@ -4322,9 +4134,7 @@
         },
         "/openapi/v1/msp/{mspId}/system/setting/certificate/{cerId}": {
             "delete": {
-                "tags": [
-                    "Msp setting"
-                ],
+                "tags": ["Msp setting"],
                 "summary": "Delete an existing msp certificate",
                 "description": "Delete an existing msp certificate.",
                 "operationId": "deleteCertificate",
@@ -4364,9 +4174,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/events/delete": {
             "delete": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Delete MSP event log",
                 "description": "Delete MSP event log.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "deleteEventLogsForMsp",
@@ -4407,9 +4215,7 @@
         },
         "/openapi/v1/msp/{mspId}/logs/alerts/delete": {
             "delete": {
-                "tags": [
-                    "Msp Log"
-                ],
+                "tags": ["Msp Log"],
                 "summary": "Delete MSP alert log",
                 "description": "Delete MSP alert log.<br/><br/>The interface requires one of the permissions: <br/>MSP Log Manager Modify",
                 "operationId": "deleteAlertLogsForMsp",
@@ -4452,12 +4258,7 @@
     "components": {
         "schemas": {
             "ModifyMspUserVO": {
-                "required": [
-                    "allCustomer",
-                    "customerRoleId",
-                    "name",
-                    "roleId"
-                ],
+                "required": ["allCustomer", "customerRoleId", "name", "roleId"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4535,12 +4336,7 @@
                 }
             },
             "IdpMetadataOpenApiVO": {
-                "required": [
-                    "entityId",
-                    "loginUrl",
-                    "name",
-                    "x509Certificate"
-                ],
+                "required": ["entityId", "loginUrl", "name", "x509Certificate"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4582,12 +4378,7 @@
                 }
             },
             "MspExternalUserGroupOpenApiVO": {
-                "required": [
-                    "allCustomer",
-                    "customerRoleId",
-                    "name",
-                    "roleId"
-                ],
+                "required": ["allCustomer", "customerRoleId", "name", "roleId"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4633,9 +4424,7 @@
                 }
             },
             "ModifyRoleVO": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4949,9 +4738,7 @@
                 "description": "Role privilege"
             },
             "RoleDetailOpenApiVO": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4987,12 +4774,7 @@
                 }
             },
             "OpenApiWebhookSettingAddVO": {
-                "required": [
-                    "name",
-                    "retryPolicy",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["name", "retryPolicy", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -5026,11 +4808,7 @@
                 }
             },
             "OpenApiWebhookSettingTestVO": {
-                "required": [
-                    "name",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["name", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -5059,13 +4837,7 @@
                 }
             },
             "CreateMspUserVO": {
-                "required": [
-                    "allCustomer",
-                    "customerRoleId",
-                    "name",
-                    "roleId",
-                    "type"
-                ],
+                "required": ["allCustomer", "customerRoleId", "name", "roleId", "type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -5176,12 +4948,7 @@
                 }
             },
             "SendMailServerOpenApiVO": {
-                "required": [
-                    "authEnable",
-                    "port",
-                    "smtpServer",
-                    "sslEnable"
-                ],
+                "required": ["authEnable", "port", "smtpServer", "sslEnable"],
                 "type": "object",
                 "properties": {
                     "smtpEnable": {
@@ -5229,10 +4996,7 @@
                 }
             },
             "ModifyMspRoleVO": {
-                "required": [
-                    "name",
-                    "privilege"
-                ],
+                "required": ["name", "privilege"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -5377,9 +5141,7 @@
                 }
             },
             "ExportMspLogOpenApiVO": {
-                "required": [
-                    "format"
-                ],
+                "required": ["format"],
                 "type": "object",
                 "properties": {
                     "format": {
@@ -5390,11 +5152,7 @@
                 }
             },
             "ResolveMspLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -5498,10 +5256,7 @@
                 }
             },
             "CustomerCopyOpenapiVO": {
-                "required": [
-                    "newCustomerName",
-                    "sourceCustomerId"
-                ],
+                "required": ["newCustomerName", "sourceCustomerId"],
                 "type": "object",
                 "properties": {
                     "newCustomerName": {
@@ -5561,10 +5316,7 @@
                 }
             },
             "Request action entity": {
-                "required": [
-                    "method",
-                    "path"
-                ],
+                "required": ["method", "path"],
                 "type": "object",
                 "properties": {
                     "path": {
@@ -5614,11 +5366,7 @@
                 }
             },
             "OpenApiWebhookSettingEditVO": {
-                "required": [
-                    "retryPolicy",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["retryPolicy", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "urlList": {
@@ -5703,13 +5451,7 @@
                 }
             },
             "MspUiInterfaceOpenApiVO": {
-                "required": [
-                    "fixedMenu",
-                    "refreshBtnEnable",
-                    "refreshRate",
-                    "use24hour",
-                    "websocketEnable"
-                ],
+                "required": ["fixedMenu", "refreshBtnEnable", "refreshRate", "use24hour", "websocketEnable"],
                 "type": "object",
                 "properties": {
                     "language": {
@@ -5768,9 +5510,7 @@
                 }
             },
             "MspUserInterfaceOpenApiVO": {
-                "required": [
-                    "refreshRate"
-                ],
+                "required": ["refreshRate"],
                 "type": "object",
                 "properties": {
                     "refreshRate": {
@@ -5797,13 +5537,7 @@
                 }
             },
             "Built In Radius Server Setting": {
-                "required": [
-                    "authServerPort",
-                    "enable",
-                    "secret",
-                    "serverAddressType",
-                    "tunnelReplyEnable"
-                ],
+                "required": ["authServerPort", "enable", "secret", "serverAddressType", "tunnelReplyEnable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -5868,11 +5602,7 @@
                 "description": "RADIUS server certificate"
             },
             "Radius Proxy Server Setting": {
-                "required": [
-                    "enable",
-                    "port",
-                    "secret"
-                ],
+                "required": ["enable", "port", "secret"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -5906,12 +5636,7 @@
                 }
             },
             "ModifyMailServerOpenApiVO": {
-                "required": [
-                    "authEnable",
-                    "port",
-                    "smtpServer",
-                    "sslEnable"
-                ],
+                "required": ["authEnable", "port", "smtpServer", "sslEnable"],
                 "type": "object",
                 "properties": {
                     "smtpEnable": {
@@ -5959,9 +5684,7 @@
                 }
             },
             "ModifyHistoryRetentionOpenApiVO": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "override": {
@@ -6015,9 +5738,7 @@
                 }
             },
             "ModifyMspRemoteLoggingSettingOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -6059,12 +5780,7 @@
                 "description": "Log Alert Email (This config applies to the log site view)"
             },
             "LogNotificationEditOpenApiVO": {
-                "required": [
-                    "alert",
-                    "email",
-                    "event",
-                    "key"
-                ],
+                "required": ["alert", "email", "event", "key"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -6096,9 +5812,7 @@
                 "description": "Log Notification List"
             },
             "LogNotificationSettingEditOpenApiVO": {
-                "required": [
-                    "logNotifications"
-                ],
+                "required": ["logNotifications"],
                 "type": "object",
                 "properties": {
                     "webhookConfig": {
@@ -6117,9 +5831,7 @@
                 }
             },
             "WebhookConfigEditOpenApiVO": {
-                "required": [
-                    "webhookEnable"
-                ],
+                "required": ["webhookEnable"],
                 "type": "object",
                 "properties": {
                     "webhookEnable": {
@@ -6135,11 +5847,7 @@
                 "description": "Log Notification Webhook Config (This config applies to the Omada Pro Controller only)"
             },
             "LogNotificationEditOpenApiV2VO": {
-                "required": [
-                    "email",
-                    "enable",
-                    "key"
-                ],
+                "required": ["email", "enable", "key"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -6194,13 +5902,7 @@
                 }
             },
             "DstTimeOpenApiDTO": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -6275,10 +5977,7 @@
                 }
             },
             "AuditLogNotificationEditOpenApiVO": {
-                "required": [
-                    "key",
-                    "webhook"
-                ],
+                "required": ["key", "webhook"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -6295,10 +5994,7 @@
                 "description": "Audit Log Notification List"
             },
             "AuditLogNotificationSettingEditOpenApiVO": {
-                "required": [
-                    "auditLogNotifications",
-                    "webhookConfig"
-                ],
+                "required": ["auditLogNotifications", "webhookConfig"],
                 "type": "object",
                 "properties": {
                     "webhookConfig": {
@@ -7370,9 +7066,7 @@
                 }
             },
             "History Retention": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "override": {
@@ -7456,9 +7150,7 @@
                 }
             },
             "MspRemoteLoggingSettingOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -7508,9 +7200,7 @@
                 }
             },
             "Privacy Policy": {
-                "required": [
-                    "status"
-                ],
+                "required": ["status"],
                 "type": "object",
                 "properties": {
                     "status": {
@@ -7885,13 +7575,7 @@
                 "description": "Daylight Saving Time"
             },
             "DstTimeDTO": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -7955,13 +7639,7 @@
                 }
             },
             "DST Time": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -8854,10 +8532,7 @@
                 }
             },
             "MspUserVO": {
-                "required": [
-                    "name",
-                    "type"
-                ],
+                "required": ["name", "type"],
                 "type": "object",
                 "properties": {
                     "id": {
@@ -8962,11 +8637,7 @@
                 }
             },
             "DeleteMspEventLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -8998,11 +8669,7 @@
                 }
             },
             "DeleteMspAlertLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {

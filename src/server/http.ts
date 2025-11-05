@@ -4,7 +4,7 @@ import type { IncomingMessage, IncomingHttpHeaders, ServerResponse } from 'node:
 
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 
-import type { OmadaClient } from '../omadaClient.js';
+import type { OmadaClient } from '../omadaClient/index.js';
 import { logger } from '../utils/logger.js';
 
 import { createServer } from './common.js';
@@ -61,7 +61,7 @@ function sendJson(res: ServerResponse, statusCode: number, body: unknown): void 
     const payload = JSON.stringify(body);
     res.writeHead(statusCode, {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload)
+        'Content-Length': Buffer.byteLength(payload),
     });
     res.end(payload);
 }
@@ -148,11 +148,7 @@ function maskValue(value: unknown): unknown {
     return '********';
 }
 
-async function createShutdownHandler(
-    signal: NodeJS.Signals,
-    closeHttp: () => Promise<void>,
-    closeServer: () => Promise<void>
-): Promise<void> {
+async function createShutdownHandler(signal: NodeJS.Signals, closeHttp: () => Promise<void>, closeServer: () => Promise<void>): Promise<void> {
     logger.warn('Received shutdown signal', { signal });
 
     try {
@@ -174,24 +170,18 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
 
     const allowedHosts = config.httpAllowedHosts;
     const allowedOrigins = config.httpAllowedOrigins;
-    const enableDnsRebindingProtection =
-        config.httpEnableDnsProtection ??
-        Boolean((allowedHosts?.length ?? 0) > 0 || (allowedOrigins?.length ?? 0) > 0);
 
     const enableStatefulSessions = config.stateful;
     const sessionIdGenerator = enableStatefulSessions ? () => randomUUID() : undefined;
 
     if (!enableStatefulSessions) {
-        logger.info(
-            'Starting HTTP transport in stateless mode; Mcp-Session-Id headers are optional'
-        );
+        logger.info('Starting HTTP transport in stateless mode; Mcp-Session-Id headers are optional');
     }
 
     const transport = new StreamableHTTPServerTransport({
         sessionIdGenerator,
         allowedHosts,
         allowedOrigins,
-        enableDnsRebindingProtection
     });
 
     transport.onerror = (error) => {
@@ -202,7 +192,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
 
     const port = resolvePort(config.httpPort?.toString(), DEFAULT_PORT);
     const host = config.httpHost ?? DEFAULT_HOST;
-    const endpointPath = normalizePath(config.httpPath ?? DEFAULT_PATH);
+    const endpointPath = normalizePath(config.httpSsePath ?? DEFAULT_PATH);
 
     const httpServer = http.createServer(async (req, res) => {
         const url = getRequestUrl(req, port);
@@ -210,7 +200,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
             logger.warn('HTTP request rejected', {
                 reason: 'invalid-url',
                 method: req.method,
-                url: req.url
+                url: req.url,
             });
             sendJson(res, 400, { error: 'Invalid request URL.' });
             return;
@@ -219,7 +209,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
         logger.debug('HTTP request headers', {
             method: req.method,
             path: url.pathname,
-            headers: sanitizeHeaders(req.headers)
+            headers: sanitizeHeaders(req.headers),
         });
 
         const bodyChunks: Buffer[] = [];
@@ -235,7 +225,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
             method: req.method,
             path: url.pathname,
             query: url.search,
-            sessionId: req.headers['mcp-session-id'] ?? undefined
+            sessionId: req.headers['mcp-session-id'] ?? undefined,
         });
 
         if (url.pathname === HEALTH_PATH) {
@@ -248,7 +238,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
             logger.warn('HTTP request rejected', {
                 reason: 'unexpected-path',
                 expected: endpointPath,
-                received: url.pathname
+                received: url.pathname,
             });
             sendJson(res, 404, { error: 'Not Found' });
             return;
@@ -261,7 +251,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
             }
             logger.info('MCP request handled successfully', {
                 path: url.pathname,
-                method: req.method
+                method: req.method,
             });
 
             if (shouldCaptureBody) {
@@ -281,7 +271,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
                     method: req.method,
                     path: url.pathname,
                     length: rawBody.length,
-                    body: sanitizePayload(parsedBody)
+                    body: sanitizePayload(parsedBody),
                 });
             }
         } catch (error) {
@@ -290,7 +280,7 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
                 sendJson(res, 500, {
                     jsonrpc: '2.0',
                     error: { code: -32000, message: 'Internal server error' },
-                    id: null
+                    id: null,
                 });
             } else {
                 res.end();
@@ -307,10 +297,10 @@ export async function startHttpServer(client: OmadaClient, config: import('../co
         httpServer.listen(port, host, () => {
             const displayHost = host === '0.0.0.0' ? 'localhost' : host;
             logger.info('HTTP server listening', {
-                endpoint: `http://${displayHost}:${port}${endpointPath}`
+                endpoint: `http://${displayHost}:${port}${endpointPath}`,
             });
             logger.info('HTTP health check available', {
-                endpoint: `http://${displayHost}:${port}${HEALTH_PATH}`
+                endpoint: `http://${displayHost}:${port}${HEALTH_PATH}`,
             });
             logger.info('HTTP server ready');
             resolve();

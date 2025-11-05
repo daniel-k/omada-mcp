@@ -1,6 +1,6 @@
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
-import type { OmadaClient } from '../omadaClient.js';
+import type { OmadaClient } from '../omadaClient/index.js';
 import { logger } from '../utils/logger.js';
 
 import { createServer } from './common.js';

@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/security/threat-map": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Global Threat Map",
                 "description": "Get the data for the initial page of the threat map<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getGlobalThreatMap",
@@ -61,9 +59,7 @@
         },
         "/openapi/v1/{omadacId}/security/threat-map/threats": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Country Threats",
                 "description": "Get threats from individual countries<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getCountryThreats",
@@ -104,9 +100,7 @@
         },
         "/openapi/v1/{omadacId}/security/threat-map/threat-count": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Global Category",
                 "description": "The number of threats to attack countries is displayed in categories<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getGlobalCategory",
@@ -147,9 +141,7 @@
         },
         "/openapi/v1/{omadacId}/security/blocked-country": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Blocked Countries",
                 "description": "Get the list of blocked countries<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getBlockedCountries",
@@ -188,9 +180,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Delete blocked countries.",
                 "description": "Delete blocked countries.<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "delBlockedCountry",
@@ -231,9 +221,7 @@
         },
         "/openapi/v1/{omadacId}/security/blocked-country/add": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Add Blocked Country",
                 "description": "Add blocked countries to list<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "addBlockedCountry",
@@ -274,9 +262,7 @@
         },
         "/openapi/v1/{omadacId}/ips/threat": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Delete Global Threat List",
                 "description": "Delete archived threats in batches<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "deleteGlobalThreatList",
@@ -317,9 +303,7 @@
         },
         "/openapi/v1/{omadacId}/ips/threat/ops": {
             "post": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Operate Global Threats",
                 "description": "Perform operations on threats in batches<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "operateGlobalThreats",
@@ -360,9 +344,7 @@
         },
         "/openapi/v1/{omadacId}/security/threat-management": {
             "get": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Global Threat List",
                 "description": "Get the global view threat management list<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getGlobalThreatList",
@@ -479,9 +461,7 @@
         },
         "/openapi/v1/{omadacId}/security/threat-management/top": {
             "get": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Global Top Threat List",
                 "description": "Get the number of threats in the global view top5<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getGlobalTopThreatList",
@@ -532,9 +512,7 @@
         },
         "/openapi/v1/{omadacId}/security/threat-management/severity": {
             "get": {
-                "tags": [
-                    "Global Security"
-                ],
+                "tags": ["Global Security"],
                 "summary": "Get Threat Count",
                 "description": "Get the global view of the number of threats by severity level<br/><br/>The interface requires one of the permissions: <br/>Global Threat Manager View Only",
                 "operationId": "getThreatCount",
@@ -1021,9 +999,7 @@
                 "description": "The global view needs to pass in a site ID."
             },
             "OperateGlobalThreatOpenApiVO": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "threatId": {
@@ -1048,9 +1024,7 @@
                 }
             },
             "SignatureSuppression": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "type": {

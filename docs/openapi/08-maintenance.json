@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sites/maintenance/multi-restore/self-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Restore multi sites config from self server",
                 "description": "Restore multi sites config from self server. At most 300 sites can be restored.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.",
                 "operationId": "restoreSitesSelfServer",
@@ -61,9 +59,7 @@
         },
         "/openapi/v1/{omadacId}/sites/maintenance/multi-restore/file-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Restore multi sites config from file server",
                 "description": "Restore multi sites config from file server. At most 300 sites can be restored.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.<br/>-30320  -  Failed to connect to the file server. The file server may not exist or it is temporarily unavailable. Please check the information and your network connection, and try again.",
                 "operationId": "restoreSitesFileServer",
@@ -104,9 +100,7 @@
         },
         "/openapi/v1/{omadacId}/sites/maintenance/multi-backup/self-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Backup multi sites config to self server",
                 "description": "Backup multi sites config to self server. At most 300 sites can backup.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30301  -  Backing up...<br/>-30304  -  Restoring...<br/>-30309  -  Failed to back up the configurations.",
                 "operationId": "backupSitesSelfServer",
@@ -147,9 +141,7 @@
         },
         "/openapi/v1/{omadacId}/sites/maintenance/multi-backup/file-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Backup multi sites config to file server",
                 "description": "Backup multi sites config to file server. At most 300 sites can backup.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30301  -  Backing up...<br/>-30304  -  Restoring...<br/>-30309  -  Failed to back up the configurations.<br/>-30320  -  Failed to connect to the file server. The file server may not exist or it is temporarily unavailable. Please check the information and your network connection, and try again.",
                 "operationId": "backupSitesFileServer",
@@ -190,9 +182,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/restore/self-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Restore controller config from cloud server",
                 "description": "Restore controller config from cloud server.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.",
                 "operationId": "restoreSelfServer",
@@ -233,9 +223,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/restore/file-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Restore controller config from file server",
                 "description": "Restore controller config from file server.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.<br/>-30320  -  Failed to connect to the file server. The file server may not exist or it is temporarily unavailable. Please check the information and your network connection, and try again.",
                 "operationId": "restoreFileServer",
@@ -276,9 +264,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/backup/self-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Backup controller config to cloud server",
                 "description": "Backup controller config to cloud server. <br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30301  -  Backing up...<br/>-30304  -  Restoring...<br/>-30309  -  Failed to back up the configurations.",
                 "operationId": "backupSelfServer",
@@ -319,9 +305,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/backup/file-server": {
             "post": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Backup controller config to file server",
                 "description": "Backup controller config to file server. <br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30301  -  Backing up...<br/>-30304  -  Restoring...<br/>-30309  -  Failed to back up the configurations.<br/>-30320  -  Failed to connect to the file server. The file server may not exist or it is temporarily unavailable. Please check the information and your network connection, and try again.",
                 "operationId": "backupFileServer",
@@ -362,9 +346,7 @@
         },
         "/openapi/v1/{omadacId}/retention": {
             "get": {
-                "tags": [
-                    "History Data Retention"
-                ],
+                "tags": ["History Data Retention"],
                 "summary": "Get history data retention configuration",
                 "description": "Get data retention configuration.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30001  -  Controller is not configured.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "getDataRetention",
@@ -393,9 +375,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "History Data Retention"
-                ],
+                "tags": ["History Data Retention"],
                 "summary": "Modify history data retention configuration",
                 "description": "Modify history data retention configuration.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30001  -  Controller is not configured.<br/>-30028  -  The system is busy. Please try again later.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "modifyRetention",
@@ -436,9 +416,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/rogue-ap/export/{format}": {
             "get": {
-                "tags": [
-                    "Data Export"
-                ],
+                "tags": ["Data Export"],
                 "summary": "Export site Rogue AP scan results",
                 "description": "Export site Rogue AP scan results.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only<br/>Site Export Data Access<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30309  -  Failed to back up the configurations.",
                 "operationId": "exportSiteRogueApZipFile",
@@ -507,9 +485,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/maintenance/backup/files": {
             "get": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Get site backup file list in self server",
                 "description": "Get site backup file list in self server.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/>Global Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "getSelfServerSiteFileList",
@@ -549,9 +525,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/backup/result": {
             "get": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Get site backup result",
                 "description": "Get site backup result.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/>Global Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30309  -  Failed to back up the configurations.",
                 "operationId": "getSiteBackupResult",
@@ -591,9 +565,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/restore/result": {
             "get": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Get controller restore result",
                 "description": "Get controller restore result.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only<br/>Site Settings Manager View Only<br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30303  -  Failed to restore because the file is incompatible.<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.<br/>-30307  -  Invalid configuration file. Please select the configuration file of the same integrated gateway model.<br/>-30317  -  Cannot restore a site-level backup file into the controller. Please go to global Dashboard > Site List to import<br/>-30318  -  Invalid file. To restore controller data, please go to Settings > Maintenance > Backup & Restore.<br/>-30319  -  Failed to restore due to database anomaly, please try again later.<br/>-30326  -  The devices in the customer configuration file are duplicate with the adopted devices and cannot be imported.",
                 "operationId": "getRestoreResult",
@@ -624,9 +596,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/backup/result": {
             "get": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Get controller backup result",
                 "description": "Get controller backup result.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30309  -  Failed to back up the configurations.",
                 "operationId": "getBackupResult",
@@ -657,9 +627,7 @@
         },
         "/openapi/v1/{omadacId}/maintenance/backup/files": {
             "get": {
-                "tags": [
-                    "Backup and Restore"
-                ],
+                "tags": ["Backup and Restore"],
                 "summary": "Get controller backup file list in self server",
                 "description": "Get controller backup file list in self server.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.",
                 "operationId": "getSelfServerFileList",
@@ -692,9 +660,7 @@
     "components": {
         "schemas": {
             "BatchSiteSelfRestoreVO": {
-                "required": [
-                    "siteRestoreInfos"
-                ],
+                "required": ["siteRestoreInfos"],
                 "type": "object",
                 "properties": {
                     "siteRestoreInfos": {
@@ -708,10 +674,7 @@
                 }
             },
             "SelfSiteRestoreVO": {
-                "required": [
-                    "fileName",
-                    "siteId"
-                ],
+                "required": ["fileName", "siteId"],
                 "type": "object",
                 "properties": {
                     "fileName": {
@@ -738,10 +701,7 @@
                 }
             },
             "BatchSiteFileServerRestoreVO": {
-                "required": [
-                    "serverConfig",
-                    "siteInfos"
-                ],
+                "required": ["serverConfig", "siteInfos"],
                 "type": "object",
                 "properties": {
                     "serverConfig": {
@@ -757,11 +717,7 @@
                 }
             },
             "FileServerOpenApiVO": {
-                "required": [
-                    "hostname",
-                    "port",
-                    "protocol"
-                ],
+                "required": ["hostname", "port", "protocol"],
                 "type": "object",
                 "properties": {
                     "protocol": {
@@ -789,10 +745,7 @@
                 "description": "File server configuration."
             },
             "FileServerSiteRestoreVO": {
-                "required": [
-                    "filePath",
-                    "siteId"
-                ],
+                "required": ["filePath", "siteId"],
                 "type": "object",
                 "properties": {
                     "filePath": {
@@ -807,9 +760,7 @@
                 "description": "Sites to restore."
             },
             "BatchSiteBackupVO": {
-                "required": [
-                    "siteIds"
-                ],
+                "required": ["siteIds"],
                 "type": "object",
                 "properties": {
                     "siteIds": {
@@ -824,11 +775,7 @@
                 }
             },
             "FileServerSiteBackupVO": {
-                "required": [
-                    "filePath",
-                    "serverConfig",
-                    "siteIds"
-                ],
+                "required": ["filePath", "serverConfig", "siteIds"],
                 "type": "object",
                 "properties": {
                     "serverConfig": {
@@ -850,9 +797,7 @@
                 }
             },
             "SelfGlobalRestoreVO": {
-                "required": [
-                    "fileName"
-                ],
+                "required": ["fileName"],
                 "type": "object",
                 "properties": {
                     "fileName": {
@@ -862,11 +807,7 @@
                 }
             },
             "FileServerGlobalRestoreVO": {
-                "required": [
-                    "filePath",
-                    "serverConfig",
-                    "skipDevice"
-                ],
+                "required": ["filePath", "serverConfig", "skipDevice"],
                 "type": "object",
                 "properties": {
                     "serverConfig": {
@@ -883,9 +824,7 @@
                 }
             },
             "SelfGlobalBackupVO": {
-                "required": [
-                    "retainUser"
-                ],
+                "required": ["retainUser"],
                 "type": "object",
                 "properties": {
                     "retainUser": {
@@ -895,10 +834,7 @@
                 }
             },
             "FileServerGlobalBackupVO": {
-                "required": [
-                    "filePath",
-                    "serverConfig"
-                ],
+                "required": ["filePath", "serverConfig"],
                 "type": "object",
                 "properties": {
                     "serverConfig": {
@@ -915,9 +851,7 @@
                 }
             },
             "ModifyHistoryRetentionOpenApiVO": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "override": {
@@ -1014,9 +948,7 @@
                 }
             },
             "History Retention": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "override": {

@@ -1,6 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import type { OmadaClient } from '../omadaClient.js';
+import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult } from '../server/common.js';
 import { logger } from '../utils/logger.js';
 
@@ -8,7 +8,7 @@ export function registerListSitesTool(server: McpServer, client: OmadaClient): v
     server.registerTool(
         'omada.listSites',
         {
-            description: 'List all sites configured on the Omada controller.'
+            description: 'List all sites configured on the Omada controller.',
         },
         async (extra) => {
             const sessionId = extra.sessionId ?? 'unknown-session';
@@ -22,7 +22,7 @@ export function registerListSitesTool(server: McpServer, client: OmadaClient): v
                 logger.error('Tool failed', {
                     tool: 'omada.listSites',
                     sessionId,
-                    error: error instanceof Error ? error.message : String(error)
+                    error: error instanceof Error ? error.message : String(error),
                 });
                 throw error;
             }

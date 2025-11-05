@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sites/{siteId}/stat/{deviceMac}/client-stat-5min": {
             "post": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get device client 5 min stat.",
                 "description": "Obtain the 5-minute sampling statistics of the clients.<br/><br/>The interface requires one of the permissions: <br/>Site Statics Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getDeviceClient5MinStat",
@@ -88,9 +86,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/unblock": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Unblock the client",
                 "description": "Unblock the client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/>Site Insight Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41004  -  This client does not exist.",
                 "operationId": "unblockClient",
@@ -139,9 +135,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/reconnect": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Reconnect the client",
                 "description": "Reconnect the client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41011  -  This client does not exist.<br/>-41025  -  Unable to reconnect wired client.",
                 "operationId": "reconnectClient",
@@ -190,9 +184,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/reboot": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Reboot the client",
                 "description": "Reboot the client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-41031  -  Unable to reboot.",
                 "operationId": "rebootClient",
@@ -251,9 +243,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/lock-to-ap": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Lock the given client to aps",
                 "description": "Lock the given client to aps.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41011  -  This client does not exist.<br/>-41020  -  Only wireless clients support Lock to AP.<br/>-41021  -  The number of Lock to AP entries has reached the upper limit.<br/>-41022  -  Blocked clients cannot be locked to AP.",
                 "operationId": "updateClientLockToApSetting",
@@ -312,9 +302,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/disconnect": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Disconnect the client",
                 "description": "Disconnect the client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41011  -  This client does not exist.<br/>-41027  -  Unable to disconnect wired client.",
                 "operationId": "disconnectClient",
@@ -363,9 +351,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/block": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Block the client",
                 "description": "Block the client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/>Site Insight Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41002  -  This client does not exist.<br/>-41003  -  The number of clients to be blocked has reached the limit.<br/>-41023  -  Clients locked to AP cannot be blocked.<br/>-41024  -  This device is installed with the controller and cannot be blocked.<br/>-41026  -  The Easy Managed Switch cannot block clients.",
                 "operationId": "blockClient",
@@ -414,9 +400,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/delete": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Batch delete clients",
                 "description": "Batch delete clients.<br/><br/>The interface requires one of the permissions: <br/>Site Device Manager View Only<br/>Site Clients Manager Modify",
                 "operationId": "deleteClients",
@@ -466,9 +450,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/config": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Batch config clients",
                 "description": "Batch config clients.<br/><br/>The interface requires one of the permissions: <br/>Site Device Manager View Only<br/>Site Clients Manager Modify",
                 "operationId": "batchModifyClientSetting",
@@ -518,9 +500,7 @@
         },
         "/openapi/v1/{omadacId}/files/client-list": {
             "post": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Export global client list.",
                 "description": "Export global client list.<br/><br/>The interface requires one of the permissions: <br/>Global Export Data Access",
                 "operationId": "exportClientListGlobalByCloudAccess",
@@ -561,9 +541,7 @@
         },
         "/openapi/v1/msp/{mspId}/customers/client-count": {
             "post": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get the Msp customers' client count.",
                 "description": "Get the Msp customers' client count.<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getClientNumberForCustomerList",
@@ -604,9 +582,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/ratelimit": {
             "patch": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Set ratelimit setting for given client",
                 "description": "Set ratelimit setting for given client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33732  -  The Rate Limit profile does not exist.<br/>-41008  -  The number of clients to be configured with Rate Limit has reached the limit.<br/>-41011  -  This client does not exist.",
                 "operationId": "updateClientRateLimitSetting",
@@ -665,9 +641,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/name": {
             "patch": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Set name for given client",
                 "description": "Set name for given client.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-41011  -  This client does not exist.",
                 "operationId": "updateClientName",
@@ -726,9 +700,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/past-connection": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get client past connection list",
                 "description": "Get client past connection list.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only",
                 "operationId": "getGridPastConnections",
@@ -833,9 +805,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/clients": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get known clients list",
                 "description": "Get known clients list.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only",
                 "operationId": "getGridKnownClients",
@@ -940,9 +910,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/past-client-num": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get past client number.",
                 "description": "Get past client number with the given omadacId and siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getPastClientNum",
@@ -1002,9 +970,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/client-distribution": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get client distribution.",
                 "description": "Get client distribution with the given omadacId and siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getClientsDistribution",
@@ -1044,9 +1010,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/client-activity": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get client activity",
                 "description": "Get client activity with the given omadacId and siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getClientActivity",
@@ -1106,9 +1070,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/active-clients": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get most active client.",
                 "description": "Get most active clients with the given omadacId and siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getMostActiveClients",
@@ -1148,9 +1110,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients": {
             "get": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Get client list",
                 "description": "Get all clients.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager View Only<br/>Site Device Manager View Only",
                 "operationId": "getGridActiveClients",
@@ -1291,9 +1251,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}": {
             "get": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Get client info",
                 "description": "Get client info.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager View Only<br/>Site Device Manager View Only",
                 "operationId": "getClientDetail",
@@ -1340,9 +1298,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Delete client",
                 "description": "Delete client.<br/><br/>The interface requires one of the permissions: <br/>Site Device Manager View Only<br/>Site Clients Manager Modify",
                 "operationId": "deleteClient",
@@ -1391,9 +1347,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/clients/{clientMac}/client-history": {
             "get": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": " Get Client history.",
                 "description": "Get Client history.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager View Only",
                 "operationId": "getGridClientHistory",
@@ -1570,9 +1524,7 @@
         },
         "/openapi/v1/{omadacId}/correction-list": {
             "get": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Get client correction options list",
                 "description": "Get client correction options list<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager View Only",
                 "operationId": "getClientCorrectionList",
@@ -1603,9 +1555,7 @@
         },
         "/openapi/v1/{omadacId}/controller/client/history-enable": {
             "get": {
-                "tags": [
-                    "Client"
-                ],
+                "tags": ["Client"],
                 "summary": "Get History data retention config.",
                 "description": "Get history data retention config.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getClientHistoryDataEnable",
@@ -1636,9 +1586,7 @@
         },
         "/openapi/v1/msp/{mspId}/dashboard/client/overview-diagram": {
             "get": {
-                "tags": [
-                    "Client Insight"
-                ],
+                "tags": ["Client Insight"],
                 "summary": "Get the msp overview diagram of client.",
                 "description": "Get the msp overview diagram of client<br/><br/>The interface requires one of the permissions: <br/>MSP Dashboard View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getMspDashboardOverall",
@@ -1671,11 +1619,7 @@
     "components": {
         "schemas": {
             "DeviceClientStatQueryOpenApiVO": {
-                "required": [
-                    "attrs",
-                    "end",
-                    "start"
-                ],
+                "required": ["attrs", "end", "start"],
                 "type": "object",
                 "properties": {
                     "start": {
@@ -1766,9 +1710,7 @@
                 }
             },
             "Client Lock To AP Setting": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -2138,9 +2080,7 @@
                 }
             },
             "Client Ip Setting": {
-                "required": [
-                    "useFixedAddr"
-                ],
+                "required": ["useFixedAddr"],
                 "type": "object",
                 "properties": {
                     "useFixedAddr": {
@@ -2319,9 +2259,7 @@
                 }
             },
             "Client Batch IP Setting": {
-                "required": [
-                    "useFixedAddr"
-                ],
+                "required": ["useFixedAddr"],
                 "type": "object",
                 "properties": {
                     "useFixedAddr": {
@@ -2379,11 +2317,7 @@
                 "description": "List of ip and client mac."
             },
             "ExportClientListOpenApiVO": {
-                "required": [
-                    "format",
-                    "mode",
-                    "siteIds"
-                ],
+                "required": ["format", "mode", "siteIds"],
                 "type": "object",
                 "properties": {
                     "siteIds": {
@@ -2418,10 +2352,7 @@
                 }
             },
             "OpenApiQueryDataVO": {
-                "required": [
-                    "page",
-                    "pageSize"
-                ],
+                "required": ["page", "pageSize"],
                 "type": "object",
                 "properties": {
                     "page": {
@@ -2456,9 +2387,7 @@
                 }
             },
             "CustomerQueryOpenApiVO": {
-                "required": [
-                    "customerIds"
-                ],
+                "required": ["customerIds"],
                 "type": "object",
                 "properties": {
                     "customerIds": {
@@ -2510,9 +2439,7 @@
                 }
             },
             "Client Name Setting": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -3598,9 +3525,7 @@
                 }
             },
             "OmadacClientSettingOpenApiVO": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "clientsDataEnable": {

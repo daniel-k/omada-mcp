@@ -1,26 +1,22 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { RequestHandlerExtra } from '@modelcontextprotocol/sdk/shared/protocol.js';
-import type {
-    CallToolResult,
-    ServerNotification,
-    ServerRequest
-} from '@modelcontextprotocol/sdk/types.js';
+import type { CallToolResult, ServerNotification, ServerRequest } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 
-import type { OmadaClient } from '../omadaClient.js';
+import type { OmadaClient } from '../omadaClient/index.js';
 import { registerAllTools } from '../tools/index.js';
 import { logger } from '../utils/logger.js';
 
 export const siteInputSchema = z.object({
-    siteId: z.string().min(1).optional()
+    siteId: z.string().min(1).optional(),
 });
 
 export const clientIdSchema = siteInputSchema.extend({
-    clientId: z.string().min(1, 'clientId (MAC or client identifier) is required')
+    clientId: z.string().min(1, 'clientId (MAC or client identifier) is required'),
 });
 
 export const deviceIdSchema = siteInputSchema.extend({
-    deviceId: z.string().min(1, 'deviceId (MAC or device identifier) is required')
+    deviceId: z.string().min(1, 'deviceId (MAC or device identifier) is required'),
 });
 
 export const customRequestSchema = z.object({
@@ -28,18 +24,18 @@ export const customRequestSchema = z.object({
     url: z.string().min(1, 'A controller API path is required'),
     params: z.record(z.string(), z.unknown()).optional(),
     data: z.unknown().optional(),
-    siteId: z.string().min(1).optional()
+    siteId: z.string().min(1).optional(),
 });
 
 export const stackIdSchema = siteInputSchema.extend({
-    stackId: z.string().min(1, 'stackId is required')
+    stackId: z.string().min(1, 'stackId is required'),
 });
 
 export function toToolResult(value: unknown): CallToolResult {
-    const text = typeof value === 'string' ? value : JSON.stringify(value, null, 2) ?? '';
+    const text = typeof value === 'string' ? value : (JSON.stringify(value, null, 2) ?? '');
 
     return {
-        content: text ? [{ type: 'text' as const, text }] : []
+        content: text ? [{ type: 'text' as const, text }] : [],
     };
 }
 
@@ -85,18 +81,9 @@ export type ToolExtra = RequestHandlerExtra<ServerRequest, ServerNotification>;
 
 export function wrapToolHandler<Args extends z.ZodRawShape>(
     name: string,
-    handler: (
-        args: z.objectOutputType<Args, z.ZodTypeAny>,
-        extra: ToolExtra
-    ) => Promise<CallToolResult>
-): (
-    args: z.objectOutputType<Args, z.ZodTypeAny>,
-    extra: ToolExtra
-) => Promise<CallToolResult> {
-    return async (
-        args: z.objectOutputType<Args, z.ZodTypeAny>,
-        extra: ToolExtra
-    ): Promise<CallToolResult> => {
+    handler: (args: z.objectOutputType<Args, z.ZodTypeAny>, extra: ToolExtra) => Promise<CallToolResult>
+): (args: z.objectOutputType<Args, z.ZodTypeAny>, extra: ToolExtra) => Promise<CallToolResult> {
+    return async (args: z.objectOutputType<Args, z.ZodTypeAny>, extra: ToolExtra): Promise<CallToolResult> => {
         const sessionId = extra.sessionId ?? 'unknown-session';
         logger.info('Tool invoked', { tool: name, sessionId, args: safeSerialize(args) });
 
@@ -108,7 +95,7 @@ export function wrapToolHandler<Args extends z.ZodRawShape>(
             logger.error('Tool failed', {
                 tool: name,
                 sessionId,
-                error: error instanceof Error ? error.message : String(error)
+                error: error instanceof Error ? error.message : String(error),
             });
             throw error;
         }
@@ -121,10 +108,7 @@ function setupServerLogging(server: McpServer): void {
     type RequestCallback = Parameters<typeof protocol.setRequestHandler>[1];
 
     const originalSetRequestHandler = protocol.setRequestHandler.bind(protocol);
-    protocol.setRequestHandler = function patchedSetRequestHandler(
-        schema: RequestSchema,
-        handler: RequestCallback
-    ) {
+    protocol.setRequestHandler = function patchedSetRequestHandler(schema: RequestSchema, handler: RequestCallback) {
         const method = (schema as { shape: { method: { value: string } } }).shape.method.value;
         const wrapped: RequestCallback = async (request, extra) => {
             const sessionId = extra.sessionId ?? 'unknown-session';
@@ -137,16 +121,13 @@ function setupServerLogging(server: McpServer): void {
             try {
                 const result = await handler(request, extra);
                 const summary = summarizeSuccess(method, result);
-                logger.info(
-                    'MCP request handled',
-                    summary ? { method, sessionId, ...summary } : { method, sessionId }
-                );
+                logger.info('MCP request handled', summary ? { method, sessionId, ...summary } : { method, sessionId });
                 return result;
             } catch (error) {
                 logger.error('MCP request failed', {
                     method,
                     sessionId,
-                    error: error instanceof Error ? error.message : String(error)
+                    error: error instanceof Error ? error.message : String(error),
                 });
                 throw error;
             }
@@ -180,7 +161,7 @@ function setupServerLogging(server: McpServer): void {
         logger.warn('Unhandled request received', {
             method: request.method,
             sessionId,
-            params: safeSerialize(request.params)
+            params: safeSerialize(request.params),
         });
         throw new Error(`Unhandled request: ${request.method}`);
     };
@@ -188,7 +169,7 @@ function setupServerLogging(server: McpServer): void {
     server.server.fallbackNotificationHandler = async (notification) => {
         logger.warn('Unhandled notification received', {
             method: notification.method,
-            params: safeSerialize(notification.params)
+            params: safeSerialize(notification.params),
         });
     };
 }
@@ -196,7 +177,7 @@ function setupServerLogging(server: McpServer): void {
 export function createServer(client: OmadaClient): McpServer {
     const server = new McpServer({
         name: 'tplink-omada-mcp',
-        version: '0.1.0'
+        version: '0.1.0',
     });
 
     setupServerLogging(server);

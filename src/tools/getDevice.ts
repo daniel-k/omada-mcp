@@ -1,6 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import type { OmadaClient } from '../omadaClient.js';
+import type { OmadaClient } from '../omadaClient/index.js';
 import { deviceIdSchema, toToolResult, wrapToolHandler } from '../server/common.js';
 
 export function registerGetDeviceTool(server: McpServer, client: OmadaClient): void {
@@ -8,10 +8,8 @@ export function registerGetDeviceTool(server: McpServer, client: OmadaClient): v
         'omada.getDevice',
         {
             description: 'Fetch detailed information for a specific Omada device.',
-            inputSchema: deviceIdSchema.shape
+            inputSchema: deviceIdSchema.shape,
         },
-        wrapToolHandler('omada.getDevice', async ({ deviceId, siteId }) =>
-            toToolResult(await client.getDevice(deviceId, siteId))
-        )
+        wrapToolHandler('omada.getDevice', async ({ deviceId, siteId }) => toToolResult(await client.getDevice(deviceId, siteId)))
     );
 }

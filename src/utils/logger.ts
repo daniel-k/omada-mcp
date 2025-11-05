@@ -12,7 +12,7 @@ const levelToSeverity: Record<string, string> = {
     info: 'INFO',
     warn: 'WARNING',
     error: 'ERROR',
-    fatal: 'CRITICAL'
+    fatal: 'CRITICAL',
 };
 
 let instance: pino.Logger;
@@ -30,7 +30,7 @@ function createLogger(level: LogLevel = 'info', format: LogFormat = 'plain', use
         baseConfig.formatters = {
             level(label) {
                 return { severity: levelToSeverity[label] ?? label.toUpperCase() };
-            }
+            },
         };
     } else if (format === 'plain') {
         // For plain format, we still output JSON but could be enhanced with pino-pretty
@@ -38,7 +38,7 @@ function createLogger(level: LogLevel = 'info', format: LogFormat = 'plain', use
         baseConfig.formatters = {
             level(label) {
                 return { level: label.toUpperCase() };
-            }
+            },
         };
     }
     // For 'json' format, use default pino JSON output (no special formatters)
@@ -101,5 +101,5 @@ export const logger = {
     },
     error(message: string, meta?: LogFields) {
         write('error', message, meta);
-    }
+    },
 };

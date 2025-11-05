@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/webhook/settings": {
             "get": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Get global webhook setting list.",
                 "description": "Get all global webhook setting.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager View Only",
                 "operationId": "getWebhookForGlobal",
@@ -49,9 +47,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Create global webhook setting",
                 "description": "Create global webhook setting.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44200  -  The number of webhooks has reached the limit.<br/>-44201  -  This webhook name already exists.<br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "createWebhookForGlobal",
@@ -92,9 +88,7 @@
         },
         "/openapi/v1/{omadacId}/webhook/settings/{webhookId}": {
             "post": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Test global webhook setting",
                 "description": "Test global webhook setting.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "testWebhookForGlobal",
@@ -142,9 +136,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Delete global webhook setting",
                 "description": "Delete global webhook setting.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44202  -  This webhook entry does not exist.",
                 "operationId": "deleteWebhookForGlobal",
@@ -182,9 +174,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Modify global webhook setting",
                 "description": "Modify global webhook setting.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44202  -  This webhook entry does not exist.<br/>-44203  -  Webhook URL List should contain 1 to 3 URL entries. URL entries cannot be duplicated.",
                 "operationId": "modifyWebhookForGlobal",
@@ -234,9 +224,7 @@
         },
         "/openapi/v1/{omadacId}/users/feedback/evaluates": {
             "post": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Evaluate a customer feedback",
                 "description": "Evaluate a customer feedback",
                 "operationId": "evaluateFeedback",
@@ -277,9 +265,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/ssl-key": {
             "post": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Upload SSL key",
                 "description": "Upload SSL key, can not be used in MSP mode. Only support .pem files.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "uploadSSLKey",
@@ -306,9 +292,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "file"
-                                ],
+                                "required": ["file"],
                                 "type": "object",
                                 "properties": {
                                     "file": {
@@ -336,9 +320,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/channel-update": {
             "post": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Check for update",
                 "description": "Check for update.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "checkForUpdate",
@@ -379,9 +361,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/certificate": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get certificate",
                 "description": "Get certificate.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getCertificate",
@@ -410,9 +390,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Upload certificate",
                 "description": "Upload certificate, can not be used in MSP mode. Only support .pem, .pfx, .pem files. Certificate name should be the same as the file name.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "uploadCertificate",
@@ -439,9 +417,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "file"
-                                ],
+                                "required": ["file"],
                                 "type": "object",
                                 "properties": {
                                     "file": {
@@ -469,9 +445,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/favorites": {
             "post": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Favorite site",
                 "description": "Favorite site",
                 "operationId": "favoriteSite",
@@ -511,9 +485,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/favorites/cancels": {
             "post": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Cancel favorite site",
                 "description": "Cancel favorite site",
                 "operationId": "cancelFavoriteSite",
@@ -553,9 +525,7 @@
         },
         "/openapi/v1/{omadacId}/settings/test-mail": {
             "post": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Send test mail for controller",
                 "description": "Send test mail for controller<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "sendTestEmail",
@@ -596,9 +566,7 @@
         },
         "/openapi/v1/{omadacId}/notification/disable": {
             "post": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Turn off the software update push switch",
                 "description": "Turn off the software update push switch.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "disableControllerUpgradeNotification",
@@ -629,9 +597,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/portal-port": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get portal port",
                 "description": "Get portal port.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getPortalPort",
@@ -660,9 +626,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Modify portal port",
                 "description": "Modify portal port.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyPortalPort",
@@ -703,9 +667,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/logging": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get logging",
                 "description": "Get logging.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getLogging",
@@ -734,9 +696,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Modify logging",
                 "description": "Modify logging.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyLogging",
@@ -777,9 +737,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/controller-port": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get controller port",
                 "description": "Get controller port.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getControllerPort",
@@ -808,9 +766,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Modify controller port",
                 "description": "Modify controller port.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyControllerPort",
@@ -851,9 +807,7 @@
         },
         "/openapi/v1/{omadacId}/global/controller/setting/syslog": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get remote logging",
                 "description": "Get remote logging.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getRemoteLogging",
@@ -882,9 +836,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing remote logging",
                 "description": "Modify an existing remote logging.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyRemoteLogging",
@@ -925,9 +877,7 @@
         },
         "/openapi/v1/{omadacId}/global/controller/setting/network/radius-server": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get Built-In RADIUS server setting",
                 "description": "Get Built-In RADIUS server setting<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getRadiusServer",
@@ -956,9 +906,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify Built-In RADIUS server setting",
                 "description": "Modify Built-In RADIUS server setting<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyRadiusServer",
@@ -999,9 +947,7 @@
         },
         "/openapi/v1/{omadacId}/global/controller/setting/network/radius-proxy": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get RADIUS proxy server setting",
                 "description": "Get RADIUS proxy server setting<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getRadiusProxy",
@@ -1030,9 +976,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify RADIUS proxy server setting",
                 "description": "Modify RADIUS proxy server setting<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyRadiusProxy",
@@ -1073,9 +1017,7 @@
         },
         "/openapi/v1/{omadacId}/global/controller/setting/general": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get general settings",
                 "description": "Get general settings.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getGernalSettings",
@@ -1104,9 +1046,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing general settings",
                 "description": "Modify an existing general settings.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyGeneralSettings",
@@ -1147,9 +1087,7 @@
         },
         "/openapi/v1/{omadacId}/global/controller/setting/exp-improve": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get experience improvement",
                 "description": "Get experience improvement.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getExpImprove",
@@ -1178,9 +1116,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing experience improvement",
                 "description": "Modify an existing experience improvement.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyExpImprove",
@@ -1221,9 +1157,7 @@
         },
         "/openapi/v1/{omadacId}/controller/setting/ui-interface": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get UI interface",
                 "description": "Get UI interface.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getUiInterface",
@@ -1252,9 +1186,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing UI interface",
                 "description": "Modify an existing UI interface.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyUiInterface",
@@ -1295,9 +1227,7 @@
         },
         "/openapi/v1/{omadacId}/controller/setting/services/device-access": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get device access management",
                 "description": "Get device access management.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getDeviceAccessManagement",
@@ -1326,9 +1256,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Modify device access management",
                 "description": "Modify device access management.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyDeviceAccessManagement",
@@ -1369,9 +1297,7 @@
         },
         "/openapi/v1/{omadacId}/controller/setting/retention": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get retention",
                 "description": "Get retention.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getRetention",
@@ -1400,9 +1326,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing retention",
                 "description": "Modify an existing retention.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyRetention",
@@ -1443,9 +1367,7 @@
         },
         "/openapi/v1/{omadacId}/controller/setting/active-timeout": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get client active timeout",
                 "description": "Get client active timeout.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getClientActiveTimeout",
@@ -1474,9 +1396,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Modify an existing client active timeout",
                 "description": "Modify an existing client active timeout.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyClientActiveTimeout",
@@ -1517,9 +1437,7 @@
         },
         "/openapi/v1/{omadacId}/webhook/settings/dispatch-logs": {
             "get": {
-                "tags": [
-                    "Webhook Setting"
-                ],
+                "tags": ["Webhook Setting"],
                 "summary": "Get global webhook dispatch log list",
                 "description": "Get global webhook dispatch log list.The template of webhook message is display at Open API Access Guide#5.3.1 Webhook Message Template.<br/><br/>The interface requires one of the permissions: <br/>Global Webhook Manager View Only",
                 "operationId": "getWebhookLogsForGlobal",
@@ -1599,9 +1517,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/controller-status": {
             "get": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Get controller status",
                 "description": "Get controller status.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getControllerStatus",
@@ -1632,9 +1548,7 @@
         },
         "/openapi/v1/{omadacId}/privacy-policy": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get privacy policy",
                 "description": "Get privacy policy<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getPrivacyPolicy",
@@ -1665,9 +1579,7 @@
         },
         "/openapi/v1/{omadacId}/mail/status": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get mailServer status",
                 "description": "Get mailServer status<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only<br/>Global Users Manager View Only<br/>Global Export Data Access",
                 "operationId": "getMailServerStatus",
@@ -1698,9 +1610,7 @@
         },
         "/openapi/v1/{omadacId}/dst-info": {
             "get": {
-                "tags": [
-                    "Controller Settings"
-                ],
+                "tags": ["Controller Settings"],
                 "summary": "Get controller DST",
                 "description": "Get controller DST",
                 "operationId": "getOmadacDstInfo",
@@ -1731,9 +1641,7 @@
         },
         "/openapi/v1/{omadacId}/dashboard/overview-without-client": {
             "get": {
-                "tags": [
-                    "Global Dashboard Overview"
-                ],
+                "tags": ["Global Dashboard Overview"],
                 "summary": "Get global dashboard overview",
                 "description": "global dashboard overview.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only",
                 "operationId": "getGernalSettings_1",
@@ -1764,9 +1672,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/ssl-key/{keyId}": {
             "delete": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Delete an existing SSL key",
                 "description": "Delete an existing SSL key.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "deleteSSLKey",
@@ -1806,9 +1712,7 @@
         },
         "/openapi/v1/{omadacId}/system/setting/certificate/{cerId}": {
             "delete": {
-                "tags": [
-                    "System Settings"
-                ],
+                "tags": ["System Settings"],
                 "summary": "Delete an existing certificate",
                 "description": "Delete an existing certificate.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "deleteCertificate",
@@ -1850,12 +1754,7 @@
     "components": {
         "schemas": {
             "OpenApiWebhookSettingAddVO": {
-                "required": [
-                    "name",
-                    "retryPolicy",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["name", "retryPolicy", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -1901,11 +1800,7 @@
                 }
             },
             "OpenApiWebhookSettingTestVO": {
-                "required": [
-                    "name",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["name", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2027,12 +1922,7 @@
                 "description": "Upgrade List"
             },
             "SendMailServerOpenApiVO": {
-                "required": [
-                    "authEnable",
-                    "port",
-                    "smtpServer",
-                    "sslEnable"
-                ],
+                "required": ["authEnable", "port", "smtpServer", "sslEnable"],
                 "type": "object",
                 "properties": {
                     "smtpEnable": {
@@ -2080,11 +1970,7 @@
                 }
             },
             "OpenApiWebhookSettingEditVO": {
-                "required": [
-                    "retryPolicy",
-                    "template",
-                    "urlList"
-                ],
+                "required": ["retryPolicy", "template", "urlList"],
                 "type": "object",
                 "properties": {
                     "urlList": {
@@ -2210,9 +2096,7 @@
                 }
             },
             "Remote Log": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -2232,13 +2116,7 @@
                 }
             },
             "Built In Radius Server Setting": {
-                "required": [
-                    "authServerPort",
-                    "enable",
-                    "secret",
-                    "serverAddressType",
-                    "tunnelReplyEnable"
-                ],
+                "required": ["authServerPort", "enable", "secret", "serverAddressType", "tunnelReplyEnable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -2303,11 +2181,7 @@
                 "description": "RADIUS server certificate"
             },
             "Radius Proxy Server Setting": {
-                "required": [
-                    "enable",
-                    "port",
-                    "secret"
-                ],
+                "required": ["enable", "port", "secret"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -2341,13 +2215,7 @@
                 }
             },
             "DST Time": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -2443,10 +2311,7 @@
                 "description": "Daylight Saving Time"
             },
             "General Setting": {
-                "required": [
-                    "region",
-                    "timeZone"
-                ],
+                "required": ["region", "timeZone"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2468,9 +2333,7 @@
                 }
             },
             "Experience Improvement Program": {
-                "required": [
-                    "expImprove"
-                ],
+                "required": ["expImprove"],
                 "type": "object",
                 "properties": {
                     "expImprove": {
@@ -2480,9 +2343,7 @@
                 }
             },
             "UI Interface": {
-                "required": [
-                    "refreshRate"
-                ],
+                "required": ["refreshRate"],
                 "type": "object",
                 "properties": {
                     "timeZone": {
@@ -2531,9 +2392,7 @@
                 }
             },
             "History Retention": {
-                "required": [
-                    "clientsDataEnable"
-                ],
+                "required": ["clientsDataEnable"],
                 "type": "object",
                 "properties": {
                     "override": {
@@ -2602,9 +2461,7 @@
                 }
             },
             "Client Active Timeout": {
-                "required": [
-                    "clientActiveTimeoutMin"
-                ],
+                "required": ["clientActiveTimeoutMin"],
                 "type": "object",
                 "properties": {
                     "clientActiveTimeoutMin": {
@@ -3002,9 +2859,7 @@
                 }
             },
             "Certificate": {
-                "required": [
-                    "cerId"
-                ],
+                "required": ["cerId"],
                 "type": "object",
                 "properties": {
                     "cerId": {
@@ -3072,9 +2927,7 @@
                 }
             },
             "Privacy Policy": {
-                "required": [
-                    "status"
-                ],
+                "required": ["status"],
                 "type": "object",
                 "properties": {
                     "status": {

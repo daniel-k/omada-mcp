@@ -15,30 +15,32 @@ This project implements a Model Context Protocol (MCP) server that exposes TP-Li
 
 Reference `.env.example`. Primary variables:
 
-Omada Client Configuration:
+### Omada Client Configuration:
 
 - `OMADA_BASE_URL` (required) - base URL of the Omada controller (e.g., `https://omada-controller.local`).
 - `OMADA_CLIENT_ID` (required) - client ID for OAuth2 access.
 - `OMADA_CLIENT_SECRET` (required) - client secret for OAuth2 access.
+- `OMADA_OMADAC_ID` (required) - Omada controller ID (omadacId) to target.
 - `OMADA_SITE_ID` (optional) - site ID for the Omada controller.
 - `OMADA_STRICT_SSL` (default: `true`) - whether to enforce strict SSL certificate validation.
 - `OMADA_TIMEOUT` (default: `30000`) - request timeout in milliseconds.
+- `OMADA_PROXY_URL` (optional) - HTTP/HTTPS proxy URL to reach the controller (e.g., `https://proxy.example.com:8443`).
 
-MCP Generic Server Configuration:
+### MCP Generic Server Configuration:
 
 - `MCP_SERVER_LOG_LEVEL` (default: `info`) - logging verbosity (`debug`, `info`, `warn`, `error`).
 - `MCP_SERVER_LOG_FORMAT` (default: `plain`) - log output format (`plain`,`json`, or `gcp-json`).
-  - `plain` - human-readable text format.
-  - `json` - structured JSON format.
-  - `gcp-json` - structured JSON format compatible with Google Cloud Logging.
+    - `plain` - human-readable text format.
+    - `json` - structured JSON format.
+    - `gcp-json` - structured JSON format compatible with Google Cloud Logging.
 - `MCP_SERVER_USE_HTTP` (default: `false`) - whether to start the HTTP server instead of stdio.
 - `MCP_SERVER_STATEFUL` (default: `false`) - whether to maintain stateful sessions per client.
 
-MCP Server HTTP/SSE Configuration, if `MCP_SERVER_USE_HTTP` is `true`:
+### MCP Server HTTP/SSE Configuration, if `MCP_SERVER_USE_HTTP` is `true`:
 
 - `MCP_HTTP_PORT` (default: `3000`) - port for the HTTP/SSE server.
 - `MCP_HTTP_HOST` (default: `0.0.0.0`) - host for the HTTP/SSE server.
-- `MCP_HTTP_SSE_PATH` (default: `/sse`) - base path for MCP HTTP/SSE endpoints.
+- `MCP_HTTP_SSE_PATH` (optional) - base path for MCP HTTP/SSE endpoints.
 - `MCP_HTTP_ENABLE_HEALTHCHECK` (default: `true`) - enable a healthcheck endpoint at the path indicated on `MCP_HTTP_HEALTHCHECK_PATH`.
 - `MCP_HTTP_HEALTHCHECK_PATH` (default: `/healthz`) - path for the healthcheck endpoint.
 - `MCP_HTTP_ALLOW_CORS` (default: `true`) - enable CORS for the HTTP/SSE server.
