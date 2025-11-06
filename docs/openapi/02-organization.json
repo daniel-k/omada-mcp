@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get site template info",
                 "description": "Get site template info<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "getSiteTemplateEntity",
@@ -58,9 +56,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Modify an existing site template",
                 "description": "Modify an existing site template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.<br/>-44430  -  This name already exists. Please enter another name for this site template.",
                 "operationId": "updateSiteTemplateEntity",
@@ -108,9 +104,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Delete an existing site template",
                 "description": "Delete an existing site template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "deleteSiteTemplate",
@@ -150,9 +144,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get site info",
                 "description": "Get site info<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.",
                 "operationId": "getSiteEntity",
@@ -190,9 +182,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Modify an existing site",
                 "description": "Modify an existing site<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.<br/>-33101  -  This name already exists. Please enter another name for this site.<br/>-33104  -  The number of sites has reached the limit.<br/>-33809  -  This scenario does not exist.",
                 "operationId": "updateSiteEntity",
@@ -240,9 +230,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Delete an existing site",
                 "description": "Delete an existing site<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify",
                 "operationId": "deleteSite",
@@ -282,9 +270,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/device-account": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get site device account setting",
                 "description": "Get site device account setting<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.",
                 "operationId": "getSiteDeviceAccountSetting",
@@ -322,9 +308,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Update site device account setting",
                 "description": "Update site device account settin<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify<br/>Global Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.",
                 "operationId": "updateSiteDeviceAccountSetting",
@@ -374,9 +358,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get site template list",
                 "description": "Get site template list<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSiteTemplateList",
@@ -443,9 +425,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Create new site template",
                 "description": "Create new site template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33108  -  The number of site templates has reached the limit.<br/>-44430  -  This name already exists. Please enter another name for this site template.",
                 "operationId": "createNewSiteTemplate",
@@ -486,9 +466,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/multi-sites/sync": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Batch sync site settings with the site template",
                 "description": "Batch sync site settings with the site template.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.<br/>-44418  -  Failed to sync this site with the site template due to unexpected errors.<br/>-44423  -  You can sync site configurations with the site template for up to 30 sites at a time.",
                 "operationId": "batchSyncSiteWithTemplate",
@@ -538,9 +516,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get deviceTemplate info list",
                 "description": "Get deviceTemplate info list.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getGridDeviceTemplate",
@@ -598,9 +574,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "create device template",
                 "description": "create device template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33012  -  This name already exists in the device template.",
                 "operationId": "createDeviceTemplate",
@@ -650,9 +624,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}/batch-unbinddevice": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Device template batch unbind devices",
                 "description": "Device template batch unbind devices.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-44402  -  Device template does not exist.",
                 "operationId": "deviceTemplateUnbindDeviceBatch",
@@ -711,9 +683,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}/batch-sync-config": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Device template batch sync config to devices",
                 "description": "Device template batch sync config to devices.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-44402  -  Device template does not exist.",
                 "operationId": "deviceTemplateSyncConfigBatch",
@@ -772,9 +742,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}/batch-binddevice": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Device template batch bind devices",
                 "description": "Device template batch bind devices.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-44402  -  Device template does not exist.",
                 "operationId": "deviceTemplateBindDeviceBatch",
@@ -833,9 +801,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/copy": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Create Site Template by copying exist site template",
                 "description": "Create Site Template by copying exist site template.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "copySiteTemplate",
@@ -885,9 +851,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/copy/batch": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Copy site template to customers",
                 "description": "Copy the site template to one or more customers (whose site templates the current user has permission to modify). Up to 10 customers can be operated at the same time.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "copySiteTemplateToCustomers",
@@ -937,9 +901,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/bind-site": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Bind site with a site template",
                 "description": "Bind site with a site template.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "bindSiteTemplate",
@@ -989,9 +951,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/batch-unbind": {
             "post": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Batch unbind sites from a site template",
                 "description": "Batch unbind sites from a site template.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify<br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "unbindSite",
@@ -1041,9 +1001,7 @@
         },
         "/openapi/v1/{omadacId}/sites": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get site list",
                 "description": "Get site list",
                 "operationId": "getSiteList",
@@ -1128,9 +1086,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Create new site",
                 "description": "Create new site<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33101  -  This name already exists. Please enter another name for this site.<br/>-33104  -  The number of sites has reached the limit.",
                 "operationId": "createNewSite",
@@ -1171,9 +1127,7 @@
         },
         "/openapi/v1/{omadacId}/sites/template": {
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Create new site from site template",
                 "description": "Create new site from site template<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33101  -  This name already exists. Please enter another name for this site.<br/>-33104  -  The number of sites has reached the limit.",
                 "operationId": "createNewSiteByTemplate",
@@ -1214,9 +1168,7 @@
         },
         "/openapi/v1/{omadacId}/sites/tags": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get site tag list",
                 "description": "Get site tag list.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only",
                 "operationId": "getTags",
@@ -1248,9 +1200,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Create new site tag",
                 "description": "Create new site tag.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify",
                 "operationId": "addTag",
@@ -1289,9 +1239,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Delete an existing site tag",
                 "description": "Delete an existing site tag.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify",
                 "operationId": "deleteTag",
@@ -1330,9 +1278,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Modify an existing site tag",
                 "description": "Modify an existing site tag.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager Modify",
                 "operationId": "modifyTag",
@@ -1373,9 +1319,7 @@
         },
         "/openapi/v1/{omadacId}/sites/statistic": {
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get sites statistic",
                 "description": "Get sites statistic",
                 "operationId": "getSiteSummaryStatisticByOpenApi",
@@ -1416,9 +1360,7 @@
         },
         "/openapi/v1/{omadacId}/sites/multi-import": {
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Batch create sites by importing site backup files from file server",
                 "description": "Batch create sites by importing site backup files from file server.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.",
                 "operationId": "batchSiteImport",
@@ -1459,9 +1401,7 @@
         },
         "/openapi/v1/{omadacId}/sites/copy": {
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Batch create sites by copying from existing site",
                 "description": "Batch create sites by copying from existing site<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30028  -  The system is busy. Please try again later.<br/>-30304  -  Restoring...<br/>-30305  -  Failed to restore because of unexpected errors. Please try again later.",
                 "operationId": "batchSiteCopy",
@@ -1502,9 +1442,7 @@
         },
         "/openapi/v1/{omadacId}/scenarios": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get scenario list",
                 "description": "Get scenario list",
                 "operationId": "getScenarioList",
@@ -1533,9 +1471,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Create new scenario",
                 "description": "Create new scenario<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify",
                 "operationId": "addScenario",
@@ -1574,9 +1510,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Delete site scenario",
                 "description": "Delete site scenario<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager Modify",
                 "operationId": "deleteScenario",
@@ -1617,9 +1551,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}": {
             "delete": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "delete device template",
                 "description": "delete device template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "deleteDeviceTemplate",
@@ -1666,9 +1598,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "modify device template",
                 "description": "modify device template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "modifyDeviceTemplate",
@@ -1727,9 +1657,7 @@
         },
         "/openapi/v1/{omadacId}/unplaced-site-position": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Obtain the geographic location information of unplaced Sites",
                 "description": "Obtain the geographic location information of unplaced Sites.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only",
                 "operationId": "getUnplacedSitePositions",
@@ -1789,9 +1717,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/setting/wireless/feature": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get site template WirelessFeature",
                 "description": "get site template WirelessFeature.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSiteTemplateWirelessFeature",
@@ -1831,9 +1757,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/setting/service": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get site template service",
                 "description": "get site template service<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSiteTemplateService",
@@ -1873,9 +1797,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/setting/ntp": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get template ntp server status",
                 "description": "Get template ntp server status.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.",
                 "operationId": "getNtpServerStatusTemplate",
@@ -1915,9 +1837,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/setting/general/config": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get site template general config",
                 "description": "get site template general config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSiteTemplateGeneralConfig",
@@ -1957,9 +1877,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/setting/configuration": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get site template settings",
                 "description": "get site template settings.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSiteTemplateConfiguration",
@@ -1999,9 +1917,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/dst-info": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get daylight saving time information for the Site template configuration",
                 "description": "Get daylight saving time information for the Site template configuration<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-53124  -  Device Management Host not enable.",
                 "operationId": "getSiteTemplateDstInfo",
@@ -2041,9 +1957,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}/bound-devices": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get deviceTemplate's bound devices",
                 "description": "Get deviceTemplate's bound devices.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getGridDeviceTemplateBoundDevices",
@@ -2112,9 +2026,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/{deviceTemplateId}/available-bind-devices": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get deviceTemplate's available devices",
                 "description": "Get deviceTemplate's available devices.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getGridDeviceTemplateAvailableDevices",
@@ -2183,9 +2095,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/detail": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get device template",
                 "description": "get device template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getGridDeviceTemplateDetail",
@@ -2245,9 +2155,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/devicetemplates/available-devices/{siteId}": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get the devices on the site and the templates that can be bound",
                 "description": "get the devices on the site and the templates that can be bound<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getGridDevicesAvailableTemplate",
@@ -2316,9 +2224,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/binding-sites": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get sites info which bound to the site template",
                 "description": "Get sites info which bound to the site template.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "getBoundSites",
@@ -2378,9 +2284,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/available-devicemodels": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get valid device template",
                 "description": "get valid device template<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getValidDeviceModel",
@@ -2420,9 +2324,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/available-bind": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get available site to bind template",
                 "description": "Get available site to bind template.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33009  -  This site template does not exist.",
                 "operationId": "getAvailableSiteToBind",
@@ -2491,9 +2393,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/modules": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "Get function modules which can be selected when creating site template",
                 "description": "Get function modules which can be selected when creating site template.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "getSiteTemplateModules",
@@ -2524,9 +2424,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/url": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get site url",
                 "description": "Get site url<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-53124  -  Device Management Host not enable.",
                 "operationId": "getSiteUrlByOpenApi",
@@ -2566,9 +2464,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/setting/ntp": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get ntp server status",
                 "description": "Get ntp server status.<br/><br/>The interface requires one of the permissions: <br/>Site Health & Incident Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1300  -  Failed to get site information.",
                 "operationId": "getNtpServerStatus",
@@ -2608,9 +2504,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/global-dashboard/site-map/abnormal": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get the details of a site",
                 "description": "Get the details of a site in the Dashboard - site map<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only",
                 "operationId": "getSiteInfoForAbnormal",
@@ -2650,9 +2544,7 @@
         },
         "/openapi/v1/{omadacId}/site-overrides": {
             "get": {
-                "tags": [
-                    "Site Template"
-                ],
+                "tags": ["Site Template"],
                 "summary": "get site overrides",
                 "description": "get site overrides<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getSitesOverrides",
@@ -2695,9 +2587,7 @@
         },
         "/openapi/v1/{omadacId}/scenarios/difference": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Get scenario list difference",
                 "description": "Get a list of default scenarios for differentiation",
                 "operationId": "getScenarioListDifference",
@@ -2728,9 +2618,7 @@
         },
         "/openapi/v1/{omadacId}/placed-site-position": {
             "get": {
-                "tags": [
-                    "Site"
-                ],
+                "tags": ["Site"],
                 "summary": "Obtain the geographic location information of Placed Sites",
                 "description": "Obtain the geographic location information of Placed Sites in batches.<br/><br/>The interface requires one of the permissions: <br/>Global Dashboard Manager View Only",
                 "operationId": "getPlacedSitePositions",
@@ -2763,9 +2651,7 @@
     "components": {
         "schemas": {
             "UpdateSiteByTemplate": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2788,13 +2674,7 @@
                 }
             },
             "DstTimeOpenApiDTO": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -2852,11 +2732,7 @@
                 "description": "Daylight Saving Time config of the site"
             },
             "UpdateSiteEntity": {
-                "required": [
-                    "region",
-                    "scenario",
-                    "timeZone"
-                ],
+                "required": ["region", "scenario", "timeZone"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2937,10 +2813,7 @@
                 "description": "NTP server address; Up to 5 entries are allowed for the NTP server address list."
             },
             "DeviceAccountSettingOpenApiVO": {
-                "required": [
-                    "password",
-                    "username"
-                ],
+                "required": ["password", "username"],
                 "type": "object",
                 "properties": {
                     "username": {
@@ -2956,9 +2829,7 @@
                 }
             },
             "CreateSiteTemplateEntity": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2992,9 +2863,7 @@
                 }
             },
             "BatchSyncSitesOpenApiVO": {
-                "required": [
-                    "siteIds"
-                ],
+                "required": ["siteIds"],
                 "type": "object",
                 "properties": {
                     "siteIds": {
@@ -3053,10 +2922,7 @@
                 }
             },
             "DeviceBindBriefOpenApiVO": {
-                "required": [
-                    "mac",
-                    "siteId"
-                ],
+                "required": ["mac", "siteId"],
                 "type": "object",
                 "properties": {
                     "mac": {
@@ -3127,9 +2993,7 @@
                 }
             },
             "CopySiteTemplateOpenApiVO": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -3149,10 +3013,7 @@
                 }
             },
             "BatchCopySiteTemplateOpenApiVO": {
-                "required": [
-                    "name",
-                    "targetOmadacs"
-                ],
+                "required": ["name", "targetOmadacs"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -3232,9 +3093,7 @@
                 "description": "Copy failed customer related information."
             },
             "BindSiteOpenApiVO": {
-                "required": [
-                    "siteId"
-                ],
+                "required": ["siteId"],
                 "type": "object",
                 "properties": {
                     "siteId": {
@@ -3265,9 +3124,7 @@
                 "description": "Switch choose for binding device template."
             },
             " BatchUnbindSites": {
-                "required": [
-                    "siteIds"
-                ],
+                "required": ["siteIds"],
                 "type": "object",
                 "properties": {
                     "siteIds": {
@@ -3282,13 +3139,7 @@
                 }
             },
             "CreateSiteEntity": {
-                "required": [
-                    "deviceAccountSetting",
-                    "name",
-                    "region",
-                    "scenario",
-                    "timeZone"
-                ],
+                "required": ["deviceAccountSetting", "name", "region", "scenario", "timeZone"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -3350,13 +3201,7 @@
                 }
             },
             "CreateSiteByTemplate": {
-                "required": [
-                    "deviceAccountSetting",
-                    "name",
-                    "region",
-                    "scenario",
-                    "siteTemplateId"
-                ],
+                "required": ["deviceAccountSetting", "name", "region", "scenario", "siteTemplateId"],
                 "type": "object",
                 "properties": {
                     "siteTemplateId": {
@@ -3437,10 +3282,7 @@
                 }
             },
             "SiteStatistic": {
-                "required": [
-                    "omadacId",
-                    "siteId"
-                ],
+                "required": ["omadacId", "siteId"],
                 "type": "object",
                 "properties": {
                     "omadacId": {
@@ -3489,10 +3331,7 @@
                 }
             },
             "DeviceAccountSettingVO": {
-                "required": [
-                    "password",
-                    "username"
-                ],
+                "required": ["password", "username"],
                 "type": "object",
                 "properties": {
                     "username": {
@@ -3692,10 +3531,7 @@
                 }
             },
             "BatchSiteImportVO": {
-                "required": [
-                    "fileServerConfig",
-                    "siteImportConfigList"
-                ],
+                "required": ["fileServerConfig", "siteImportConfigList"],
                 "type": "object",
                 "properties": {
                     "fileServerConfig": {
@@ -3711,11 +3547,7 @@
                 }
             },
             "FileServerOpenApiVO": {
-                "required": [
-                    "hostname",
-                    "port",
-                    "protocol"
-                ],
+                "required": ["hostname", "port", "protocol"],
                 "type": "object",
                 "properties": {
                     "protocol": {
@@ -3743,10 +3575,7 @@
                 "description": "File server configuration."
             },
             "SiteImportOpenApiVO": {
-                "required": [
-                    "filePath",
-                    "siteName"
-                ],
+                "required": ["filePath", "siteName"],
                 "type": "object",
                 "properties": {
                     "filePath": {
@@ -3794,11 +3623,7 @@
                 }
             },
             "BatchSiteCopyVO": {
-                "required": [
-                    "siteNamePrefix",
-                    "sourceSiteId",
-                    "targetSiteNum"
-                ],
+                "required": ["siteNamePrefix", "sourceSiteId", "targetSiteNum"],
                 "type": "object",
                 "properties": {
                     "sourceSiteId": {
@@ -3817,9 +3642,7 @@
                 }
             },
             "Scenario": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -4069,11 +3892,7 @@
                 "description": "advanced feature"
             },
             "AirtimeFairnessSettingVO": {
-                "required": [
-                    "enable2g",
-                    "enable5g",
-                    "enable6g"
-                ],
+                "required": ["enable2g", "enable5g", "enable6g"],
                 "type": "object",
                 "properties": {
                     "enable2g": {
@@ -4092,9 +3911,7 @@
                 "description": "airtime fairness setting"
             },
             "BandSteeringMultiBandVO": {
-                "required": [
-                    "mode"
-                ],
+                "required": ["mode"],
                 "type": "object",
                 "properties": {
                     "mode": {
@@ -4106,9 +3923,7 @@
                 "description": "band Steering For MultiBand"
             },
             "BandSteeringVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4130,14 +3945,7 @@
                 "description": "band Steering"
             },
             "BeaconControlVO": {
-                "required": [
-                    "dtimPeriod2g",
-                    "dtimPeriod5g",
-                    "dtimPeriod6g",
-                    "rtsThreshold2g",
-                    "rtsThreshold5g",
-                    "rtsThreshold6g"
-                ],
+                "required": ["dtimPeriod2g", "dtimPeriod5g", "dtimPeriod6g", "rtsThreshold2g", "rtsThreshold5g", "rtsThreshold6g"],
                 "type": "object",
                 "properties": {
                     "beaconInterval2g": {
@@ -4301,9 +4109,7 @@
                 "description": "mcast Rate Limit setting"
             },
             "MeshSettingVO": {
-                "required": [
-                    "meshEnable"
-                ],
+                "required": ["meshEnable"],
                 "type": "object",
                 "properties": {
                     "meshEnable": {
@@ -4346,10 +4152,7 @@
                 }
             },
             "RoamingSettingVO": {
-                "required": [
-                    "aiRoamingEnable",
-                    "fastRoamingEnable"
-                ],
+                "required": ["aiRoamingEnable", "fastRoamingEnable"],
                 "type": "object",
                 "properties": {
                     "fastRoamingEnable": {
@@ -4387,9 +4190,7 @@
                 "description": "roaming setting"
             },
             "SiteApLldpSettingVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4432,11 +4233,7 @@
                 }
             },
             "AirtimeFairnessSettingOpenApiVO": {
-                "required": [
-                    "enable2g",
-                    "enable5g",
-                    "enable6g"
-                ],
+                "required": ["enable2g", "enable5g", "enable6g"],
                 "type": "object",
                 "properties": {
                     "enable2g": {
@@ -4455,9 +4252,7 @@
                 "description": "Site airtime fairness setting."
             },
             "AlertSettingOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4477,9 +4272,7 @@
                 "description": "Site alert setting."
             },
             "BandSteeringMultiBandOpenApiVO": {
-                "required": [
-                    "mode"
-                ],
+                "required": ["mode"],
                 "type": "object",
                 "properties": {
                     "mode": {
@@ -4491,9 +4284,7 @@
                 "description": "Site band steering multi band setting."
             },
             "BandSteeringOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4519,14 +4310,7 @@
                 "description": "Site band steering setting."
             },
             "BeaconControlOpenApiVO": {
-                "required": [
-                    "dtimPeriod2g",
-                    "dtimPeriod5g",
-                    "dtimPeriod6g",
-                    "rtsThreshold2g",
-                    "rtsThreshold5g",
-                    "rtsThreshold6g"
-                ],
+                "required": ["dtimPeriod2g", "dtimPeriod5g", "dtimPeriod6g", "rtsThreshold2g", "rtsThreshold5g", "rtsThreshold6g"],
                 "type": "object",
                 "properties": {
                     "beaconInterval2g": {
@@ -4593,9 +4377,7 @@
                 "description": "Site beacon control setting."
             },
             "NewMeshSettingOpenApiVO": {
-                "required": [
-                    "meshEnable"
-                ],
+                "required": ["meshEnable"],
                 "type": "object",
                 "properties": {
                     "meshEnable": {
@@ -4623,10 +4405,7 @@
                 "description": "Site mesh setting."
             },
             "NewRoamingSettingOpenApiVO": {
-                "required": [
-                    "aiRoamingEnable",
-                    "fastRoamingEnable"
-                ],
+                "required": ["aiRoamingEnable", "fastRoamingEnable"],
                 "type": "object",
                 "properties": {
                     "fastRoamingEnable": {
@@ -4669,9 +4448,7 @@
                 }
             },
             "RemoteLogSettingOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4696,9 +4473,7 @@
                 "description": "Site remote logging setting."
             },
             "SiteApLldpSettingOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4709,9 +4484,7 @@
                 "description": "Site lldp setting."
             },
             "SiteLedSetting": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4757,9 +4530,7 @@
                 }
             },
             "DhcpServerChangedConfigOpenApiVO": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4796,9 +4567,7 @@
                 "description": "Site portal logout setting"
             },
             "RememberDeviceSetting": {
-                "required": [
-                    "enable"
-                ],
+                "required": ["enable"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -4829,13 +4598,7 @@
                 }
             },
             "DstTimeDTO": {
-                "required": [
-                    "day",
-                    "hour",
-                    "minute",
-                    "month",
-                    "serial"
-                ],
+                "required": ["day", "hour", "minute", "month", "serial"],
                 "type": "object",
                 "properties": {
                     "month": {
@@ -5900,9 +5663,7 @@
                 }
             },
             "DeleteSiteTagOpenApiVO": {
-                "required": [
-                    "tagId"
-                ],
+                "required": ["tagId"],
                 "type": "object",
                 "properties": {
                     "tagId": {

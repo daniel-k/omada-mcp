@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/batch": {
             "post": {
-                "tags": [
-                    "Batch OpenAPI"
-                ],
+                "tags": ["Batch OpenAPI"],
                 "summary": "Batch Processing OpenAPIs",
                 "description": "Batch processing of multiple OpenAPIs under the same Omada controller through this OpenAPI.<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-1600  -  Unsupported request path.<br/>-1619  -  Execution has been interrupted due to unsuccessful execution of the pre action request.<br/>-1620  -  Error occurred while executing action.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.<br/>-44113  -  The Access Token is Invalid.<br/>-7132  -  Our server is receiving too many requests now. Please try again later.",
                 "operationId": "batchController",
@@ -79,10 +77,7 @@
                 }
             },
             "Request action entity": {
-                "required": [
-                    "method",
-                    "path"
-                ],
+                "required": ["method", "path"],
                 "type": "object",
                 "properties": {
                     "path": {

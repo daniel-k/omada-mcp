@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/batch/print": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get selected vouchers in a voucher group",
                 "description": "Get selected vouchers brief in a voucher group.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "printVouchers",
@@ -70,9 +68,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/batch/delete": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete selected vouchers",
                 "description": "Delete selected vouchers with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteVouchers",
@@ -122,9 +118,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get Voucher Group List",
                 "description": "Get Voucher Group List with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getGridVoucherGroups",
@@ -229,9 +223,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Create a new Voucher Group",
                 "description": "Create a Voucher Group with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-33732  -  The Rate Limit profile does not exist.<br/>-42010  -  The number of vouchers has reached the limit. New vouchers cannot be created.<br/>-42036  -  Please select at least one portal before creating vouchers.<br/>-42059  -  Duplicated voucher group name.<br/>-42060  -  Currency is not supported.<br/>-42061  -  You are creating voucher groups with different currency in same site, this will prevent collecting incoming amount of vouchers.<br/>-42062  -  One or more portals may not exist.<br/>-42063  -  The expiration time cannot exceed 1000 days.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "createVoucherGroup",
@@ -281,9 +273,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/batch/print-unused": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get unused vouchers in selected voucher groups",
                 "description": "Get unused vouchers brief information in selected voucher groups.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "printSelectedVoucherGroups",
@@ -333,9 +323,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/batch/delete": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete selected Voucher Groups",
                 "description": "Delete selected Voucher Groups with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteSelectedVoucherGroups",
@@ -385,9 +373,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/batch/clear-invalid": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete expired vouchers in voucher groups",
                 "description": "Delete expired vouchers in selected voucher group.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "clearInvalidVouchersInSelectedGroups",
@@ -437,9 +423,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/surveys": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Get authentication survey list",
                 "description": "Get authentication survey list in a site by the given omadacId, siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "getAuthForms",
@@ -504,9 +488,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Create a new authentication survey",
                 "description": "Create a authentication survey in a site with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-42050  -  The number of created surveys is up to the limit.<br/>-42051  -  The survey name already exists.<br/>-42052  -  The number of questions in this survey is up to the limit.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "createAuthForm",
@@ -556,9 +538,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/surveys/{surveyId}/auth-results": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Get authentication result lists for given survey",
                 "description": "Get an authentication survey's result list with given omadacId, siteId, surveyId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "getFormAuthResults",
@@ -634,9 +614,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Delete selected authentication survey results for given surveyId",
                 "description": "Delete selected authentication survey results in a site with given omadacId, siteId, surveyId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify",
                 "operationId": "deleteSelectedFormAuthResult",
@@ -695,9 +673,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/operators": {
             "get": {
-                "tags": [
-                    "Hotspot Operators"
-                ],
+                "tags": ["Hotspot Operators"],
                 "summary": "Get hotspot operators list",
                 "description": "Get hotspot operators list.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "getHotspotOperatorList",
@@ -773,9 +749,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Hotspot Operators"
-                ],
+                "tags": ["Hotspot Operators"],
                 "summary": "Create a new hotspot operator",
                 "description": "Create a new hotspot operator.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "createHotspotOperator",
@@ -825,9 +799,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/localusers": {
             "get": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Get local user list",
                 "description": "Get local user list in a site with the given omadacId, siteId, params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "getLocalUsers",
@@ -903,9 +875,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Create a new local user",
                 "description": "Create a local user with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-42012  -  The number of local users has reached the limit. New local users cannot be created.<br/>-42013  -  Local user already exists.<br/>-42020  -  The MAC address that is bound to the local user account is invalid.<br/>-42037  -  Please select at least one portal before creating local users.<br/>-42039  -  Failed to bind to the portals. Please select the portals with local user authentication enabled.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "createLocalUser",
@@ -955,9 +925,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/localusers/{id}": {
             "get": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Get a local user for given localuserId",
                 "description": "Get a local user with the given omadacId, siteId, local user ID.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "getLocalUser",
@@ -1004,9 +972,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Modify an existing localuser",
                 "description": "Modify an existing local user with the given omadacId, siteId, localuserId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-42013  -  Local user already exists.<br/>-42020  -  The MAC address that is bound to the local user account is invalid.<br/>-42037  -  Please select at least one portal before creating local users.<br/>-42039  -  Failed to bind to the portals. Please select the portals with local user authentication enabled.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "modifyLocalUser",
@@ -1054,9 +1020,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Delete an existing localuser",
                 "description": "Delete an existing local user with the given omadacId, siteId, localuserId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteLocalUser",
@@ -1105,9 +1069,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/localusers/{id}/clear-dynamic-mac": {
             "post": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Clear dynamic mac",
                 "description": "Clear dynamic mac with the given omadacId, siteId, localuserId. The mac address binding type should be dynamic binding.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "clearLocalUserDynamicMac",
@@ -1147,9 +1109,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/clients/{clientMac}/unauth": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Cancel authentication the given client",
                 "description": "Cancel the authentication of this client with the given omadacId, siteId, clientMac.<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1005  -  Operation forbidden.<br/>-1200  -  You have been logged out of the controller. This may have been caused by web application switching, data restore, reboot, session timeout or disabled cloud access. Please try to log in again later.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-41006  -  This client does not exist.<br/>-41017  -  Unauth failed because gateway not existed or disconnected.<br/>-41018  -  Unauth failed, try again when network recover.<br/>-41019  -  The client is being disconnected, please wait...<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "cancelAuthClient",
@@ -1198,9 +1158,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/clients/{clientMac}/auth": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Authentication the given client",
                 "description": "Authentication this client with the given omadacId, siteId, clientMac<br/><br/>The interface requires one of the permissions: <br/>Site Clients Manager Modify<br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1005  -  Operation forbidden.<br/>-1200  -  You have been logged out of the controller. This may have been caused by web application switching, data restore, reboot, session timeout or disabled cloud access. Please try to log in again later.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-41009  -  Failed to authorize this client.<br/>-41010  -  This client does not exist.<br/>-42003  -  This operator does not exist.<br/>-42006  -  Failed to log in.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "authClient",
@@ -1249,9 +1207,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-records/{id}/period": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Modify period for given authed record",
                 "description": "Extend the valid time of the authentication record with the given omadacId, siteId, authClientId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1005  -  Operation forbidden.<br/>-1200  -  You have been logged out of the controller. This may have been caused by web application switching, data restore, reboot, session timeout or disabled cloud access. Please try to log in again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "extendHotspotAuthedClient",
@@ -1310,9 +1266,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-records/{id}/disconnect": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Disconnect authed client ",
                 "description": "Disconnect the authentication record with the given omadacId, siteId, authClientId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-33000  -  This site does not exist.<br/>-41018  -  Unauth failed, try again when network recover.",
                 "operationId": "disconnectHotspotAuthedClient",
@@ -1352,9 +1306,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-records/delete": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Delete all invalid authed record",
                 "description": "Delete all authentication record withs the given omadacId, siteId, authClientId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "deleteAllInvalidAuthedClients",
@@ -1404,9 +1356,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-client-list": {
             "post": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Export global authed client list",
                 "description": "Export global authed client list with the given omadacId, siteId.<br/><br/>The interface requires one of the permissions: <br/>Global Export Data Access<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-33000  -  This site does not exist.<br/>-34552  -  The number of local data export times through Cloud Access within one hour has reached the limit.",
                 "operationId": "exportAuthedClientListGlobalByCloudAccess",
@@ -1447,9 +1397,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/files/hotspot/local-users": {
             "get": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Download local user file (excel or csv) by localhost",
                 "description": "Download local user file (excel or csv) by localhost.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1  -  Something went wrong. Please try again later or contact our technical support.<br/>-1001  -  Invalid request parameters.<br/>-33000  -  This site does not exist.",
                 "operationId": "downloadLocalUsers",
@@ -1514,9 +1462,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Local User"
-                ],
+                "tags": ["Local User"],
                 "summary": "Upload local user file (excel or csv) by localhost",
                 "description": "Upload local user file (excel or csv) by localhost.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1  -  Something went wrong. Please try again later or contact our technical support.<br/>-1001  -  Invalid request parameters.<br/>-1005  -  Operation forbidden.<br/>-1200  -  You have been logged out of the controller. This may have been caused by web application switching, data restore, reboot, session timeout or disabled cloud access. Please try to log in again later.<br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-33712  -  This file is empty.<br/>-42037  -  Please select at least one portal before creating local users.<br/>-7131  -  Controller ID not exist.",
                 "operationId": "uploadLocalUsers",
@@ -1544,10 +1490,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "config",
-                                    "file"
-                                ],
+                                "required": ["config", "file"],
                                 "type": "object",
                                 "properties": {
                                     "config": {
@@ -1578,9 +1521,7 @@
         },
         "/openapi/v1/{omadacId}/files/hotspot/sites/{siteId}/vouchers/export": {
             "post": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Export voucher list to file",
                 "description": "Export voucher list to file.<br/><br/>The interface requires one of the permissions: <br/>Site Export Data Access<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "exportVouchersWithSiteByCloudAccess",
@@ -1630,9 +1571,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/surveys/{surveyId}": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Get an authentication survey for given surveyId",
                 "description": "Get an authentication survey by the given omadacId, siteId, surveyId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "getAuthForm",
@@ -1679,9 +1618,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Delete an existing authentication survey",
                 "description": "Delete an existing authentication survey by the given omadacId, siteId, surveyId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-42054  -  The survey does not exist.<br/>-42057  -  The survey is in use, and you cannot edit or delete it.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteAuthForm",
@@ -1728,9 +1665,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Modify an authentication survey for given surveyId",
                 "description": "Modify an authentication survey in a site with given omadacId, siteId, surveyId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify",
                 "operationId": "modifyAuthForm",
@@ -1789,9 +1724,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/setting": {
             "patch": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Modify voucher currency",
                 "description": "Modify voucher currency of the site.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "modifyHotspotSetting",
@@ -1841,9 +1774,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/operators/{id}": {
             "get": {
-                "tags": [
-                    "Hotspot Operators"
-                ],
+                "tags": ["Hotspot Operators"],
                 "summary": "Get hotspot operator detail",
                 "description": "Get hotspot operator detail.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "getHotspotOperatorDetail",
@@ -1890,9 +1821,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Hotspot Operators"
-                ],
+                "tags": ["Hotspot Operators"],
                 "summary": "Delete an existing hotspot operator",
                 "description": "Delete an existing hotspot operator.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "deleteHotspotOperator",
@@ -1939,9 +1868,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Hotspot Operators"
-                ],
+                "tags": ["Hotspot Operators"],
                 "summary": "Modify an existing hotspot operator",
                 "description": "Modify an existing hotspot operator.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.",
                 "operationId": "modifyHotspotOperator",
@@ -2000,9 +1927,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/{id}": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get a voucher",
                 "description": "Get a voucher with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucher",
@@ -2049,9 +1974,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete an existing voucher",
                 "description": "Delete an existing voucher with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteVoucher",
@@ -2100,9 +2023,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/statistics/summary": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher summary",
                 "description": "Get voucher summary of all time in the site.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getAllTimeVoucherSummary",
@@ -2142,9 +2063,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/statistics/history": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher history statistics",
                 "description": "Get voucher history statistics.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucherHistoryStatistics",
@@ -2204,9 +2123,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/statistics/history/distribution/unit-price": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher distribution by price",
                 "description": "Get voucher distribution by price.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucherDistributionByPrice",
@@ -2266,9 +2183,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/vouchers/statistics/history/distribution/duration": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher distribution by duration",
                 "description": "Get voucher distribution by duration.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucherDistributionByDuration",
@@ -2328,9 +2243,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/{groupId}": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get Voucher Group Detail",
                 "description": "Get Voucher Group Detail with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucherGroupDetail",
@@ -2425,9 +2338,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete an existing Voucher Group",
                 "description": "Delete an existing Voucher Group with the given params.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "deleteVoucherGroup",
@@ -2476,9 +2387,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/{groupId}/print-unused": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get unused vouchers in voucher group",
                 "description": "Get unused vouchers brief information in a voucher group.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "printVoucherGroup",
@@ -2527,9 +2436,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/currency-list": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher currency candidates",
                 "description": "Get voucher currency candidates.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getVoucherCurrencyCandidates",
@@ -2569,9 +2476,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/config-limit": {
             "get": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Get voucher group config limit",
                 "description": "Get voucher group config limit.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "getGroupConfigLimit",
@@ -2611,9 +2516,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/surveys/auth-results/{surveyResultId}": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Get an authentication survey result for given surveyResultId",
                 "description": "Get an authentication survey's result in a site with given omadacId, siteId, surveyResultId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "getFormAuthResult",
@@ -2660,9 +2563,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Delete an authentication survey result for given surveyResultId",
                 "description": "Delete an authentication survey result in a site with given omadacId, siteId, surveyResultId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify",
                 "operationId": "deleteFormAuthResult",
@@ -2711,9 +2612,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/form-auths/{formId}/auth-results": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Get Form Authentication Result",
                 "description": "Get Form Authentication Result.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "getGridFormAuthResults",
@@ -2761,9 +2660,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/dashboard/statistics": {
             "get": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Get hotspot statistic",
                 "description": "Get hotspot statistic with the given omadacId and siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getHotspotStatistic",
@@ -2823,9 +2720,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-records": {
             "get": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Get authentication record list",
                 "description": "Get all authentication records in a site with the given omadacId, siteId.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only<br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1005  -  Operation forbidden.",
                 "operationId": "getHotspotAuthedClients",
@@ -2993,9 +2888,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/files/hotspot/form-auths/{id}/export": {
             "get": {
-                "tags": [
-                    "Form Auth Data"
-                ],
+                "tags": ["Form Auth Data"],
                 "summary": "Export the Form Authentication Result List",
                 "description": "Export the Form Authentication Result List.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager View Only",
                 "operationId": "exportAuthForms",
@@ -3043,9 +2936,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/voucher-groups/{groupId}/clear-invalid": {
             "delete": {
-                "tags": [
-                    "Voucher"
-                ],
+                "tags": ["Voucher"],
                 "summary": "Delete expired vouchers in a voucher group",
                 "description": "Delete expired vouchers in a voucher group.<br/><br/>The interface requires one of the permissions: <br/>Site Hotspot Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33000  -  This site does not exist.<br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.<br/>-44111  -  The Grant Type is Invalid.<br/>-44112  -  The access token has expired. Please re-initiate the refreshToken process to obtain the access token.",
                 "operationId": "clearInvalidVouchersInaGroup",
@@ -3094,9 +2985,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/hotspot/authed-records/{id}": {
             "delete": {
-                "tags": [
-                    "Authorized Client"
-                ],
+                "tags": ["Authorized Client"],
                 "summary": "Delete given authed record",
                 "description": "Delete the authentication record with the given omadacId, siteId, authClientId.<br/><br/>The interface requires one of the permissions: <br/>Site Settings Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.<br/>-33000  -  This site does not exist.<br/>-41018  -  Unauth failed, try again when network recover.",
                 "operationId": "deleteHotspotAuthedClient",
@@ -3147,10 +3036,7 @@
     "components": {
         "schemas": {
             "SelectIdsOpenApiVO": {
-                "required": [
-                    "groupId",
-                    "type"
-                ],
+                "required": ["groupId", "type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -3392,10 +3278,7 @@
                 }
             },
             "CustomRateLimitOpenApiVO": {
-                "required": [
-                    "downLimitEnable",
-                    "upLimitEnable"
-                ],
+                "required": ["downLimitEnable", "upLimitEnable"],
                 "type": "object",
                 "properties": {
                     "downLimitEnable": {
@@ -3420,9 +3303,7 @@
                 "description": "Custom configuration rate limit."
             },
             "RateLimitOpenApiVO": {
-                "required": [
-                    "mode"
-                ],
+                "required": ["mode"],
                 "type": "object",
                 "properties": {
                     "mode": {
@@ -3441,9 +3322,7 @@
                 "description": "When configuring rate limit, can only configure one of rateLimitProfileId or customRateLimit"
             },
             "VoucherScheduleOpenApiVO": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -3509,9 +3388,7 @@
                 }
             },
             "SelectVoucherGroupOpenApiVO": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -3539,9 +3416,7 @@
                 }
             },
             "AuthTimeOpenApiVO": {
-                "required": [
-                    "authTimeout"
-                ],
+                "required": ["authTimeout"],
                 "type": "object",
                 "properties": {
                     "authTimeout": {
@@ -3563,14 +3438,7 @@
                 "description": "Authentication timeout time. Display when enabled, otherwise no display."
             },
             "CreateFormAuthOpenApiVO": {
-                "required": [
-                    "authTimeout",
-                    "cardList",
-                    "name",
-                    "note",
-                    "published",
-                    "title"
-                ],
+                "required": ["authTimeout", "cardList", "name", "note", "published", "title"],
                 "type": "object",
                 "properties": {
                     "title": {
@@ -3603,12 +3471,7 @@
                 "description": "Survey authentication"
             },
             "FormAuthCardOpenApiVO": {
-                "required": [
-                    "choices",
-                    "required",
-                    "title",
-                    "type"
-                ],
+                "required": ["choices", "required", "title", "type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -3648,9 +3511,7 @@
                 "description": "Form card list."
             },
             "Form Auth Result Selector": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -3670,11 +3531,7 @@
                 "description": "Selector of survey authentication result ID"
             },
             "Hotspot Operator": {
-                "required": [
-                    "name",
-                    "password",
-                    "selectedSites"
-                ],
+                "required": ["name", "password", "selectedSites"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -3817,16 +3674,7 @@
                 }
             },
             "ModifyLocalUserOpenApiVO": {
-                "required": [
-                    "bindingType",
-                    "enable",
-                    "expirationTime",
-                    "maxUsers",
-                    "password",
-                    "portals",
-                    "rateLimit",
-                    "trafficLimitEnable"
-                ],
+                "required": ["bindingType", "enable", "expirationTime", "maxUsers", "password", "portals", "rateLimit", "trafficLimitEnable"],
                 "type": "object",
                 "properties": {
                     "password": {
@@ -3897,9 +3745,7 @@
                 }
             },
             "ExtendOpenApiVO": {
-                "required": [
-                    "period"
-                ],
+                "required": ["period"],
                 "type": "object",
                 "properties": {
                     "period": {
@@ -3910,10 +3756,7 @@
                 }
             },
             "Delete Filter Info": {
-                "required": [
-                    "end",
-                    "start"
-                ],
+                "required": ["end", "start"],
                 "type": "object",
                 "properties": {
                     "start": {
@@ -3951,9 +3794,7 @@
                 }
             },
             "HotspotPortalsOpenApiVO": {
-                "required": [
-                    "portals"
-                ],
+                "required": ["portals"],
                 "type": "object",
                 "properties": {
                     "portals": {
@@ -3968,10 +3809,7 @@
                 "description": "Bound portal ID list,need to specify Content-Type of this form part as application/json."
             },
             "ExportVoucherOpenApiVO": {
-                "required": [
-                    "format",
-                    "type"
-                ],
+                "required": ["format", "type"],
                 "type": "object",
                 "properties": {
                     "format": {
@@ -3998,10 +3836,7 @@
                 }
             },
             "OpenApiQueryDataVO": {
-                "required": [
-                    "page",
-                    "pageSize"
-                ],
+                "required": ["page", "pageSize"],
                 "type": "object",
                 "properties": {
                     "page": {
@@ -5220,11 +5055,7 @@
                 }
             },
             "Operator Response": {
-                "required": [
-                    "name",
-                    "password",
-                    "selectedSites"
-                ],
+                "required": ["name", "password", "selectedSites"],
                 "type": "object",
                 "properties": {
                     "id": {
@@ -5708,11 +5539,7 @@
                 }
             },
             "ExportFormOpenApiVO": {
-                "required": [
-                    "format",
-                    "ids",
-                    "type"
-                ],
+                "required": ["format", "ids", "type"],
                 "type": "object",
                 "properties": {
                     "ids": {

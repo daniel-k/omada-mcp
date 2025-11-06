@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sites/{siteId}/networkReport/schedule": {
             "post": {
-                "tags": [
-                    "Network Report"
-                ],
+                "tags": ["Network Report"],
                 "summary": "Email Network Report Schedule",
                 "description": "Set the timing task configuration that send reports periodically.<br/><br/>The interface requires one of the permissions: <br/>Site Network Report Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.",
                 "operationId": "emailNetworkReportSchedule",
@@ -70,9 +68,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/networkReport/oneTime": {
             "post": {
-                "tags": [
-                    "Network Report"
-                ],
+                "tags": ["Network Report"],
                 "summary": "Email Network Report Later",
                 "description": "Set the timing task configuration that send reports laterly.<br/><br/>The interface requires one of the permissions: <br/>Site Network Report Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33004  -  Operation failed because other operations (site copying, restoring, template synchronizing, etc.) are being performed on this site. Please wait and try again later.",
                 "operationId": "emailNetworkReportLater",
@@ -122,9 +118,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/tabs": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get tab list",
                 "description": "Get tab list.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.",
                 "operationId": "listAllTabs",
@@ -162,9 +156,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Create new tab",
                 "description": "Create tab.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.<br/>-34702  -  This tab name already exists.<br/>-34703  -  The number of tabs has reached the limit.",
                 "operationId": "createTab",
@@ -214,9 +206,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/tabs/{tabId}": {
             "delete": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Delete an existing tab",
                 "description": "Delete an existing tab.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.<br/>-34705  -  Overall tab not allowed to be deleted.",
                 "operationId": "removeTab",
@@ -263,9 +253,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Modify an existing tab",
                 "description": "Modify an existing tab.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.<br/>-34701  -  This tab does not exist in the dashboard.<br/>-34702  -  This tab name already exists.<br/>-34704  -  Non-overall tabs do not allow editing system cards.",
                 "operationId": "updateTab",
@@ -324,9 +312,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/multi-tabs/config": {
             "patch": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Batch set tab config",
                 "description": "Batch set tab configurations, add or delete tabs.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.<br/>-34701  -  This tab does not exist in the dashboard.<br/>-34702  -  This tab name already exists.<br/>-34704  -  Non-overall tabs do not allow editing system cards.",
                 "operationId": "batchConfigTab",
@@ -376,9 +362,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/without-overall-tabs": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get tab without overall tab list",
                 "description": "Get tabs without Overall Tab.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-34700  -  The dashboard page does not exist in current site.",
                 "operationId": "listTabs",
@@ -418,9 +402,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/wifi-summary": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get wifi summary",
                 "description": "Get wifi summary.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getWifiSummary",
@@ -480,9 +462,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/vpn-tunnel-stats": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get grid dashboard tunnel statistic list",
                 "description": "Get the status, IP address, and other information of the established dashboard tunnel statistic VPN connection<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getGridDashboardTunnelStats",
@@ -532,9 +512,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/traffic-distribution": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get traffic distribution",
                 "description": "Obtain wired/wireless traffic distribution data within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getTrafficDistribution",
@@ -594,9 +572,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/traffic-activities": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get traffic activity",
                 "description": "Obtain AP and Switch traffic Activities within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getTrafficActivities",
@@ -656,9 +632,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/top-interference": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get top interference",
                 "description": "Obtain the 5 APs with the highest interference intensity in different frequency bands within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getInterference",
@@ -698,9 +672,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/top-device-memory-usage": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get top device memory usage",
                 "description": "Obtain the top 5 memory usage devices within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getTopMemoryUsageWithTimeRange",
@@ -760,9 +732,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/top-device-cpu-usage": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get top device cpu usage",
                 "description": "Obtain the top 5 CPU usage devices within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getTopCpuUsageWithTimeRange",
@@ -822,9 +792,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/switch-summary": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get switch summary",
                 "description": "Get switch summary<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getSwitchSummary",
@@ -884,9 +852,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/retry-dropped-rate": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get retried rate and dropped rate",
                 "description": "Get retried rate and dropped rate.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getRetryAndDroppedRate",
@@ -946,9 +912,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/poe-usage": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get poe usage",
                 "description": "Obtain the PoE usage of the switch within the time range<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getPoeUsage",
@@ -988,9 +952,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/overview-diagram": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get site overview diagram info",
                 "description": "Get site overview diagram info.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getOverview",
@@ -1030,9 +992,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/open-vpn-tunnel-stats": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get grid dashboard open vpn tunnel statistic list",
                 "description": "Obtain the status, traffic, and other information of the established open VPN connection<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getGridDashboardOpenVpnTunnelStats",
@@ -1082,9 +1042,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/most-active-switches": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get most active switch list",
                 "description": "Obtain the top 5 switches with the highest device traffic within the time range (in Bytes)<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getActiveSwitches",
@@ -1144,9 +1102,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/most-active-eaps": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get the most active eap list",
                 "description": "Obtain the top 5 APs with the highest device traffic within the time range (in Bytes)..<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getActiveAps",
@@ -1206,9 +1162,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/lpset-tunnel-stats": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get grid dashboard lpsec tunnel statistic list",
                 "description": "Obtain the status, IP address, and other information of the established IPsec VPN connection<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getGridDashboardIpsecTunnelStats",
@@ -1248,9 +1202,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/isp-load": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get isp load info",
                 "description": "Obtain IPS load data for the gateway within the time range.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getIspLoad",
@@ -1310,9 +1262,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/dashboard/channels": {
             "get": {
-                "tags": [
-                    "Dashboard"
-                ],
+                "tags": ["Dashboard"],
                 "summary": "Get channel distribution and usage",
                 "description": "Get channel distribution and usage.<br/><br/>The interface requires one of the permissions: <br/>Site Dashboard Manager View Only",
                 "operationId": "getChannels",
@@ -1354,17 +1304,7 @@
     "components": {
         "schemas": {
             "NetworkReportScheduleOpenApiVO": {
-                "required": [
-                    "cards",
-                    "emailList",
-                    "enable",
-                    "hour",
-                    "minute",
-                    "reportName",
-                    "reportType",
-                    "tab",
-                    "timingType"
-                ],
+                "required": ["cards", "emailList", "enable", "hour", "minute", "reportName", "reportType", "tab", "timingType"],
                 "type": "object",
                 "properties": {
                     "enable": {
@@ -1441,19 +1381,7 @@
                 }
             },
             "NetworkReportScheduleLaterOpenApiVO": {
-                "required": [
-                    "cards",
-                    "emailList",
-                    "enable",
-                    "end",
-                    "hour",
-                    "minute",
-                    "reportName",
-                    "reportType",
-                    "start",
-                    "tab",
-                    "time"
-                ],
+                "required": ["cards", "emailList", "enable", "end", "hour", "minute", "reportName", "reportType", "start", "tab", "time"],
                 "type": "object",
                 "properties": {
                     "enable": {

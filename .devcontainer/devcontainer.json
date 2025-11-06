@@ -1,32 +1,37 @@
 {
-  "name": "TP-Link Omada MCP",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "development",
-  "workspaceFolder": "/workspace",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-    "ghcr.io/jckimble/devcontainer-features/ngrok:3": {}
-  },
-  "remoteUser": "node",
-  "updateRemoteUserUID": true,
-  "forwardPorts": [
-    8043,
-    8088,
-    3000
-  ],
-  "postCreateCommand": "npm install",
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "typescript.tsdk": "/usr/local/share/nvm/versions/node/current/lib/node_modules/typescript/lib"
-      },
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "biomejs.biome",
-        "GitHub.copilot",
-        "ardisaurus.gitflow-actions-sidebar"
-      ]
+    "name": "TP-Link Omada MCP",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "development",
+    "workspaceFolder": "/workspace",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "remoteUser": "node",
+    "updateRemoteUserUID": true,
+    "forwardPorts": [
+        8043,
+        8088,
+        3000
+    ],
+    "postCreateCommand": "npm install -g npm && npm install",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "typescript.tsdk": "node_modules/typescript/lib",
+                "eslint.useFlatConfig": true,
+                "eslint.nodePath": "./node_modules",
+                "editor.formatOnPaste": false,
+                "editor.formatOnSave": true
+            },
+            "extensions": [
+                "42Crunch.vscode-openapi"
+            ]
+        },
+        "extensions": [
+            "dbaeumer.vscode-eslint",
+            "esbenp.prettier-vscode",
+            "biomejs.biome",
+            "ardisaurus.gitflow-actions-sidebar"
+        ]
     }
-  }
 }
