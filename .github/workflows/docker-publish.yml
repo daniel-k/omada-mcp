@@ -3,7 +3,7 @@ name: Publish Docker Images
 on:
   push:
     tags:
-      - '*'
+      - "*"
   workflow_dispatch:
 
 env:
@@ -11,6 +11,7 @@ env:
 
 jobs:
   build-and-push:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,28 +37,19 @@ jobs:
 
           if [[ "${ref}" == refs/tags/* ]]; then
             ref_name="${ref#refs/tags/}"
-            cli_tags=$(printf "%s\n%s" \
-              "${REGISTRY}/${owner_lower}/tplink-omada-mcp-cli:latest" \
-              "${REGISTRY}/${owner_lower}/tplink-omada-mcp-cli:${ref_name}")
-            http_tags=$(printf "%s\n%s" \
-              "${REGISTRY}/${owner_lower}/tplink-omada-mcp-http:latest" \
-              "${REGISTRY}/${owner_lower}/tplink-omada-mcp-http:${ref_name}")
+            tags=$(printf "%s\n%s" \
+              "${REGISTRY}/${owner_lower}/tplink-omada-mcp:latest" \
+              "${REGISTRY}/${owner_lower}/tplink-omada-mcp:${ref_name}")
           else
             ref_name="${GITHUB_HEAD_REF:-${ref#refs/heads/}}"
             sanitized=$(echo "${ref_name}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9._-]/-/g')
-            cli_tags="${REGISTRY}/${owner_lower}/tplink-omada-mcp-cli:${sanitized}"
-            http_tags="${REGISTRY}/${owner_lower}/tplink-omada-mcp-http:${sanitized}"
+            tags="${REGISTRY}/${owner_lower}/tplink-omada-mcp:${sanitized}"
           fi
 
           echo "owner_lower=${owner_lower}" >> "${GITHUB_OUTPUT}"
           {
-            echo "cli_tags<<EOF"
-            echo "${cli_tags}"
-            echo "EOF"
-          } >> "${GITHUB_OUTPUT}"
-          {
-            echo "http_tags<<EOF"
-            echo "${http_tags}"
+            echo "tags<<EOF"
+            echo "${tags}"
             echo "EOF"
           } >> "${GITHUB_OUTPUT}"
 
@@ -68,20 +60,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push CLI image
+      - name: Build and push image
         uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.meta.outputs.cli_tags }}
-
-      - name: Build and push HTTP image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: Dockerfile.http
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.meta.outputs.http_tags }}
+          tags: ${{ steps.meta.outputs.tags }}

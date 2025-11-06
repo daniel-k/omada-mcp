@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/ports/{port}/status": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Set port status for given switch template port",
                 "description": "Set port status for given switch template port. <br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-39738  -  Cannot choose mirroring or aggregating port to modify status.<br/>-44402  -  Device template does not exist.",
                 "operationId": "setPortModeForGivenPort",
@@ -88,9 +86,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/ports/{port}/profile": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Set profile for given switch template port",
                 "description": "Set profile for given switch template port.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-44402  -  Device template does not exist.",
                 "operationId": "setProfileForGivenPort",
@@ -158,9 +154,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/ports/{port}/profile-override": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Set profile-override for given switch template port",
                 "description": "Set profile-override for given switch template port.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-44402  -  Device template does not exist.",
                 "operationId": "setProfileOverrideForGivenPort",
@@ -228,9 +222,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/ports/{port}/poe-mode": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Set poe mode for given switch template port",
                 "description": "Set poe mode for given switch template port. Please enable profile override first to use this interface.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-39737  -  Profile override setting is disabled.<br/>-44402  -  Device template does not exist.",
                 "operationId": "setPoeModeForGivenPort",
@@ -289,9 +281,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/ports/{port}/name": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Set name for given switch template port",
                 "description": "Set name for given switch template port.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-44402  -  Device template does not exist.",
                 "operationId": "setNameForGivenPort",
@@ -359,9 +349,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/multi-ports/status": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Batch set status for given switch template ports",
                 "description": "Batch set status for given switch template ports. <br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-39723  -  Cannot choose mirroring or aggregating ports to batch modify.<br/>-44402  -  Device template does not exist.",
                 "operationId": "batchSetPortStatusForGivenPorts",
@@ -420,9 +408,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/multi-ports/profile-override": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Batch set profile-override for given switch template ports",
                 "description": "Batch set profile-override for given switch template ports.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-44402  -  Device template does not exist.",
                 "operationId": "batchSetProfileOverrideForGivenPorts",
@@ -481,9 +467,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/multi-ports/poe-mode": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Batch set poe mode for given switch template ports",
                 "description": "Batch set poe mode for given switch template ports. Please enable profile override first to use this interface.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-39737  -  Profile override setting is disabled.<br/>-44402  -  Device template does not exist.",
                 "operationId": "batchSetPoeModeForGivenPorts",
@@ -542,9 +526,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}/multi-ports/name": {
             "put": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Batch set name for given switch template ports",
                 "description": "Batch set name for given switch template ports.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39701  -  This port does not exist<br/>-44402  -  Device template does not exist.",
                 "operationId": "batchSetNameForGivenPorts",
@@ -603,9 +585,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/config/wlans": {
             "put": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Modify gateway template wlans config",
                 "description": "Modify gateway template wlans config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-33221  -  The SSID to be edited does not exist.<br/>-33222  -  The SSID should contain 1-32 characters.<br/>-33223  -  The security key can only contain 8-63 printable ASCII characters or 8-63 hexadecimal digits.<br/>-33231  -  The ssid' s name should not be the same with emergency ssid.<br/>-39306  -  This WLAN group does not exist.<br/>-39307  -  Failed to add this AP to the WLAN group because this AP is not in the site of the WLAN group.<br/>-39501  -  This gateway does not exist.<br/>-44434  -  The device template does not contain this configuration option and can not be modified.",
                 "operationId": "modifyConfigWlansTemplate",
@@ -655,9 +635,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/config/services": {
             "put": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Modify gateway template services config",
                 "description": "Modify gateway template services config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.<br/>-44434  -  The device template does not contain this configuration option and can not be modified.",
                 "operationId": "modifyConfigServicesTemplate",
@@ -707,9 +685,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/config/radios": {
             "put": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Modify gateway template radios config",
                 "description": "Modify gateway template radios config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.<br/>-44434  -  The device template does not contain this configuration option and can not be modified.",
                 "operationId": "modifyConfigRadiosTemplate",
@@ -759,9 +735,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/config/advanced": {
             "put": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Modify gateway template advanced config",
                 "description": "Modify gateway template advanced config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.<br/>-44434  -  The device template does not contain this configuration option and can not be modified.",
                 "operationId": "modifyConfigAdvancedTemplate",
@@ -811,9 +785,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/ports/{port}/config": {
             "patch": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Modify gateway template port config",
                 "description": "Modify gateway template port config<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.<br/>-39507  -  Gateway mirroring port reaches max limit.<br/>-39706  -  Please choose at least one port or LAG to be mirrored.<br/>-39718  -  Mirrored ports contain invalid port.",
                 "operationId": "modifyPortConfig",
@@ -872,9 +844,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/switchtemplates/{deviceTemplateId}": {
             "get": {
-                "tags": [
-                    "Switch (Template)"
-                ],
+                "tags": ["Switch (Template)"],
                 "summary": "Get switch template info",
                 "description": "Get switch template info.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44402  -  Device template does not exist.",
                 "operationId": "getSwitchTemplateInfo",
@@ -923,9 +893,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}": {
             "get": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Get gateway template info",
                 "description": "Get gateway template info<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.<br/>-39507  -  Gateway mirroring port reaches max limit.<br/>-39706  -  Please choose at least one port or LAG to be mirrored.<br/>-39718  -  Mirrored ports contain invalid port.",
                 "operationId": "getGatewayInfo",
@@ -965,9 +933,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/gatewaytemplates/{deviceTemplateId}/ports/config": {
             "get": {
-                "tags": [
-                    "Gateway"
-                ],
+                "tags": ["Gateway"],
                 "summary": "Get gateway template port info",
                 "description": "Get gateway template port info<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-39501  -  This gateway does not exist.",
                 "operationId": "getPortsTemplate",
@@ -1009,9 +975,7 @@
     "components": {
         "schemas": {
             "SwitchPortStatus": {
-                "required": [
-                    "status"
-                ],
+                "required": ["status"],
                 "type": "object",
                 "properties": {
                     "status": {
@@ -1034,9 +998,7 @@
                 }
             },
             "SwitchProfileID": {
-                "required": [
-                    "profileId"
-                ],
+                "required": ["profileId"],
                 "type": "object",
                 "properties": {
                     "profileId": {
@@ -1046,9 +1008,7 @@
                 }
             },
             "ProfileOverride": {
-                "required": [
-                    "profileOverrideEnable"
-                ],
+                "required": ["profileOverrideEnable"],
                 "type": "object",
                 "properties": {
                     "profileOverrideEnable": {
@@ -1058,9 +1018,7 @@
                 }
             },
             "SwitchPortPoe": {
-                "required": [
-                    "poeMode"
-                ],
+                "required": ["poeMode"],
                 "type": "object",
                 "properties": {
                     "poeMode": {
@@ -1071,9 +1029,7 @@
                 }
             },
             "SwitchPortName": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -1084,10 +1040,7 @@
                 }
             },
             "SwitchPortsStatus": {
-                "required": [
-                    "portList",
-                    "status"
-                ],
+                "required": ["portList", "status"],
                 "type": "object",
                 "properties": {
                     "portList": {
@@ -1111,10 +1064,7 @@
                 }
             },
             "BatchProfileOverride": {
-                "required": [
-                    "portList",
-                    "profileOverrideEnable"
-                ],
+                "required": ["portList", "profileOverrideEnable"],
                 "type": "object",
                 "properties": {
                     "portList": {
@@ -1137,10 +1087,7 @@
                 }
             },
             "SwitchPortsPoe": {
-                "required": [
-                    "poeMode",
-                    "portList"
-                ],
+                "required": ["poeMode", "portList"],
                 "type": "object",
                 "properties": {
                     "portList": {
@@ -1164,9 +1111,7 @@
                 }
             },
             "PortNameList": {
-                "required": [
-                    "portNameList"
-                ],
+                "required": ["portNameList"],
                 "type": "object",
                 "properties": {
                     "portNameList": {
@@ -1181,10 +1126,7 @@
                 }
             },
             "SwitchMultiPortName": {
-                "required": [
-                    "name",
-                    "port"
-                ],
+                "required": ["name", "port"],
                 "type": "object",
                 "properties": {
                     "port": {
@@ -1201,9 +1143,7 @@
                 "description": "Port name list"
             },
             "OsgConfigWlansOpenApiVO": {
-                "required": [
-                    "ssidOverrides"
-                ],
+                "required": ["ssidOverrides"],
                 "type": "object",
                 "properties": {
                     "wlanId": {
@@ -1225,16 +1165,7 @@
                 }
             },
             "OsgSsidOverrideOpenApiVO": {
-                "required": [
-                    "enable",
-                    "globalSsid",
-                    "hidePwd",
-                    "index",
-                    "security",
-                    "ssid",
-                    "ssidEnable",
-                    "vlanEnable"
-                ],
+                "required": ["enable", "globalSsid", "hidePwd", "index", "security", "ssid", "ssidEnable", "vlanEnable"],
                 "type": "object",
                 "properties": {
                     "index": {
@@ -1666,16 +1597,7 @@
                 }
             },
             "PortInfo": {
-                "required": [
-                    "lagPort",
-                    "name",
-                    "poeMode",
-                    "port",
-                    "profileId",
-                    "profileName",
-                    "profileOverrideEnable",
-                    "status"
-                ],
+                "required": ["lagPort", "name", "poeMode", "port", "profileId", "profileName", "profileOverrideEnable", "status"],
                 "type": "object",
                 "properties": {
                     "port": {
@@ -1742,9 +1664,7 @@
                 }
             },
             "GatewayPortConfig": {
-                "required": [
-                    "port"
-                ],
+                "required": ["port"],
                 "type": "object",
                 "properties": {
                     "port": {

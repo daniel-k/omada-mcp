@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/site/reset/log-notification": {
             "post": {
-                "tags": [
-                    "Log(Template)"
-                ],
+                "tags": ["Log(Template)"],
                 "summary": "Reset site template log notification",
                 "description": "Reset site template log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "resetLogSettingSiteTemplate",
@@ -60,9 +58,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/site/reset/log-notification": {
             "post": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Reset site log notification",
                 "description": "Reset site log notification.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "resetLogSettingSite",
@@ -102,9 +98,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/logs/alerts/resolve": {
             "post": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Resolve site alert log",
                 "description": "Resolve site alert log.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "resolveAlertForSite",
@@ -154,9 +148,7 @@
         },
         "/openapi/v1/{omadacId}/reset/log-notification": {
             "post": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Reset global log notification",
                 "description": "Reset global log notification.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager Modify",
                 "operationId": "resetLogSettingGlobal",
@@ -187,9 +179,7 @@
         },
         "/openapi/v1/{omadacId}/logs/export": {
             "post": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Export log list in global view",
                 "description": "Export log list in global view.<br/><br/>The interface requires one of the permissions: <br/>Global Export Data Access",
                 "operationId": "exportLogListForGlobal",
@@ -230,9 +220,7 @@
         },
         "/openapi/v1/{omadacId}/logs/audit/export": {
             "post": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Export audit log list in global view",
                 "description": "Export audit log list in global view.<br/><br/>The interface requires one of the permissions: <br/>Global Export Data Access",
                 "operationId": "exportAuditLogListForGlobal",
@@ -273,9 +261,7 @@
         },
         "/openapi/v2/{omadacId}/sites/{siteId}/site/log-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site log notification",
                 "description": "Get site log notification.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getLogSettingForSiteV2",
@@ -313,9 +299,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify site log notification",
                 "description": "Modify site log notification.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "modifyLogSettingSiteV2",
@@ -365,9 +349,7 @@
         },
         "/openapi/v2/{omadacId}/log-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global log notification",
                 "description": "Get global log notification.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getLogSettingForGlobalV2",
@@ -396,9 +378,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify global log notification",
                 "description": "Modify global log notification.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager Modify",
                 "operationId": "modifyLogSettingGlobalV2",
@@ -439,9 +419,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/site/log-notification": {
             "get": {
-                "tags": [
-                    "Log(Template)"
-                ],
+                "tags": ["Log(Template)"],
                 "summary": "Get site template log notification",
                 "description": "Get site template log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getLogSettingForSiteTemplate",
@@ -479,9 +457,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log(Template)"
-                ],
+                "tags": ["Log(Template)"],
                 "summary": "Modify site template log notification",
                 "description": "Modify site template log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "modifyLogSettingSiteTemplate",
@@ -531,9 +507,7 @@
         },
         "/openapi/v1/{omadacId}/sitetemplates/{siteTemplateId}/site/audit-notification": {
             "get": {
-                "tags": [
-                    "Log (Template)"
-                ],
+                "tags": ["Log (Template)"],
                 "summary": "Get site template audit log notification",
                 "description": "Get site template audit log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager View Only",
                 "operationId": "getAuditLogSettingForMsp",
@@ -571,9 +545,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log (Template)"
-                ],
+                "tags": ["Log (Template)"],
                 "summary": "Modify site template audit log notification",
                 "description": "Modify site template audit log notification.This interface applies to the Omada Pro Controller only. Please do not use it for non-Pro controllers.<br/><br/>The interface requires one of the permissions: <br/>Global Site Template Manager Modify",
                 "operationId": "modifyAuditLogSettingSite",
@@ -623,9 +595,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/site/log-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site log notification",
                 "description": "Get site log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getLogSettingForSite",
@@ -664,9 +634,7 @@
                 "deprecated": true
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify site log notification",
                 "description": "Modify site log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "modifyLogSettingSite",
@@ -717,9 +685,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/site/audit-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site audit log notification",
                 "description": "Get site audit log notification.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getAuditLogSettingForMsp_1",
@@ -757,9 +723,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify site audit log notification",
                 "description": "Modify site audit log notification.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "modifyAuditLogSettingSite_1",
@@ -809,9 +773,7 @@
         },
         "/openapi/v1/{omadacId}/log-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global log notification",
                 "description": "Get global log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getLogSettingForGlobal",
@@ -841,9 +803,7 @@
                 "deprecated": true
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify global log notification",
                 "description": "Modify global log notification.This interface has been deprecated.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager Modify",
                 "operationId": "modifyLogSettingGlobal",
@@ -885,9 +845,7 @@
         },
         "/openapi/v1/{omadacId}/audit-notification": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global audit log notification",
                 "description": "Get global audit log notification.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getAuditLogSettingForGlobal",
@@ -916,9 +874,7 @@
                 }
             },
             "patch": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Modify global audit log notification",
                 "description": "Modify global audit log notification.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager Modify",
                 "operationId": "modifyAuditLogSettingGlobal",
@@ -959,9 +915,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/logs/events": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site event log list",
                 "description": "Get logs in site event log page.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getEventLogsForSite",
@@ -1050,9 +1004,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/logs/alerts": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site alert log list",
                 "description": "Get logs in site alert log page.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getAlertLogsForSite",
@@ -1150,9 +1102,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/audit-logs": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get site audit log list",
                 "description": "Get audit logs in site audit page.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager View Only",
                 "operationId": "getAuditLogsForSite",
@@ -1267,9 +1217,7 @@
         },
         "/openapi/v1/{omadacId}/logs/events": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global event log list",
                 "description": "Get logs in global event log page.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getEventLogsForGlobal",
@@ -1349,9 +1297,7 @@
         },
         "/openapi/v1/{omadacId}/logs/alerts": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global alert log list",
                 "description": "Get logs in global alert log page.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getAlertLogsForGlobal",
@@ -1440,9 +1386,7 @@
         },
         "/openapi/v1/{omadacId}/audit-logs": {
             "get": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Get global audit log list",
                 "description": "Get audit logs in global audit page.<br/><br/>The interface requires one of the permissions: <br/>Global Log & Audit Log Manager View Only",
                 "operationId": "getAuditLogsForGlobal",
@@ -1548,9 +1492,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/logs/events/delete": {
             "delete": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Delete site event log",
                 "description": "Delete site event log.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "deleteEventLogsForSite",
@@ -1600,9 +1542,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/logs/alerts/delete": {
             "delete": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Delete site alert log",
                 "description": "Delete site alert log.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "deleteAlertLogsForSite",
@@ -1652,9 +1592,7 @@
         },
         "/openapi/v1/{omadacId}/logs/events/delete": {
             "delete": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Delete global event log",
                 "description": "Delete global event log.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "deleteEventLogsForGlobal",
@@ -1695,9 +1633,7 @@
         },
         "/openapi/v1/{omadacId}/logs/alerts/delete": {
             "delete": {
-                "tags": [
-                    "Log"
-                ],
+                "tags": ["Log"],
                 "summary": "Delete global alert log",
                 "description": "Delete global alert log.<br/><br/>The interface requires one of the permissions: <br/>Site Log & Audit Log Manager Modify",
                 "operationId": "deleteAlertLogsForGlobal",
@@ -1752,11 +1688,7 @@
                 }
             },
             "ResolveSiteLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -1788,10 +1720,7 @@
                 }
             },
             "ExportLogOpenApiVO": {
-                "required": [
-                    "format",
-                    "siteIds"
-                ],
+                "required": ["format", "siteIds"],
                 "type": "object",
                 "properties": {
                     "siteIds": {
@@ -1847,11 +1776,7 @@
                 "description": "Log Event Email (This config applies to the log site view)"
             },
             "LogNotificationEditOpenApiV2VO": {
-                "required": [
-                    "email",
-                    "enable",
-                    "key"
-                ],
+                "required": ["email", "enable", "key"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -1906,9 +1831,7 @@
                 }
             },
             "WebhookConfigEditOpenApiVO": {
-                "required": [
-                    "webhookEnable"
-                ],
+                "required": ["webhookEnable"],
                 "type": "object",
                 "properties": {
                     "webhookEnable": {
@@ -1924,12 +1847,7 @@
                 "description": "Log Notification Webhook Config (This config applies to the Omada Pro Controller only)"
             },
             "LogNotificationEditOpenApiVO": {
-                "required": [
-                    "alert",
-                    "email",
-                    "event",
-                    "key"
-                ],
+                "required": ["alert", "email", "event", "key"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -1961,9 +1879,7 @@
                 "description": "Log Notification List"
             },
             "LogNotificationSettingEditOpenApiVO": {
-                "required": [
-                    "logNotifications"
-                ],
+                "required": ["logNotifications"],
                 "type": "object",
                 "properties": {
                     "webhookConfig": {
@@ -1982,10 +1898,7 @@
                 }
             },
             "AuditLogNotificationEditOpenApiVO": {
-                "required": [
-                    "key",
-                    "webhook"
-                ],
+                "required": ["key", "webhook"],
                 "type": "object",
                 "properties": {
                     "key": {
@@ -2002,10 +1915,7 @@
                 "description": "Audit Log Notification List"
             },
             "AuditLogNotificationSettingEditOpenApiVO": {
-                "required": [
-                    "auditLogNotifications",
-                    "webhookConfig"
-                ],
+                "required": ["auditLogNotifications", "webhookConfig"],
                 "type": "object",
                 "properties": {
                     "webhookConfig": {
@@ -2465,11 +2375,7 @@
                 }
             },
             "DeleteSiteEventLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -2501,11 +2407,7 @@
                 }
             },
             "DeleteSiteAlertLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -2537,11 +2439,7 @@
                 }
             },
             "DeleteGlobalEventLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {
@@ -2573,11 +2471,7 @@
                 }
             },
             "DeleteGlobalAlertLogListOpenApiVO": {
-                "required": [
-                    "endTime",
-                    "selectType",
-                    "startTime"
-                ],
+                "required": ["endTime", "selectType", "startTime"],
                 "type": "object",
                 "properties": {
                     "logs": {

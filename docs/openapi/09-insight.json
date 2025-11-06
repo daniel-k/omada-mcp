@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/wids/blacklist/{mac}": {
             "put": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Remove the specified Device MAC from the blacklist of the reported device",
                 "description": "Remove the specified Device MAC from the blacklist of the reported device<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "removeWipsBlackList",
@@ -79,9 +77,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/ips/threat": {
             "post": {
-                "tags": [
-                    "Threat Management"
-                ],
+                "tags": ["Threat Management"],
                 "summary": "Delete archived ips threat",
                 "description": "Delete archived ips threat.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager Modify<br/>Global Threat Manager Modify",
                 "operationId": "deleteThreatList",
@@ -131,9 +127,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/ips/threat/multi-ops": {
             "post": {
-                "tags": [
-                    "Threat Management"
-                ],
+                "tags": ["Threat Management"],
                 "summary": "Block/Isolate Device/Signature Suppression/Allow ips threat",
                 "description": "Block/Isolate Device/Signature Suppression/Allow ips threat.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager Modify<br/>Global Threat Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-35202  -  The number of allow list entries has reached the limit.<br/>-35203  -  The number of block list entries has reached the limit.<br/>-35204  -  The number of signature suppression entries has reached the limit.",
                 "operationId": "operateThreats",
@@ -183,9 +177,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/cmd/vpn/stats/tunnel/terminate": {
             "post": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Terminating vpn tunnel",
                 "description": "Terminating vpn tunnel<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "terminateVpnTunnel",
@@ -235,9 +227,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/cmd/rogueaps/scan": {
             "post": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Scan Rogue APs",
                 "description": "Scan Rogue APs<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "scanRogueAps",
@@ -277,9 +267,7 @@
         },
         "/openapi/v1/{omadacId}/files/neighbors": {
             "post": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Export global Rogue AP scan results",
                 "description": "Export global Rogue AP scan results<br/><br/>The interface requires one of the permissions: <br/>Global Export Data Access<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "exportRogueApsGlobal",
@@ -320,9 +308,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/setting/vpn/stats/tunnel": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Query the vpnStats tunnel list",
                 "description": "Query the vpnStats tunnel list<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridVpnTunnel",
@@ -382,9 +368,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/setting/vpn/stats/ipsec": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Query the vpnStats ipsec list",
                 "description": "Query the vpnStats ipsec list<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridVpnIpSec",
@@ -444,9 +428,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/ips/threat/{threatId}": {
             "get": {
-                "tags": [
-                    "Threat Management"
-                ],
+                "tags": ["Threat Management"],
                 "summary": "Get threat entry detail",
                 "description": "Get threat entry detail.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/>Global Threat Manager View Only",
                 "operationId": "getThreatDetail",
@@ -505,9 +487,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/ips/grid/threat-management": {
             "get": {
-                "tags": [
-                    "Threat Management"
-                ],
+                "tags": ["Threat Management"],
                 "summary": "Get grid threat list",
                 "description": "Get grid threat list.<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/>Global Threat Manager View Only",
                 "operationId": "getThreatList",
@@ -624,9 +604,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/wids": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Query the Wireless IDS entry list",
                 "description": "Query the Wireless IDS entry list<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridWidsData",
@@ -686,9 +664,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/wids/blacklist": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Get the dynamic blacklist entry data of Wireless IDS",
                 "description": "Get the dynamic blacklist entry data of Wireless IDS<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridWipsBlackList",
@@ -748,9 +724,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/routing/{type}": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Get the routing table data interface",
                 "description": "Get the routing table data interface<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridRouting",
@@ -819,9 +793,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/rogueaps": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Query the Rogue AP scan results",
                 "description": "Query the Rogue AP scan results<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getGridRogueAps",
@@ -881,9 +853,7 @@
         },
         "/openapi/v1/{omadacId}/sites/{siteId}/insight/port-forwarding/{type}": {
             "get": {
-                "tags": [
-                    "Insight"
-                ],
+                "tags": ["Insight"],
                 "summary": "Get Port Forwarding Status",
                 "description": "Get Port Forwarding Status<br/><br/>The interface requires one of the permissions: <br/>Site Insight Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1001  -  Invalid request parameters.",
                 "operationId": "getPortForwardStatus",
@@ -987,10 +957,7 @@
                 }
             },
             "Ips operate threatId and time": {
-                "required": [
-                    "id",
-                    "time"
-                ],
+                "required": ["id", "time"],
                 "type": "object",
                 "properties": {
                     "time": {
@@ -1021,9 +988,7 @@
                 }
             },
             "Ips Operate Threat": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "threatId": {
@@ -1050,9 +1015,7 @@
                 }
             },
             "SignatureSuppression": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "type": {

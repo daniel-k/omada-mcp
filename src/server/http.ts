@@ -3,18 +3,17 @@ import http from 'node:http';
 import type { IncomingMessage, IncomingHttpHeaders, ServerResponse } from 'node:http';
 
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
+import ngrok from '@ngrok/ngrok';
 
-import { loadConfigFromEnv } from './config.js';
-import { OmadaClient } from './omadaClient.js';
-import { createServer as createMcpServer } from './server.js';
-import { logger } from './utils/logger.js';
+import type { OmadaClient } from '../omadaClient/index.js';
+import { logger } from '../utils/logger.js';
+
+import { createServer } from './common.js';
 
 const DEFAULT_PORT = 3000;
 const DEFAULT_HOST = '0.0.0.0';
 const DEFAULT_PATH = '/mcp';
 const HEALTH_PATH = '/healthz';
-const TRUE_STRINGS = ['1', 'true', 'yes', 'y', 'on'];
-const FALSE_STRINGS = ['0', 'false', 'no', 'n', 'off'];
 
 type ShutdownHandler = () => Promise<void>;
 
@@ -46,40 +45,6 @@ function normalizePath(path: string): string {
     return startsWithSlash;
 }
 
-function parseList(value: string | undefined): string[] | undefined {
-    if (!value) {
-        return undefined;
-    }
-
-    const items = value
-        .split(',')
-        .map((entry) => entry.trim())
-        .filter((entry) => entry.length > 0);
-
-    return items.length > 0 ? items : undefined;
-}
-
-function parseBoolean(value: string | undefined): boolean | undefined {
-    if (value === undefined) {
-        return undefined;
-    }
-
-    const normalized = value.trim().toLowerCase();
-    if (normalized.length === 0) {
-        return undefined;
-    }
-
-    if (TRUE_STRINGS.includes(normalized)) {
-        return true;
-    }
-
-    if (FALSE_STRINGS.includes(normalized)) {
-        return false;
-    }
-
-    return undefined;
-}
-
 function getRequestUrl(req: IncomingMessage, fallbackPort: number): URL | undefined {
     if (!req.url) {
         return undefined;
@@ -97,7 +62,7 @@ function sendJson(res: ServerResponse, statusCode: number, body: unknown): void 
     const payload = JSON.stringify(body);
     res.writeHead(statusCode, {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload)
+        'Content-Length': Buffer.byteLength(payload),
     });
     res.end(payload);
 }
@@ -184,11 +149,7 @@ function maskValue(value: unknown): unknown {
     return '********';
 }
 
-async function createShutdownHandler(
-    signal: NodeJS.Signals,
-    closeHttp: () => Promise<void>,
-    closeServer: () => Promise<void>
-): Promise<void> {
+async function createShutdownHandler(signal: NodeJS.Signals, closeHttp: () => Promise<void>, closeServer: () => Promise<void>): Promise<void> {
     logger.warn('Received shutdown signal', { signal });
 
     try {
@@ -204,34 +165,14 @@ async function createShutdownHandler(
     }
 }
 
-async function main(): Promise<void> {
-    const config = loadConfigFromEnv();
-    logger.info('Loaded Omada configuration', {
-        baseUrl: config.baseUrl,
-        omadacId: config.omadacId,
-        siteId: config.siteId ?? null,
-        strictSsl: config.strictSsl,
-        requestTimeout: config.requestTimeout ?? null,
-        proxyConfigured: Boolean(config.proxyUrl)
-    });
-    const client = new OmadaClient(config);
-    const mcpServer = createMcpServer(client);
+export async function startHttpServer(client: OmadaClient, config: import('../config.js').EnvironmentConfig): Promise<void> {
+    logger.info('Starting HTTP server');
+    const mcpServer = createServer(client);
 
-    const allowedHosts = parseList(process.env.MCP_HTTP_ALLOWED_HOSTS);
-    const allowedOrigins = parseList(process.env.MCP_HTTP_ALLOWED_ORIGINS);
-    const enableDnsRebindingProtection =
-        parseBoolean(process.env.MCP_HTTP_ENABLE_DNS_PROTECTION) ??
-        Boolean((allowedHosts?.length ?? 0) > 0 || (allowedOrigins?.length ?? 0) > 0);
+    const allowedHosts = config.httpAllowedHosts;
+    const allowedOrigins = config.httpAllowedOrigins;
 
-    const rawStateful = process.env.MCP_HTTP_STATEFUL;
-    const parsedStateful = parseBoolean(rawStateful);
-    if (rawStateful !== undefined && parsedStateful === undefined) {
-        logger.warn('Invalid MCP_HTTP_STATEFUL value provided; defaulting to stateful mode', {
-            provided: rawStateful
-        });
-    }
-
-    const enableStatefulSessions = parsedStateful ?? true;
+    const enableStatefulSessions = config.stateful;
     const sessionIdGenerator = enableStatefulSessions ? () => randomUUID() : undefined;
 
     if (!enableStatefulSessions) {
@@ -242,107 +183,113 @@ async function main(): Promise<void> {
         sessionIdGenerator,
         allowedHosts,
         allowedOrigins,
-        enableDnsRebindingProtection
     });
 
-    transport.onerror = (error) => {
+    transport.onerror = (error: Error) => {
         logger.error('Streamable HTTP transport error', { error });
     };
 
     await mcpServer.connect(transport);
 
-    const port = resolvePort(process.env.MCP_HTTP_PORT ?? process.env.PORT, DEFAULT_PORT);
-    const host = process.env.MCP_HTTP_HOST ?? process.env.HOST ?? DEFAULT_HOST;
-    const endpointPath = normalizePath(process.env.MCP_HTTP_PATH ?? DEFAULT_PATH);
+    const port = resolvePort(config.httpPort?.toString(), DEFAULT_PORT);
+    const host = config.httpHost ?? DEFAULT_HOST;
+    const endpointPath = normalizePath(config.httpPath ?? DEFAULT_PATH);
 
-    const httpServer = http.createServer(async (req, res) => {
-        const url = getRequestUrl(req, port);
-        if (!url) {
-            logger.warn('HTTP request rejected', { reason: 'invalid-url', method: req.method, url: req.url });
-            sendJson(res, 400, { error: 'Invalid request URL.' });
-            return;
-        }
 
-        logger.debug('HTTP request headers', {
-            method: req.method,
-            path: url.pathname,
-            headers: sanitizeHeaders(req.headers)
-        });
-
-        const bodyChunks: Buffer[] = [];
-        const shouldCaptureBody = (req.method ?? 'GET').toUpperCase() !== 'GET';
-        if (shouldCaptureBody) {
-            req.on('data', (chunk) => {
-                const bufferChunk = typeof chunk === 'string' ? Buffer.from(chunk, 'utf8') : chunk;
-                bodyChunks.push(bufferChunk);
-            });
-        }
-
-        logger.info('HTTP request received', {
-            method: req.method,
-            path: url.pathname,
-            query: url.search,
-            sessionId: req.headers['mcp-session-id'] ?? undefined
-        });
-
-        if (url.pathname === HEALTH_PATH) {
-            logger.debug('Health check request served');
-            sendJson(res, 200, { status: 'ok' });
-            return;
-        }
-
-        if (url.pathname !== endpointPath) {
-            logger.warn('HTTP request rejected', {
-                reason: 'unexpected-path',
-                expected: endpointPath,
-                received: url.pathname
-            });
-            sendJson(res, 404, { error: 'Not Found' });
-            return;
-        }
-
-        try {
-            await transport.handleRequest(req, res);
-            if (!res.headersSent) {
-                logger.debug('Transport completed without sending response headers');
-            }
-            logger.info('MCP request handled successfully', {
-                path: url.pathname,
-                method: req.method
-            });
-
-            if (shouldCaptureBody) {
-                const rawBody = bodyChunks.length > 0 ? Buffer.concat(bodyChunks).toString('utf8') : '';
-                let parsedBody: unknown = rawBody;
-                if (rawBody.length === 0) {
-                    parsedBody = null;
-                } else {
-                    try {
-                        parsedBody = JSON.parse(rawBody);
-                    } catch {
-                        parsedBody = rawBody;
-                    }
-                }
-
-                logger.debug('HTTP request body', {
+    const httpServer = http.createServer((req, res) => {
+        void (async () => {
+            const url = getRequestUrl(req, port);
+            if (!url) {
+                logger.warn('HTTP request rejected', {
+                    reason: 'invalid-url',
                     method: req.method,
+                    url: req.url,
+                });
+                sendJson(res, 400, { error: 'Invalid request URL.' });
+                return;
+            }
+
+            logger.debug('HTTP request headers', {
+                method: req.method,
+                path: url.pathname,
+                headers: sanitizeHeaders(req.headers),
+            });
+
+            const bodyChunks: Buffer[] = [];
+            const shouldCaptureBody = (req.method ?? 'GET').toUpperCase() !== 'GET';
+            if (shouldCaptureBody) {
+                req.on('data', (chunk) => {
+                    const bufferChunk = typeof chunk === 'string' ? Buffer.from(chunk, 'utf8') : chunk;
+                    bodyChunks.push(bufferChunk);
+                });
+            }
+
+            logger.info('HTTP request received', {
+                method: req.method,
+                path: url.pathname,
+                query: url.search,
+                sessionId: req.headers['mcp-session-id'] ?? undefined,
+            });
+
+            if (url.pathname === HEALTH_PATH) {
+                logger.debug('Health check request served');
+                sendJson(res, 200, { status: 'ok' });
+                return;
+            }
+
+            if (url.pathname !== endpointPath) {
+                logger.warn('HTTP request rejected', {
+                    reason: 'unexpected-path',
+                    expected: endpointPath,
+                    received: url.pathname,
+                });
+                sendJson(res, 404, { error: 'Not Found' });
+                return;
+            }
+
+            try {
+                await transport.handleRequest(req, res);
+                if (!res.headersSent) {
+                    logger.debug('Transport completed without sending response headers');
+                }
+                logger.info('MCP request handled successfully', {
                     path: url.pathname,
-                    length: rawBody.length,
-                    body: sanitizePayload(parsedBody)
+                    method: req.method,
                 });
+
+                if (shouldCaptureBody) {
+                    const rawBody = bodyChunks.length > 0 ? Buffer.concat(bodyChunks).toString('utf8') : '';
+                    let parsedBody: unknown = rawBody;
+                    if (rawBody.length === 0) {
+                        parsedBody = null;
+                    } else {
+                        try {
+                            parsedBody = JSON.parse(rawBody);
+                        } catch {
+                            parsedBody = rawBody;
+                        }
+                    }
+
+                    logger.debug('HTTP request body', {
+                        method: req.method,
+                        path: url.pathname,
+                        length: rawBody.length,
+                        body: sanitizePayload(parsedBody),
+                    });
+                }
+            } catch (error) {
+                logger.error('Failed to handle MCP HTTP request', { error });
+                if (!res.headersSent) {
+                    sendJson(res, 500, {
+                        jsonrpc: '2.0',
+                        error: { code: -32000, message: 'Internal server error' },
+                        id: null,
+                    });
+                } else {
+                    res.end();
+                }
             }
-        } catch (error) {
-            logger.error('Failed to handle MCP HTTP request', { error });
-            if (!res.headersSent) {
-                sendJson(res, 500, {
-                    jsonrpc: '2.0',
-                    error: { code: -32000, message: 'Internal server error' },
-                    id: null
-                });
-            } else {
-                res.end();
-            }
-        }
+        })();
     });
 
     httpServer.on('clientError', (error, socket) => {
@@ -354,15 +301,35 @@ async function main(): Promise<void> {
         httpServer.listen(port, host, () => {
             const displayHost = host === '0.0.0.0' ? 'localhost' : host;
             logger.info('HTTP server listening', {
-                endpoint: `http://${displayHost}:${port}${endpointPath}`
+                endpoint: `http://${displayHost}:${port}${endpointPath}`,
             });
             logger.info('HTTP health check available', {
-                endpoint: `http://${displayHost}:${port}${HEALTH_PATH}`
+                endpoint: `http://${displayHost}:${port}${HEALTH_PATH}`,
             });
             logger.info('HTTP server ready');
             resolve();
         });
     });
+
+    // Start ngrok tunnel if configured
+    if (config.httpNgrokEnabled) {
+        if (!config.httpNgrokAuthToken) {
+            logger.warn('Ngrok enabled but no auth token provided; skipping tunnel setup');
+        } else {
+            try {
+                const listener = await ngrok.forward({
+                    addr: port,
+                    authtoken: config.httpNgrokAuthToken,
+                });
+                const url = listener.url();
+                logger.info('Ngrok tunnel established', { url });
+            } catch (error) {
+                logger.error('Failed to start ngrok tunnel', {
+                    error: error instanceof Error ? error.message : String(error),
+                });
+            }
+        }
+    }
 
     let shuttingDown = false;
     const closeHttp: ShutdownHandler = () =>
@@ -381,9 +348,3 @@ async function main(): Promise<void> {
         });
     }
 }
-
-main().catch((error) => {
-    const message = error instanceof Error ? error.message : String(error);
-    logger.error('Failed to start MCP HTTP server', { error: message });
-    process.exitCode = 1;
-});

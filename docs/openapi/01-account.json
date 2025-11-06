@@ -18,9 +18,7 @@
     "paths": {
         "/openapi/v1/{omadacId}/users/{userID}": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get user info",
                 "description": "Get user info. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "getUser",
@@ -49,9 +47,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Modify an existing user",
                 "description": "Modify an existing user.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30103  -  Invalid email address.<br/>-30104  -  Invalid username.<br/>-30105  -  Invalid password.<br/>-30106  -  This username is already registered.<br/>-30108  -  This username does not exist.<br/>-30133  -  The administrator account should not have privileges to fewer sites than that of the viewer accounts it has created.<br/>-30134  -  Failed to add Site %Site name%. The viewer account should not have privileges to more sites thatn that of its immediate superior account.<br/>-30135  -  Are you sure you want to change the role of %Username% from Administrator to Viewer?If its role is changed, the viewer accounts it has created will be moved to your account.<br/>-30136  -  Failed to save. If the editing is saved, the viewer account will have privileges to more sites than that of its immediate superior account.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "modifyUser",
@@ -90,9 +86,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Delete an existing user",
                 "description": "Delete an existing user. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30112  -  This user does not exist.<br/>-30114  -  An error occurred while deleting the user.<br/>-30132  -  Are you sure you want to delete Administrator %Username%? When it is deleted, the viewer accounts it has created will be moved to your account.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "deleteUser",
@@ -133,9 +127,7 @@
         },
         "/openapi/v1/{omadacId}/sso/saml-idps/{idpId}": {
             "put": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Modify an existing idp",
                 "description": "Modify an existing idp.<br/><br/>The interface requires one of the permissions: <br/>Global Saml SSO Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30170  -  The SAML sso metadata entityId already exists.<br/>-30171  -  The SAML sso metadata name already exist.",
                 "operationId": "modifyIdpMetadata",
@@ -183,9 +175,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Delete an existing idp",
                 "description": "Delete an existing idp.<br/><br/>The interface requires one of the permissions: <br/>Global Saml SSO Manager Modify",
                 "operationId": "deleteIdpMetadata",
@@ -225,9 +215,7 @@
         },
         "/openapi/v1/{omadacId}/sso/external-user-groups/{externalUserGroupId}": {
             "put": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Modify an existing external user group",
                 "description": "Modify an existing external user group.<br/><br/>The interface requires one of the permissions: <br/>Global Saml Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30172  -  The SAML role name already exists.",
                 "operationId": "modifyExternalUserGroup",
@@ -275,9 +263,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Delete an existing external user group",
                 "description": "Delete an existing external user group.<br/><br/>The interface requires one of the permissions: <br/>Global Saml Roles Manager Modify",
                 "operationId": "deleteExternalUserGroup",
@@ -317,9 +303,7 @@
         },
         "/openapi/v1/{omadacId}/roles/{roleId}": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get role info",
                 "description": "Get role info<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager View Only",
                 "operationId": "getRole",
@@ -357,9 +341,7 @@
                 }
             },
             "put": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Modify an existing role",
                 "description": "Modify an existing role. Only user with all permissions modify can use this interface.<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30156  -  This role already exists.<br/>-30157  -  An error occurred while modifying the role.<br/>-30159  -  The default role cannot be modified.<br/>-30162  -  Cannot change the target account. Its role permission scope cannot be greater than its manager.",
                 "operationId": "modifyRole",
@@ -407,9 +389,7 @@
                 }
             },
             "delete": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Delete an existing role",
                 "description": "Delete an existing role. Only user with all permissions modify can use this interface<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30153  -  The default role cannot be deleted.<br/>-30154  -  An error occurred while deleting the role.<br/>-30155  -  The role cannot be deleted since someone has bound to it.<br/>-30173  -  The SSO bound role cannot be deleted!",
                 "operationId": "deleteRole",
@@ -449,9 +429,7 @@
         },
         "/openapi/v1/{omadacId}/users": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get user list",
                 "description": "Get user list. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "getGridUsers",
@@ -535,9 +513,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Create new user",
                 "description": "Create new user.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30103  -  Invalid email address.<br/>-30104  -  Invalid username.<br/>-30105  -  Invalid password.<br/>-30106  -  This username is already registered.<br/>-30124  -  The number of users has reached the limit.<br/>-30162  -  Cannot change the target account. Its role permission scope cannot be greater than its manager.<br/>-30190  -   You do not have the All Customers permission. Cannot grant sub-users the Modify Customers permission.<br/>-30192  -  You do not have the All Site permission. Cannot grant sub-users the Modify Sites permission.<br/>-30196  -  MSP role and customer role must be both super admin or both not super admin.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/>-7101  -  Cloud access is not enabled.<br/>-7106  -  Bind TP-Link ID first.",
                 "operationId": "createNewUser",
@@ -578,9 +554,7 @@
         },
         "/openapi/v1/{omadacId}/sso/saml-idps": {
             "get": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Get idp list",
                 "description": "Get idp list.<br/><br/>The interface requires one of the permissions: <br/>Global Saml SSO Manager View Only",
                 "operationId": "getIdpMetadataList",
@@ -638,9 +612,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Create new idp",
                 "description": "Create new idp.<br/><br/>The interface requires one of the permissions: <br/>Global Saml SSO Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30170  -  The SAML sso metadata entityId already exists.<br/>-30171  -  The SAML sso metadata name already exist.<br/>-30178  -  The SAML sso number has reached the upper limit.",
                 "operationId": "createIdpMetadata",
@@ -681,9 +653,7 @@
         },
         "/openapi/v1/{omadacId}/sso/external-user-groups": {
             "get": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Get external user group list",
                 "description": "Get external user group list.<br/><br/>The interface requires one of the permissions: <br/>Global Saml Roles Manager View Only",
                 "operationId": "getExternalUserGroupList",
@@ -749,9 +719,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Create new external user group",
                 "description": "Create new external user group.<br/><br/>The interface requires one of the permissions: <br/>Global Saml Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30102  -  This role does not exist.<br/>-30172  -  The SAML role name already exists.<br/>-30179  -  The SAML roles number has reached the upper limit.",
                 "operationId": "createExternalUserGroup",
@@ -792,9 +760,7 @@
         },
         "/openapi/v1/{omadacId}/roles": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get role list",
                 "description": "Get role list<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager View Only",
                 "operationId": "getAllRoles",
@@ -823,9 +789,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Create new role",
                 "description": "Create new role. Only user with all permissions modify can use this interface.<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30156  -  This role already exists.<br/>-30158  -  An error occurred while creating the role.<br/>-30161  -  The number of roles has reached the limit.",
                 "operationId": "createNewRole",
@@ -866,9 +830,7 @@
         },
         "/openapi/v1/{omadacId}/owner/transfer": {
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Transfer owner permission to an existing user",
                 "description": " Only Owner of current controller can use this interface.This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "transferRoot",
@@ -909,9 +871,7 @@
         },
         "/openapi/v1/{omadacId}/mfa/status": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get the status of the system's Two-Factor Authentication.",
                 "description": "Get the status of the system's Two-Factor Authentication.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting View Only",
                 "operationId": "getGlobalMFAStatus",
@@ -940,9 +900,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Modify the status of the system's Two-Factor Authentication.",
                 "description": "Modify the status of the system's Two-Factor Authentication.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify",
                 "operationId": "modifyGlobalMFAStatus",
@@ -983,9 +941,7 @@
         },
         "/openapi/v1/{omadacId}/cmd/cloud/unbind": {
             "post": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "unbind the owner account",
                 "description": "unbind the owner account.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1004  -  Invalid request type.<br/>-7101  -  Cloud access is not enabled.",
                 "operationId": "unbindOwner",
@@ -1016,9 +972,7 @@
         },
         "/openapi/v1/{omadacId}/cmd/cloud/bind": {
             "post": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "bind the owner account",
                 "description": "bind the owner account.<br/><br/>The interface requires one of the permissions: <br/>Global Other Setting Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1005  -  Operation forbidden.<br/>-30103  -  Invalid email address.",
                 "operationId": "bindOwner",
@@ -1059,9 +1013,7 @@
         },
         "/openapi/v1/{omadacId}/account/users/{userID}/re-invite": {
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Re-Invite an existing user",
                 "description": "Re-Invite an existing user<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30112  -  This user does not exist.<br/>-30114  -  An error occurred while deleting the user.<br/>-30132  -  Are you sure you want to delete Administrator %Username%? When it is deleted, the viewer accounts it has created will be moved to your account.<br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "reinvite",
@@ -1101,9 +1053,7 @@
         },
         "/openapi/v1/msp/{mspId}/owner/transfer": {
             "post": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Transfer MSP owner permission to an existing user",
                 "description": "Transfer MSP owner permission to an existing user. Only Owner of current MSP controller can use this interface.This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "transferMspRoot",
@@ -1144,9 +1094,7 @@
         },
         "/openapi/v1/msp/{mspId}/cmd/cloud/unbind": {
             "post": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "unbind the MSP owner account",
                 "description": "unbind the MSP owner account.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-7101  -  Cloud access is not enabled.",
                 "operationId": "unbindMspOwner",
@@ -1177,9 +1125,7 @@
         },
         "/openapi/v1/msp/{mspId}/cmd/cloud/bind": {
             "post": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "bind the MSP owner account",
                 "description": "bind the MSP owner account.<br/><br/>The interface requires one of the permissions: <br/>MSP Other Settings Modify<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-1004  -  Invalid request type.<br/>-20003  -  The controller does not exist.<br/>-30103  -  Invalid email address.",
                 "operationId": "bindMspOwner",
@@ -1220,9 +1166,7 @@
         },
         "/openapi/v1/{omadacId}/users/batch-temporary-users": {
             "patch": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Batch modify users.",
                 "description": "Batch modify users.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager Modify",
                 "operationId": "modifyUserBatch",
@@ -1263,9 +1207,7 @@
         },
         "/openapi/v1/{omadacId}/users/local": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get all local users exclude owner",
                 "description": "Get all local users exclude owner<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "getAllLocalUsersExcludeRoot",
@@ -1296,9 +1238,7 @@
         },
         "/openapi/v1/{omadacId}/users/cloud": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get all cloud users exclude owner",
                 "description": "Get all cloud users exclude owner<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-30194  -  This user does not exist.",
                 "operationId": "getAllCloudUsersExcludeRoot",
@@ -1329,9 +1269,7 @@
         },
         "/openapi/v1/{omadacId}/sso/external-users": {
             "get": {
-                "tags": [
-                    "SSO"
-                ],
+                "tags": ["SSO"],
                 "summary": "Get external user list",
                 "description": "Get external user list.<br/><br/>The interface requires one of the permissions: <br/>Global Saml Users Manager View Only",
                 "operationId": "getExternalUserList",
@@ -1400,9 +1338,7 @@
         },
         "/openapi/v1/{omadacId}/roles/available": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get available roles for creating new user",
                 "description": "Get available roles for creating new user.<br/><br/>The interface requires one of the permissions: <br/>Global Roles Manager View Only",
                 "operationId": "getAvailableRole",
@@ -1433,9 +1369,7 @@
         },
         "/openapi/v1/{omadacId}/cloud/user": {
             "get": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "get cloud user information",
                 "description": "get cloud user information, only for remote access.<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-20010  -  This account does not exist.",
                 "operationId": "getCloudUserInfo",
@@ -1466,9 +1400,7 @@
         },
         "/openapi/v1/{omadacId}/cloud/status": {
             "get": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "Get cloud access status",
                 "description": "Get cloud access status.",
                 "operationId": "getCloudAccessStatus",
@@ -1499,9 +1431,7 @@
         },
         "/openapi/v1/{omadacId}/cloud/remote/bind/status": {
             "get": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "Get remote bind status",
                 "description": "Get remote bind status.only for combined gateway controller",
                 "operationId": "getRemoteBindingStatus",
@@ -1532,9 +1462,7 @@
         },
         "/openapi/v1/{omadacId}/all-users": {
             "get": {
-                "tags": [
-                    "User and Role"
-                ],
+                "tags": ["User and Role"],
                 "summary": "Get user list for app",
                 "description": "Get user list. This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.<br/><br/>The interface requires one of the permissions: <br/>Global Users Manager View Only<br/><br/>The possible error code for the interface in the returned body is one of the following error codes (non generic error codes): <br/>-44118  -  This interface only supports the authorization code mode, not the client mode. Please call this interface in authorization code mode.",
                 "operationId": "getAppGridUsers",
@@ -1620,9 +1548,7 @@
         },
         "/openapi/v1/msp/{mspId}/cloud/status": {
             "get": {
-                "tags": [
-                    "cloud user"
-                ],
+                "tags": ["cloud user"],
                 "summary": "Get MSP cloud access status",
                 "description": "Get MSP cloud access status.",
                 "operationId": "getMspCloudAccessStatus",
@@ -1655,11 +1581,7 @@
     "components": {
         "schemas": {
             "ModifyUserVO": {
-                "required": [
-                    "allSite",
-                    "name",
-                    "roleId"
-                ],
+                "required": ["allSite", "name", "roleId"],
                 "type": "object",
                 "properties": {
                     "roleId": {
@@ -1737,12 +1659,7 @@
                 }
             },
             "IdpMetadataOpenApiVO": {
-                "required": [
-                    "entityId",
-                    "loginUrl",
-                    "name",
-                    "x509Certificate"
-                ],
+                "required": ["entityId", "loginUrl", "name", "x509Certificate"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -1784,11 +1701,7 @@
                 }
             },
             "ExternalUserGroupOpenApiVO": {
-                "required": [
-                    "allSite",
-                    "name",
-                    "roleId"
-                ],
+                "required": ["allSite", "name", "roleId"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2038,9 +1951,7 @@
                 "description": "Role privilege"
             },
             "ModifyControllerRoleVO": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "name": {
@@ -2054,12 +1965,7 @@
                 }
             },
             "CreateUserVO": {
-                "required": [
-                    "allSite",
-                    "name",
-                    "roleId",
-                    "type"
-                ],
+                "required": ["allSite", "name", "roleId", "type"],
                 "type": "object",
                 "properties": {
                     "type": {
@@ -2194,9 +2100,7 @@
                 }
             },
             "TransferRootOpenApiVO": {
-                "required": [
-                    "userId"
-                ],
+                "required": ["userId"],
                 "type": "object",
                 "properties": {
                     "userId": {
@@ -2215,10 +2119,7 @@
                 }
             },
             "BindOwnerOpenApiVO": {
-                "required": [
-                    "accountName",
-                    "password"
-                ],
+                "required": ["accountName", "password"],
                 "type": "object",
                 "properties": {
                     "accountName": {
@@ -2953,9 +2854,7 @@
                 }
             },
             "ControllerUserAppVO": {
-                "required": [
-                    "type"
-                ],
+                "required": ["type"],
                 "type": "object",
                 "properties": {
                     "id": {
@@ -3108,9 +3007,7 @@
                 }
             },
             "RoleDetailVO": {
-                "required": [
-                    "name"
-                ],
+                "required": ["name"],
                 "type": "object",
                 "properties": {
                     "id": {
