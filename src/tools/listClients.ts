@@ -5,11 +5,11 @@ import { siteInputSchema, toToolResult, wrapToolHandler } from '../server/common
 
 export function registerListClientsTool(server: McpServer, client: OmadaClient): void {
     server.registerTool(
-        'omada.listClients',
+        'listClients',
         {
             description: 'List network clients connected to a site.',
             inputSchema: siteInputSchema.shape,
         },
-        wrapToolHandler('omada.listClients', async ({ siteId }) => toToolResult(await client.listClients(siteId)))
+        wrapToolHandler('listClients', async ({ siteId }) => toToolResult(await client.listClients(siteId)))
     );
 }

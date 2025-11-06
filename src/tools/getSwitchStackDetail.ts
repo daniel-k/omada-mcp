@@ -5,11 +5,11 @@ import { stackIdSchema, toToolResult, wrapToolHandler } from '../server/common.j
 
 export function registerGetSwitchStackDetailTool(server: McpServer, client: OmadaClient): void {
     server.registerTool(
-        'omada.getSwitchStackDetail',
+        'getSwitchStackDetail',
         {
             description: 'Fetch detailed information for a specific switch stack.',
             inputSchema: stackIdSchema.shape,
         },
-        wrapToolHandler('omada.getSwitchStackDetail', async ({ stackId, siteId }) => toToolResult(await client.getSwitchStackDetail(stackId, siteId)))
+        wrapToolHandler('getSwitchStackDetail', async ({ stackId, siteId }) => toToolResult(await client.getSwitchStackDetail(stackId, siteId)))
     );
 }

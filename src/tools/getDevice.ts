@@ -5,11 +5,11 @@ import { deviceIdSchema, toToolResult, wrapToolHandler } from '../server/common.
 
 export function registerGetDeviceTool(server: McpServer, client: OmadaClient): void {
     server.registerTool(
-        'omada.getDevice',
+        'getDevice',
         {
             description: 'Fetch detailed information for a specific Omada device.',
             inputSchema: deviceIdSchema.shape,
         },
-        wrapToolHandler('omada.getDevice', async ({ deviceId, siteId }) => toToolResult(await client.getDevice(deviceId, siteId)))
+        wrapToolHandler('getDevice', async ({ deviceId, siteId }) => toToolResult(await client.getDevice(deviceId, siteId)))
     );
 }

@@ -6,70 +6,20 @@
             "request": "launch",
             "name": "Run MCP Server (npm run dev)",
             "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "dev", "--"],
+            "runtimeArgs": [
+                "run",
+                "dev",
+                "--"
+            ],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "sourceMaps": true,
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Run MCP HTTP Server (npm run dev:http)",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "dev:http", "--"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "sourceMaps": true,
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Run MCP Server (compiled output)",
-            "program": "${workspaceFolder}/dist/index.js",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "preLaunchTask": "npm: build",
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Run MCP HTTP Server (compiled output)",
-            "program": "${workspaceFolder}/dist/http.js",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "preLaunchTask": "npm: build",
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Start ngrok tunnel",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "ngrok:http", "--"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to MCP Server",
-            "processId": "${command:PickProcess}",
-            "restart": false,
-            "skipFiles": ["<node_internals>/**"]
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Expose MCP HTTP Server via ngrok",
-            "configurations": ["Run MCP HTTP Server (npm run dev:http)", "Start ngrok tunnel"]
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
         }
     ]
 }

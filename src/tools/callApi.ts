@@ -5,13 +5,13 @@ import { customRequestSchema, toToolResult, wrapToolHandler } from '../server/co
 
 export function registerCallApiTool(server: McpServer, client: OmadaClient): void {
     server.registerTool(
-        'omada.callApi',
+        'callApi',
         {
             description:
                 'Call an arbitrary API path on the Omada controller. The provided URL should be a path, for example /openapi/v1/{omadacId}/sites',
             inputSchema: customRequestSchema.shape,
         },
-        wrapToolHandler('omada.callApi', async ({ method, url, params, data, siteId }) => {
+        wrapToolHandler('callApi', async ({ method, url, params, data, siteId }) => {
             const resolvedUrl = siteId ? url.replace('{siteId}', siteId) : url;
 
             const payload = await client.callApi({
