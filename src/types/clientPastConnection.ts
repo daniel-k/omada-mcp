@@ -9,13 +9,13 @@ export interface ClientPastConnection {
     /** Client MAC Address */
     mac?: string;
 
-    /** Downstream traffic (Byte) */
+    /** Downstream traffic (bytes) */
     download?: number;
 
-    /** Upstream traffic (Byte) */
+    /** Upstream traffic (bytes) */
     upload?: number;
 
-    /** Up time (s) */
+    /** Up time (seconds) */
     duration?: number;
 
     /** The timestamp (ms) when the client connected */
@@ -45,7 +45,7 @@ export interface ClientPastConnection {
     /** IP Address */
     ip?: string;
 
-    /** IPv6 Address */
+    /** IPv6 Addresses */
     ipv6List?: string[];
 
     /** Client portal authentication information */
