@@ -45,7 +45,7 @@ export interface ClientPastConnection {
     /** IP Address */
     ip?: string;
 
-    /** IPv6 Addresses */
+    /** IPv6 Address */
     ipv6List?: string[];
 
     /** Client portal authentication information */
