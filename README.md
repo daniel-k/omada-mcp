@@ -2,6 +2,73 @@
 
 A Model Context Protocol (MCP) server implemented in TypeScript that exposes the TP-Link Omada controller APIs to AI copilots and automation workflows. The server authenticates against a controller, lists sites, devices, and connected clients, and offers a generic tool to invoke arbitrary Omada API endpoints.
 
+## Quick Start
+
+### Using with Claude Desktop (stdio)
+
+1. **Pull the Docker image** (or build it locally with `npm run docker:build`):
+
+   ```bash
+   docker pull ghcr.io/migueltvms/tplink-omada-mcp-cli:latest
+   ```
+
+2. **Add the MCP server to Claude Desktop configuration**. Edit your Claude Desktop config file:
+   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+3. **Add the following configuration**:
+
+   ```json
+   {
+     "mcpServers": {
+       "tplink-omada": {
+         "command": "docker",
+         "args": [
+           "run",
+           "-i",
+           "--rm",
+           "-e", "OMADA_BASE_URL=https://your-omada-controller.local",
+           "-e", "OMADA_CLIENT_ID=your-client-id",
+           "-e", "OMADA_CLIENT_SECRET=your-client-secret",
+           "-e", "OMADA_OMADAC_ID=your-omadac-id",
+           "-e", "OMADA_SITE_ID=your-site-id",
+           "-e", "OMADA_STRICT_SSL=false",
+           "ghcr.io/migueltvms/tplink-omada-mcp-cli:latest"
+         ]
+       }
+     }
+   }
+   ```
+
+   Replace the environment variable values with your actual Omada controller credentials.
+
+4. **Restart Claude Desktop** to load the new MCP server configuration.
+
+5. **Verify the connection** by asking Claude to list your Omada sites or devices.
+
+### Using Docker Containers
+
+#### CLI/stdio Container
+
+```bash
+docker run -it --rm \
+  --env-file .env \
+  ghcr.io/migueltvms/tplink-omada-mcp-cli:latest
+```
+
+#### HTTP Server Container
+
+```bash
+docker run -d \
+  --env-file .env \
+  -e MCP_SERVER_USE_HTTP=true \
+  -e MCP_HTTP_BIND_ADDR=0.0.0.0 \
+  -p 3000:3000 \
+  ghcr.io/migueltvms/tplink-omada-mcp-http:latest
+```
+
+The HTTP server will be available at `http://localhost:3000/mcp` (stream transport) or `http://localhost:3000/sse` (SSE transport).
+
 ## Features
 
 - OAuth client-credentials authentication with automatic token refresh
@@ -15,15 +82,8 @@ A Model Context Protocol (MCP) server implemented in TypeScript that exposes the
 
 ### Prerequisites
 
-- Node.js 20 or later
-- npm 9 or later
+- Docker (for running pre-built containers) or Node.js 24+ (for local development)
 - Access to a TP-Link Omada controller (for example using the `mbentley/omada-controller` Docker image)
-
-### Installation
-
-```bash
-npm install
-```
 
 ### Configuration
 
