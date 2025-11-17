@@ -97,18 +97,17 @@ npm start
 
 The MCP server communicates over standard input and output. Integrate it with MCP-compatible clients by referencing the `npm start` command and providing the required environment variables.
 
-### Docker images
+### Docker image
 
-Two container images are provided:
+A container image is provided for running the MCP server:
 
 ```bash
-npm run docker:build       # Build the CLI/stdio image (tag: ghcr.io/migueltvms/tplink-omada-mcp-cli:latest)
-npm run docker:run         # Launch the CLI/stdio image with your .env file
-npm run docker:build:http  # Build the HTTP/SSE image (tag: ghcr.io/migueltvms/tplink-omada-mcp-http:latest)
-npm run docker:run:http    # Launch the HTTP/SSE image and publish port 3000
+npm run docker:build  # Build the Docker image (tag: ghcr.io/migueltvms/tplink-omada-mcp:latest)
+npm run docker:run    # Launch the container with your .env file
+npm run docker:push   # Push the image to GitHub Container Registry
 ```
 
-Use `npm run docker:push` and `npm run docker:push:http` to publish the images after authenticating with GitHub Container Registry.
+The same image supports both stdio and HTTP transports - configure the desired mode using environment variables (e.g., set `MCP_SERVER_USE_HTTP=true` for HTTP mode).
 
 ### Transport Protocols
 
