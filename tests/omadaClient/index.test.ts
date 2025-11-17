@@ -156,7 +156,7 @@ describe('OmadaClient aggregator', () => {
         expect(siteModule.instance.listSites).toHaveBeenCalled();
         expect(deviceModule.instance.listDevices).toHaveBeenCalledWith('s1');
         expect(clientModule.instance.listClients).toHaveBeenCalledWith('s1');
-        expect(networkModule.instance.getPortForwardingStatus).toHaveBeenCalledWith('User', undefined, undefined, undefined);
+        expect(networkModule.instance.getPortForwardingStatus).toHaveBeenCalledWith('User', undefined, 1, 10);
         expect(requestModule.instance.request).toHaveBeenCalledWith({ url: '/path' });
     });
 });
