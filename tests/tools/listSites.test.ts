@@ -42,6 +42,7 @@ describe('tools/listSites', () => {
                 'listSites',
                 {
                     description: 'List all sites configured on the Omada controller.',
+                    inputSchema: {},
                 },
                 expect.any(Function)
             );
