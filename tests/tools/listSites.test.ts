@@ -42,6 +42,7 @@ describe('tools/listSites', () => {
                 'listSites',
                 {
                     description: 'List all sites configured on the Omada controller.',
+                    inputSchema: {},
                 },
                 expect.any(Function)
             );
@@ -87,6 +88,7 @@ describe('tools/listSites', () => {
             expect(loggerModule.logger.info).toHaveBeenCalledWith('Tool invoked', {
                 tool: 'listSites',
                 sessionId: 'test-session',
+                args: '{}',
             });
             expect(loggerModule.logger.info).toHaveBeenCalledWith('Tool completed', {
                 tool: 'listSites',
@@ -120,6 +122,7 @@ describe('tools/listSites', () => {
             expect(loggerModule.logger.info).toHaveBeenCalledWith('Tool invoked', {
                 tool: 'listSites',
                 sessionId: 'unknown-session',
+                args: '{}',
             });
         });
     });
