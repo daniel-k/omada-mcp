@@ -40,6 +40,8 @@ const envSchema = z
         clientSecret: z.string().min(1, 'OMADA_CLIENT_SECRET is required'),
         omadacId: z.string().min(1, 'OMADA_OMADAC_ID is required'),
         siteId: z.string().min(1).optional(),
+        webUsername: z.string().min(1).optional(),
+        webPassword: z.string().min(1).optional(),
         strictSsl: createBooleanStringSchema(true),
         requestTimeout: numericStringSchema,
 
@@ -102,6 +104,8 @@ export interface EnvironmentConfig {
     clientSecret: string;
     omadacId: string;
     siteId?: string;
+    webUsername?: string;
+    webPassword?: string;
     strictSsl: boolean;
     requestTimeout?: number;
 
@@ -132,6 +136,8 @@ export function loadConfigFromEnv(env: NodeJS.ProcessEnv = process.env): Environ
         clientSecret: env.OMADA_CLIENT_SECRET,
         omadacId: env.OMADA_OMADAC_ID,
         siteId: env.OMADA_SITE_ID,
+        webUsername: env.OMADA_WEB_USERNAME,
+        webPassword: env.OMADA_WEB_PASSWORD,
         strictSsl: env.OMADA_STRICT_SSL,
         requestTimeout: env.OMADA_TIMEOUT,
 
@@ -181,6 +187,8 @@ export function loadConfigFromEnv(env: NodeJS.ProcessEnv = process.env): Environ
         clientSecret: parsed.data.clientSecret,
         omadacId: parsed.data.omadacId,
         siteId: parsed.data.siteId,
+        webUsername: parsed.data.webUsername,
+        webPassword: parsed.data.webPassword,
         strictSsl: parsed.data.strictSsl,
         requestTimeout: parsed.data.requestTimeout,
 

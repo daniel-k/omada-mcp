@@ -20,11 +20,15 @@ import type {
     ThreatInfo,
 } from '../types/index.js';
 
+import { logger } from '../utils/logger.js';
+
 import { ActionOperations } from './action.js';
 import { AuthManager } from './auth.js';
 import { ClientOperations } from './client.js';
 import { DeviceOperations } from './device.js';
 import { GenericOperations } from './generic.js';
+import { InternalAuthManager } from './internalAuth.js';
+import { InternalRequestHandler } from './internalRequest.js';
 import { NetworkOperations } from './network.js';
 import { RequestHandler } from './request.js';
 import { SecurityOperations } from './security.js';
@@ -91,6 +95,14 @@ export class OmadaClient {
         this.actionOps = new ActionOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
         this.genericOps = new GenericOperations(this.request, this.buildOmadaPath.bind(this));
         this.switchOps = new SwitchOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
+
+        // Initialize internal API support if web credentials are configured
+        if (options.webUsername && options.webPassword) {
+            const internalAuth = new InternalAuthManager(this.http, options.webUsername, options.webPassword, options.omadacId);
+            const internalReq = new InternalRequestHandler(this.http, internalAuth, options.omadacId);
+            this.networkOps.setInternalRequest(internalReq);
+            logger.info('Internal web UI API enabled for ACL management');
+        }
     }
 
     // Site operations
@@ -261,8 +273,12 @@ export class OmadaClient {
         return await this.networkOps.updateSwitchPort(switchMac, portId, data, siteId);
     }
 
-    public async listFirewallAcls(siteId?: string): Promise<unknown[]> {
+    public async listFirewallAcls(siteId?: string): Promise<unknown> {
         return await this.networkOps.listFirewallAcls(siteId);
+    }
+
+    public async listIpGroups(siteId?: string): Promise<unknown> {
+        return await this.networkOps.listIpGroups(siteId);
     }
 
     public async createFirewallAcl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {

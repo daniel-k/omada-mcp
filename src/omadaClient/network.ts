@@ -1,5 +1,7 @@
 import type { OmadaApiResponse, PaginatedResult } from '../types/index.js';
+import { logger } from '../utils/logger.js';
 
+import type { InternalRequestHandler } from './internalRequest.js';
 import type { RequestHandler } from './request.js';
 import type { SiteOperations } from './site.js';
 
@@ -8,11 +10,28 @@ import type { SiteOperations } from './site.js';
  * Covers internet, LAN, WLAN, firewall, and port forwarding configurations.
  */
 export class NetworkOperations {
+    private internalRequest?: InternalRequestHandler;
+
     constructor(
         private readonly request: RequestHandler,
         private readonly site: SiteOperations,
         private readonly buildPath: (path: string, version?: string) => string
     ) {}
+
+    /**
+     * Set the internal request handler for web UI API access.
+     * When configured, firewall ACL operations will use the internal API.
+     */
+    public setInternalRequest(internalRequest: InternalRequestHandler): void {
+        this.internalRequest = internalRequest;
+    }
+
+    /**
+     * Check whether the internal API is available for use.
+     */
+    private get hasInternalApi(): boolean {
+        return this.internalRequest !== undefined;
+    }
 
     /**
      * Get internet configuration info for a site.
@@ -235,32 +254,89 @@ export class NetworkOperations {
     }
 
     /**
-     * List firewall ACL rules for a site (v1 API).
+     * List firewall ACL rules for a site.
+     * Uses the internal web UI API when web credentials are configured (required for OC200),
+     * otherwise falls back to the Open API.
      */
-    public async listFirewallAcls(siteId?: string): Promise<unknown[]> {
+    public async listFirewallAcls(siteId?: string): Promise<unknown> {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
+
+        if (this.hasInternalApi) {
+            logger.info('Using internal API for listFirewallAcls');
+            const path = `/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`;
+            const response = await this.internalRequest!.get<OmadaApiResponse<unknown>>(path, {
+                type: 0,
+                currentPage: 1,
+                currentPageSize: 100,
+            });
+            return this.internalRequest!.ensureSuccess(response);
+        }
+
         const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`);
         return await this.request.fetchPaginated<unknown>(path);
     }
 
     /**
-     * Create a firewall ACL rule (v1 API).
+     * Create a firewall ACL rule.
+     * Uses the internal web UI API when web credentials are configured (required for OC200),
+     * otherwise falls back to the Open API.
      */
     public async createFirewallAcl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
+
+        if (this.hasInternalApi) {
+            logger.info('Using internal API for createFirewallAcl');
+            const path = `/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`;
+            const response = await this.internalRequest!.post<OmadaApiResponse<unknown>>(path, data);
+            return this.internalRequest!.ensureSuccess(response);
+        }
+
         const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`);
         const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
         return this.request.ensureSuccess(response);
     }
 
     /**
-     * Delete a firewall ACL rule (v1 API).
+     * Delete a firewall ACL rule.
+     * Uses the internal web UI API when web credentials are configured (required for OC200),
+     * otherwise falls back to the Open API.
      */
     public async deleteFirewallAcl(aclId: string, siteId?: string): Promise<unknown> {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
+
+        if (this.hasInternalApi) {
+            logger.info('Using internal API for deleteFirewallAcl');
+            const path = `/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls/${encodeURIComponent(aclId)}`;
+            const response = await this.internalRequest!.delete<OmadaApiResponse<unknown>>(path);
+            return this.internalRequest!.ensureSuccess(response);
+        }
+
         const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls/${encodeURIComponent(aclId)}`);
         const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
         return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * List IP/Port groups for a site (internal API only).
+     * These groups can be used as source/destination in firewall ACL rules.
+     * Requires OMADA_WEB_USERNAME and OMADA_WEB_PASSWORD to be configured.
+     */
+    public async listIpGroups(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+
+        if (!this.hasInternalApi) {
+            throw new Error(
+                'listIpGroups requires the internal web UI API. ' +
+                    'Set OMADA_WEB_USERNAME and OMADA_WEB_PASSWORD environment variables to enable it.'
+            );
+        }
+
+        const path = `/sites/${encodeURIComponent(resolvedSiteId)}/setting/profiles/groups`;
+        const response = await this.internalRequest!.get<OmadaApiResponse<unknown>>(path, {
+            currentPage: 1,
+            currentPageSize: 100,
+        });
+        return this.internalRequest!.ensureSuccess(response);
     }
 
     /**
