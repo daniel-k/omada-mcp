@@ -126,4 +126,149 @@ export class NetworkOperations {
         const response = await this.request.get<OmadaApiResponse<unknown>>(path);
         return this.request.ensureSuccess(response);
     }
+
+    /**
+     * Create a new LAN network (v2 API).
+     */
+    public async createLanNetwork(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/lan-networks`, 'v2');
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update an existing LAN network (v2 API).
+     */
+    public async updateLanNetwork(networkId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/lan-networks/${encodeURIComponent(networkId)}`, 'v2');
+        const response = await this.request.put<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Delete a LAN network (v2 API).
+     */
+    public async deleteLanNetwork(networkId: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/lan-networks/${encodeURIComponent(networkId)}`, 'v2');
+        const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Create a new LAN profile (v1 API).
+     */
+    public async createLanProfile(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/lan-profiles`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update an existing LAN profile (v1 API).
+     */
+    public async updateLanProfile(profileId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/lan-profiles/${encodeURIComponent(profileId)}`);
+        const response = await this.request.put<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update firewall settings for a site (v1 API).
+     */
+    public async updateFirewallSetting(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/firewall`);
+        const response = await this.request.put<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get paginated events for a site (v1 API).
+     */
+    public async listEvents(siteId?: string, page = 1, pageSize = 10): Promise<PaginatedResult<unknown>> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/events`);
+        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, {
+            page,
+            pageSize,
+        });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get paginated logs for a site (v1 API).
+     */
+    public async listLogs(siteId?: string, page = 1, pageSize = 10): Promise<PaginatedResult<unknown>> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/logs`);
+        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, {
+            page,
+            pageSize,
+        });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get switch ports for a specific switch (v1 API, paginated).
+     */
+    public async getSwitchPorts(switchMac: string, siteId?: string): Promise<unknown[]> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/switches/${encodeURIComponent(switchMac)}/ports`);
+        return await this.request.fetchPaginated<unknown>(path);
+    }
+
+    /**
+     * Update a switch port configuration (v1 API).
+     */
+    public async updateSwitchPort(switchMac: string, portId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(
+            `/sites/${encodeURIComponent(resolvedSiteId)}/switches/${encodeURIComponent(switchMac)}/ports/${encodeURIComponent(portId)}`
+        );
+        const response = await this.request.request<OmadaApiResponse<unknown>>({ method: 'PATCH', url: path, data });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * List firewall ACL rules for a site (v1 API).
+     */
+    public async listFirewallAcls(siteId?: string): Promise<unknown[]> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`);
+        return await this.request.fetchPaginated<unknown>(path);
+    }
+
+    /**
+     * Create a firewall ACL rule (v1 API).
+     */
+    public async createFirewallAcl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Delete a firewall ACL rule (v1 API).
+     */
+    public async deleteFirewallAcl(aclId: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/firewall/acls/${encodeURIComponent(aclId)}`);
+        const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * List static routes for a site (v1 API).
+     */
+    public async listRoutes(siteId?: string): Promise<unknown[]> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/routes`);
+        return await this.request.fetchPaginated<unknown>(path);
+    }
 }

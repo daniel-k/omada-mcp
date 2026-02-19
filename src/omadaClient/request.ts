@@ -24,6 +24,27 @@ export class RequestHandler {
     }
 
     /**
+     * Make a POST request to the Omada API.
+     */
+    public async post<T>(path: string, data: unknown, params?: Record<string, unknown>): Promise<T> {
+        return await this.request<T>({ method: 'POST', url: path, data, params });
+    }
+
+    /**
+     * Make a PUT request to the Omada API.
+     */
+    public async put<T>(path: string, data: unknown, params?: Record<string, unknown>): Promise<T> {
+        return await this.request<T>({ method: 'PUT', url: path, data, params });
+    }
+
+    /**
+     * Make a DELETE request to the Omada API.
+     */
+    public async delete<T>(path: string, params?: Record<string, unknown>): Promise<T> {
+        return await this.request<T>({ method: 'DELETE', url: path, params });
+    }
+
+    /**
      * Make an arbitrary HTTP request to the Omada API.
      */
     public async request<T>(config: AxiosRequestConfig, retry = true): Promise<T> {

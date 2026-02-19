@@ -2,15 +2,25 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 
+import { registerAdoptDeviceTool } from './adoptDevice.js';
+import { registerBlockClientTool } from './blockClient.js';
+import { registerCreateFirewallAclTool } from './createFirewallAcl.js';
+import { registerCreateLanNetworkTool } from './createLanNetwork.js';
+import { registerCreateLanProfileTool } from './createLanProfile.js';
+import { registerDeleteFirewallAclTool } from './deleteFirewallAcl.js';
+import { registerDeleteLanNetworkTool } from './deleteLanNetwork.js';
+import { registerGenericApiCallTool } from './genericApiCall.js';
 import { registerGetClientTool } from './getClient.js';
 import { registerGetDeviceTool } from './getDevice.js';
 import { registerGetFirewallSettingTool } from './getFirewallSetting.js';
+import { registerGetFirmwareDetailsTool } from './getFirmwareDetails.js';
 import { registerGetInternetInfoTool } from './getInternetInfo.js';
 import { registerGetLanNetworkListTool } from './getLanNetworkList.js';
 import { registerGetLanProfileListTool } from './getLanProfileList.js';
 import { registerGetPortForwardingStatusTool } from './getPortForwardingStatus.js';
 import { registerGetSsidDetailTool } from './getSsidDetail.js';
 import { registerGetSsidListTool } from './getSsidList.js';
+import { registerGetSwitchPortsTool } from './getSwitchPorts.js';
 import { registerGetSwitchStackDetailTool } from './getSwitchStackDetail.js';
 import { registerGetThreatListTool } from './getThreatList.js';
 import { registerGetWlanGroupListTool } from './getWlanGroupList.js';
@@ -19,11 +29,27 @@ import { registerListClientsActivityTool } from './listClientsActivity.js';
 import { registerListClientsPastConnectionsTool } from './listClientsPastConnections.js';
 import { registerListDevicesTool } from './listDevices.js';
 import { registerListDevicesStatsTool } from './listDevicesStats.js';
+import { registerListEventsTool } from './listEvents.js';
+import { registerListFirewallAclsTool } from './listFirewallAcls.js';
+import { registerListLogsTool } from './listLogs.js';
 import { registerListMostActiveClientsTool } from './listMostActiveClients.js';
+import { registerListRoutesTool } from './listRoutes.js';
 import { registerListSitesTool } from './listSites.js';
+import { registerRebootDeviceTool } from './rebootDevice.js';
+import { registerReconnectClientTool } from './reconnectClient.js';
 import { registerSearchDevicesTool } from './searchDevices.js';
+import { registerSetDeviceLedTool } from './setDeviceLed.js';
+import { registerSetGatewayWanConnectTool } from './setGatewayWanConnect.js';
+import { registerStartFirmwareUpgradeTool } from './startFirmwareUpgrade.js';
+import { registerUnblockClientTool } from './unblockClient.js';
+import { registerUpdateClientTool } from './updateClient.js';
+import { registerUpdateFirewallSettingTool } from './updateFirewallSetting.js';
+import { registerUpdateLanNetworkTool } from './updateLanNetwork.js';
+import { registerUpdateLanProfileTool } from './updateLanProfile.js';
+import { registerUpdateSwitchPortTool } from './updateSwitchPort.js';
 
 export function registerAllTools(server: McpServer, client: OmadaClient): void {
+    // Read tools
     registerListSitesTool(server, client);
     registerListDevicesTool(server, client);
     registerListClientsTool(server, client);
@@ -44,4 +70,35 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerGetSsidListTool(server, client);
     registerGetSsidDetailTool(server, client);
     registerGetFirewallSettingTool(server, client);
+    registerGetSwitchPortsTool(server, client);
+    registerGetFirmwareDetailsTool(server, client);
+    registerListEventsTool(server, client);
+    registerListLogsTool(server, client);
+    registerListFirewallAclsTool(server, client);
+    registerListRoutesTool(server, client);
+
+    // Write tools
+    registerCreateLanNetworkTool(server, client);
+    registerUpdateLanNetworkTool(server, client);
+    registerDeleteLanNetworkTool(server, client);
+    registerCreateLanProfileTool(server, client);
+    registerUpdateLanProfileTool(server, client);
+    registerUpdateFirewallSettingTool(server, client);
+    registerCreateFirewallAclTool(server, client);
+    registerDeleteFirewallAclTool(server, client);
+    registerUpdateSwitchPortTool(server, client);
+    registerUpdateClientTool(server, client);
+
+    // Action tools
+    registerRebootDeviceTool(server, client);
+    registerAdoptDeviceTool(server, client);
+    registerBlockClientTool(server, client);
+    registerUnblockClientTool(server, client);
+    registerReconnectClientTool(server, client);
+    registerSetDeviceLedTool(server, client);
+    registerStartFirmwareUpgradeTool(server, client);
+    registerSetGatewayWanConnectTool(server, client);
+
+    // Generic escape hatch
+    registerGenericApiCallTool(server, client);
 }

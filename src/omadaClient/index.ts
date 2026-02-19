@@ -20,9 +20,11 @@ import type {
     ThreatInfo,
 } from '../types/index.js';
 
+import { ActionOperations } from './action.js';
 import { AuthManager } from './auth.js';
 import { ClientOperations } from './client.js';
 import { DeviceOperations } from './device.js';
+import { GenericOperations } from './generic.js';
 import { NetworkOperations } from './network.js';
 import { RequestHandler } from './request.js';
 import { SecurityOperations } from './security.js';
@@ -50,6 +52,10 @@ export class OmadaClient {
     private readonly securityOps: SecurityOperations;
 
     private readonly networkOps: NetworkOperations;
+
+    private readonly actionOps: ActionOperations;
+
+    private readonly genericOps: GenericOperations;
 
     private readonly omadacId: string;
 
@@ -79,6 +85,8 @@ export class OmadaClient {
         this.clientOps = new ClientOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
         this.securityOps = new SecurityOperations(this.request, this.buildOmadaPath.bind(this));
         this.networkOps = new NetworkOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
+        this.actionOps = new ActionOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
+        this.genericOps = new GenericOperations(this.request, this.buildOmadaPath.bind(this));
     }
 
     // Site operations
@@ -166,7 +174,117 @@ export class OmadaClient {
         return await this.networkOps.getFirewallSetting(siteId);
     }
 
-    // Generic API call
+    // Network write operations
+    public async createLanNetwork(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.createLanNetwork(data, siteId);
+    }
+
+    public async updateLanNetwork(networkId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateLanNetwork(networkId, data, siteId);
+    }
+
+    public async deleteLanNetwork(networkId: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.deleteLanNetwork(networkId, siteId);
+    }
+
+    public async createLanProfile(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.createLanProfile(data, siteId);
+    }
+
+    public async updateLanProfile(profileId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateLanProfile(profileId, data, siteId);
+    }
+
+    public async updateFirewallSetting(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateFirewallSetting(data, siteId);
+    }
+
+    public async listEvents(siteId?: string, page?: number, pageSize?: number): Promise<PaginatedResult<unknown>> {
+        return await this.networkOps.listEvents(siteId, page, pageSize);
+    }
+
+    public async listLogs(siteId?: string, page?: number, pageSize?: number): Promise<PaginatedResult<unknown>> {
+        return await this.networkOps.listLogs(siteId, page, pageSize);
+    }
+
+    // Device and client actions
+    public async rebootDevice(deviceMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.rebootDevice(deviceMac, siteId);
+    }
+
+    public async adoptDevice(deviceMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.adoptDevice(deviceMac, siteId);
+    }
+
+    public async blockClient(clientMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.blockClient(clientMac, siteId);
+    }
+
+    public async unblockClient(clientMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.unblockClient(clientMac, siteId);
+    }
+
+    public async reconnectClient(clientMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.reconnectClient(clientMac, siteId);
+    }
+
+    public async updateClient(clientMac: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.actionOps.updateClient(clientMac, data, siteId);
+    }
+
+    public async setDeviceLed(deviceMac: string, ledSetting: number, siteId?: string): Promise<unknown> {
+        return await this.actionOps.setDeviceLed(deviceMac, ledSetting, siteId);
+    }
+
+    public async getFirmwareDetails(deviceMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.getFirmwareDetails(deviceMac, siteId);
+    }
+
+    public async startFirmwareUpgrade(deviceMac: string, siteId?: string): Promise<unknown> {
+        return await this.actionOps.startFirmwareUpgrade(deviceMac, siteId);
+    }
+
+    public async setGatewayWanConnect(gatewayMac: string, portId: string, action: 'connect' | 'disconnect', siteId?: string): Promise<unknown> {
+        return await this.actionOps.setGatewayWanConnect(gatewayMac, portId, action, siteId);
+    }
+
+    // Network read/write operations (switch ports, firewall ACLs, routes)
+    public async getSwitchPorts(switchMac: string, siteId?: string): Promise<unknown[]> {
+        return await this.networkOps.getSwitchPorts(switchMac, siteId);
+    }
+
+    public async updateSwitchPort(switchMac: string, portId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSwitchPort(switchMac, portId, data, siteId);
+    }
+
+    public async listFirewallAcls(siteId?: string): Promise<unknown[]> {
+        return await this.networkOps.listFirewallAcls(siteId);
+    }
+
+    public async createFirewallAcl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.createFirewallAcl(data, siteId);
+    }
+
+    public async deleteFirewallAcl(aclId: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.deleteFirewallAcl(aclId, siteId);
+    }
+
+    public async listRoutes(siteId?: string): Promise<unknown[]> {
+        return await this.networkOps.listRoutes(siteId);
+    }
+
+    // Generic API operations
+    public async genericApiCall(
+        method: string,
+        path: string,
+        version?: string,
+        body?: unknown,
+        queryParams?: Record<string, unknown>
+    ): Promise<unknown> {
+        return await this.genericOps.genericApiCall(method, path, version, body, queryParams);
+    }
+
+    // Generic API call (raw)
     public async callApi<T = unknown>(config: AxiosRequestConfig): Promise<T> {
         return await this.request.request<T>(config);
     }
