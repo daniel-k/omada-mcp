@@ -3,6 +3,10 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { OmadaClient } from '../omadaClient/index.js';
 
 import { registerAdoptDeviceTool } from './adoptDevice.js';
+import { registerBatchSetSwitchPortNameTool } from './batchSetSwitchPortName.js';
+import { registerBatchSetSwitchPortPoeTool } from './batchSetSwitchPortPoe.js';
+import { registerBatchSetSwitchPortProfileTool } from './batchSetSwitchPortProfile.js';
+import { registerBatchSetSwitchPortStatusTool } from './batchSetSwitchPortStatus.js';
 import { registerBlockClientTool } from './blockClient.js';
 import { registerCreateFirewallAclTool } from './createFirewallAcl.js';
 import { registerCreateLanNetworkTool } from './createLanNetwork.js';
@@ -10,6 +14,7 @@ import { registerCreateLanProfileTool } from './createLanProfile.js';
 import { registerDeleteFirewallAclTool } from './deleteFirewallAcl.js';
 import { registerDeleteLanNetworkTool } from './deleteLanNetwork.js';
 import { registerGenericApiCallTool } from './genericApiCall.js';
+import { registerGetCableTestResultsTool } from './getCableTestResults.js';
 import { registerGetClientTool } from './getClient.js';
 import { registerGetDeviceTool } from './getDevice.js';
 import { registerGetFirewallSettingTool } from './getFirewallSetting.js';
@@ -20,6 +25,8 @@ import { registerGetLanProfileListTool } from './getLanProfileList.js';
 import { registerGetPortForwardingStatusTool } from './getPortForwardingStatus.js';
 import { registerGetSsidDetailTool } from './getSsidDetail.js';
 import { registerGetSsidListTool } from './getSsidList.js';
+import { registerGetSwitchTool } from './getSwitch.js';
+import { registerGetSwitchNetworksTool } from './getSwitchNetworks.js';
 import { registerGetSwitchPortsTool } from './getSwitchPorts.js';
 import { registerGetSwitchStackDetailTool } from './getSwitchStackDetail.js';
 import { registerGetThreatListTool } from './getThreatList.js';
@@ -40,6 +47,13 @@ import { registerReconnectClientTool } from './reconnectClient.js';
 import { registerSearchDevicesTool } from './searchDevices.js';
 import { registerSetDeviceLedTool } from './setDeviceLed.js';
 import { registerSetGatewayWanConnectTool } from './setGatewayWanConnect.js';
+import { registerSetSwitchNetworksTool } from './setSwitchNetworks.js';
+import { registerSetSwitchPortNameTool } from './setSwitchPortName.js';
+import { registerSetSwitchPortPoeTool } from './setSwitchPortPoe.js';
+import { registerSetSwitchPortProfileTool } from './setSwitchPortProfile.js';
+import { registerSetSwitchPortProfileOverrideTool } from './setSwitchPortProfileOverride.js';
+import { registerSetSwitchPortStatusTool } from './setSwitchPortStatus.js';
+import { registerStartCableTestTool } from './startCableTest.js';
 import { registerStartFirmwareUpgradeTool } from './startFirmwareUpgrade.js';
 import { registerUnblockClientTool } from './unblockClient.js';
 import { registerUpdateClientTool } from './updateClient.js';
@@ -76,6 +90,9 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerListLogsTool(server, client);
     registerListFirewallAclsTool(server, client);
     registerListRoutesTool(server, client);
+    registerGetSwitchTool(server, client);
+    registerGetCableTestResultsTool(server, client);
+    registerGetSwitchNetworksTool(server, client);
 
     // Write tools
     registerCreateLanNetworkTool(server, client);
@@ -88,6 +105,19 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerDeleteFirewallAclTool(server, client);
     registerUpdateSwitchPortTool(server, client);
     registerUpdateClientTool(server, client);
+    registerSetSwitchNetworksTool(server, client);
+
+    // Switch port tools
+    registerSetSwitchPortProfileTool(server, client);
+    registerSetSwitchPortPoeTool(server, client);
+    registerSetSwitchPortNameTool(server, client);
+    registerSetSwitchPortStatusTool(server, client);
+    registerSetSwitchPortProfileOverrideTool(server, client);
+    registerBatchSetSwitchPortProfileTool(server, client);
+    registerBatchSetSwitchPortPoeTool(server, client);
+    registerBatchSetSwitchPortStatusTool(server, client);
+    registerBatchSetSwitchPortNameTool(server, client);
+    registerStartCableTestTool(server, client);
 
     // Action tools
     registerRebootDeviceTool(server, client);

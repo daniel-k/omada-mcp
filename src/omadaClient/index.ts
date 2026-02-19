@@ -29,6 +29,7 @@ import { NetworkOperations } from './network.js';
 import { RequestHandler } from './request.js';
 import { SecurityOperations } from './security.js';
 import { SiteOperations } from './site.js';
+import { SwitchOperations } from './switch.js';
 
 export type OmadaClientOptions = EnvironmentConfig;
 
@@ -56,6 +57,8 @@ export class OmadaClient {
     private readonly actionOps: ActionOperations;
 
     private readonly genericOps: GenericOperations;
+
+    private readonly switchOps: SwitchOperations;
 
     private readonly omadacId: string;
 
@@ -87,6 +90,7 @@ export class OmadaClient {
         this.networkOps = new NetworkOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
         this.actionOps = new ActionOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
         this.genericOps = new GenericOperations(this.request, this.buildOmadaPath.bind(this));
+        this.switchOps = new SwitchOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
     }
 
     // Site operations
@@ -271,6 +275,63 @@ export class OmadaClient {
 
     public async listRoutes(siteId?: string): Promise<unknown[]> {
         return await this.networkOps.listRoutes(siteId);
+    }
+
+    // Switch operations
+    public async getSwitch(switchMac: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.getSwitch(switchMac, siteId);
+    }
+
+    public async setSwitchPortProfile(switchMac: string, port: number, profileId: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchPortProfile(switchMac, port, profileId, siteId);
+    }
+
+    public async setSwitchPortPoe(switchMac: string, port: number, poeMode: number, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchPortPoe(switchMac, port, poeMode, siteId);
+    }
+
+    public async setSwitchPortName(switchMac: string, port: number, name: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchPortName(switchMac, port, name, siteId);
+    }
+
+    public async setSwitchPortStatus(switchMac: string, port: number, status: number, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchPortStatus(switchMac, port, status, siteId);
+    }
+
+    public async setSwitchPortProfileOverride(switchMac: string, port: number, profileOverrideEnable: boolean, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchPortProfileOverride(switchMac, port, profileOverrideEnable, siteId);
+    }
+
+    public async batchSetSwitchPortProfile(switchMac: string, portList: number[], profileOverrideEnable: boolean, siteId?: string): Promise<unknown> {
+        return await this.switchOps.batchSetSwitchPortProfile(switchMac, portList, profileOverrideEnable, siteId);
+    }
+
+    public async batchSetSwitchPortPoe(switchMac: string, portList: number[], poeMode: number, siteId?: string): Promise<unknown> {
+        return await this.switchOps.batchSetSwitchPortPoe(switchMac, portList, poeMode, siteId);
+    }
+
+    public async batchSetSwitchPortStatus(switchMac: string, portList: number[], status: number, siteId?: string): Promise<unknown> {
+        return await this.switchOps.batchSetSwitchPortStatus(switchMac, portList, status, siteId);
+    }
+
+    public async batchSetSwitchPortName(switchMac: string, portNameList: Array<{ port: number; name: string }>, siteId?: string): Promise<unknown> {
+        return await this.switchOps.batchSetSwitchPortName(switchMac, portNameList, siteId);
+    }
+
+    public async startCableTest(switchMac: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.startCableTest(switchMac, siteId);
+    }
+
+    public async getCableTestResults(switchMac: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.getCableTestResults(switchMac, siteId);
+    }
+
+    public async getSwitchNetworks(switchMac: string, siteId?: string): Promise<unknown> {
+        return await this.switchOps.getSwitchNetworks(switchMac, siteId);
+    }
+
+    public async setSwitchNetworks(switchMac: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.switchOps.setSwitchNetworks(switchMac, data, siteId);
     }
 
     // Generic API operations
