@@ -264,6 +264,30 @@ export class OmadaClient {
         return await this.networkOps.updateBandSteering(data, siteId);
     }
 
+    public async getRoaming(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getRoaming(siteId);
+    }
+
+    public async updateRoaming(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateRoaming(data, siteId);
+    }
+
+    public async getMesh(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getMesh(siteId);
+    }
+
+    public async updateMesh(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateMesh(data, siteId);
+    }
+
+    public async getChannelLimit(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getChannelLimit(siteId);
+    }
+
+    public async updateChannelLimit(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateChannelLimit(data, siteId);
+    }
+
     // Network write operations
     public async createLanNetwork(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
         return await this.networkOps.createLanNetwork(data, siteId);

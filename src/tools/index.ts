@@ -8,11 +8,17 @@ import { registerGetApLoadBalanceTool } from './getApLoadBalance.js';
 import { registerGetApRadioConfigTool } from './getApRadioConfig.js';
 import { registerGetBandSteeringTool } from './getBandSteering.js';
 import { registerGetBeaconControlTool } from './getBeaconControl.js';
+import { registerGetChannelLimitTool } from './getChannelLimit.js';
+import { registerGetMeshTool } from './getMesh.js';
+import { registerGetRoamingTool } from './getRoaming.js';
 import { registerGetApRadioDetailTool } from './getApRadioDetail.js';
 import { registerUpdateApRadioConfigTool } from './updateApRadioConfig.js';
 import { registerUpdateApRssiThresholdTool } from './updateApRssiThreshold.js';
 import { registerUpdateBandSteeringTool } from './updateBandSteering.js';
 import { registerUpdateBeaconControlTool } from './updateBeaconControl.js';
+import { registerUpdateChannelLimitTool } from './updateChannelLimit.js';
+import { registerUpdateMeshTool } from './updateMesh.js';
+import { registerUpdateRoamingTool } from './updateRoaming.js';
 import { registerBatchSetSwitchPortPoeTool } from './batchSetSwitchPortPoe.js';
 import { registerBatchSetSwitchPortProfileTool } from './batchSetSwitchPortProfile.js';
 import { registerBatchSetSwitchPortStatusTool } from './batchSetSwitchPortStatus.js';
@@ -118,6 +124,9 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerGetApLoadBalanceTool(server, client);
     registerGetBeaconControlTool(server, client);
     registerGetBandSteeringTool(server, client);
+    registerGetRoamingTool(server, client);
+    registerGetMeshTool(server, client);
+    registerGetChannelLimitTool(server, client);
 
     // Write tools
     registerCreateLanNetworkTool(server, client);
@@ -148,6 +157,9 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     // Site wireless settings
     registerUpdateBeaconControlTool(server, client);
     registerUpdateBandSteeringTool(server, client);
+    registerUpdateRoamingTool(server, client);
+    registerUpdateMeshTool(server, client);
+    registerUpdateChannelLimitTool(server, client);
 
     // Switch port tools
     registerSetSwitchPortProfileTool(server, client);
