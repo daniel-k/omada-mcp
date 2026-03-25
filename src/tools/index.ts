@@ -19,6 +19,16 @@ import { registerUpdateBeaconControlTool } from './updateBeaconControl.js';
 import { registerUpdateChannelLimitTool } from './updateChannelLimit.js';
 import { registerUpdateMeshTool } from './updateMesh.js';
 import { registerUpdateRoamingTool } from './updateRoaming.js';
+import { registerApplyRfPlanningHistoryTool } from './applyRfPlanningHistory.js';
+import { registerCancelRfOptimizationTool } from './cancelRfOptimization.js';
+import { registerDeleteRfPlanningHistoryTool } from './deleteRfPlanningHistory.js';
+import { registerGetRfPlanningConfigTool } from './getRfPlanningConfig.js';
+import { registerGetRfPlanningHistoryDetailTool } from './getRfPlanningHistoryDetail.js';
+import { registerGetRfPlanningResultTool } from './getRfPlanningResult.js';
+import { registerGetWlanExperienceIndexTool } from './getWlanExperienceIndex.js';
+import { registerListRfPlanningHistoryTool } from './listRfPlanningHistory.js';
+import { registerStartRfOptimizationTool } from './startRfOptimization.js';
+import { registerUpdateRfPlanningConfigTool } from './updateRfPlanningConfig.js';
 import { registerBatchSetSwitchPortPoeTool } from './batchSetSwitchPortPoe.js';
 import { registerBatchSetSwitchPortProfileTool } from './batchSetSwitchPortProfile.js';
 import { registerBatchSetSwitchPortStatusTool } from './batchSetSwitchPortStatus.js';
@@ -127,6 +137,11 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerGetRoamingTool(server, client);
     registerGetMeshTool(server, client);
     registerGetChannelLimitTool(server, client);
+    registerGetRfPlanningConfigTool(server, client);
+    registerGetRfPlanningResultTool(server, client);
+    registerListRfPlanningHistoryTool(server, client);
+    registerGetRfPlanningHistoryDetailTool(server, client);
+    registerGetWlanExperienceIndexTool(server, client);
 
     // Write tools
     registerCreateLanNetworkTool(server, client);
@@ -160,6 +175,13 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerUpdateRoamingTool(server, client);
     registerUpdateMeshTool(server, client);
     registerUpdateChannelLimitTool(server, client);
+
+    // WLAN optimization tools
+    registerUpdateRfPlanningConfigTool(server, client);
+    registerStartRfOptimizationTool(server, client);
+    registerCancelRfOptimizationTool(server, client);
+    registerApplyRfPlanningHistoryTool(server, client);
+    registerDeleteRfPlanningHistoryTool(server, client);
 
     // Switch port tools
     registerSetSwitchPortProfileTool(server, client);

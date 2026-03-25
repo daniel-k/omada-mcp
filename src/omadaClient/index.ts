@@ -288,6 +288,51 @@ export class OmadaClient {
         return await this.networkOps.updateChannelLimit(data, siteId);
     }
 
+    // WLAN optimization operations
+    public async getRfPlanningConfig(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getRfPlanningConfig(siteId);
+    }
+
+    public async updateRfPlanningConfig(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateRfPlanningConfig(data, siteId);
+    }
+
+    public async getRfPlanningResult(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getRfPlanningResult(siteId);
+    }
+
+    public async startRfOptimization(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.startRfOptimization(data, siteId);
+    }
+
+    public async cancelRfOptimization(siteId?: string): Promise<unknown> {
+        return await this.networkOps.cancelRfOptimization(siteId);
+    }
+
+    public async getRfPlanningDeployHistory(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getRfPlanningDeployHistory(siteId);
+    }
+
+    public async listRfPlanningHistory(siteId?: string, page?: number, pageSize?: number): Promise<unknown> {
+        return await this.networkOps.listRfPlanningHistory(siteId, page, pageSize);
+    }
+
+    public async getRfPlanningHistoryDetail(historyId: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.getRfPlanningHistoryDetail(historyId, siteId);
+    }
+
+    public async applyRfPlanningHistory(historyId: string, appliedConfig: number, siteId?: string): Promise<unknown> {
+        return await this.networkOps.applyRfPlanningHistory(historyId, appliedConfig, siteId);
+    }
+
+    public async deleteRfPlanningHistory(historyId: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.deleteRfPlanningHistory(historyId, siteId);
+    }
+
+    public async getWlanExperienceIndex(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getWlanExperienceIndex(siteId);
+    }
+
     // Network write operations
     public async createLanNetwork(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
         return await this.networkOps.createLanNetwork(data, siteId);

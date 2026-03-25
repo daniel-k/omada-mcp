@@ -556,6 +556,116 @@ export class NetworkOperations {
     }
 
     /**
+     * Get RF planning configuration for a site.
+     */
+    public async getRfPlanningConfig(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/rfPlanning`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update RF planning deploy configuration for a site.
+     */
+    public async updateRfPlanningConfig(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/rfPlanning/config`);
+        const response = await this.request.put<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get RF planning optimization result/status for a site.
+     */
+    public async getRfPlanningResult(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/rfPlanning/result`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Start RF planning optimization for a site.
+     */
+    public async startRfOptimization(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/cmd/rfPlanning/optimization`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Cancel an in-progress RF planning optimization.
+     */
+    public async cancelRfOptimization(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/cmd/rfPlanning/cancel`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, {});
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Check whether RF planning has been successfully executed before.
+     */
+    public async getRfPlanningDeployHistory(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/rfplanning/history`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * List RF planning history entries (paginated).
+     */
+    public async listRfPlanningHistory(siteId?: string, page = 1, pageSize = 10): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/planningHistory`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path, { page, pageSize });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get detailed RF planning history entry.
+     */
+    public async getRfPlanningHistoryDetail(historyId: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/planningHistory/${encodeURIComponent(historyId)}`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Apply a RF planning history entry (recommended or previous config).
+     */
+    public async applyRfPlanningHistory(historyId: string, appliedConfig: number, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/planningHistory/${encodeURIComponent(historyId)}`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, { appliedConfig });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Delete a RF planning history entry.
+     */
+    public async deleteRfPlanningHistory(historyId: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/planningHistory/${encodeURIComponent(historyId)}`);
+        const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get WLAN experience index for a site.
+     */
+    public async getWlanExperienceIndex(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/experienceIndex`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
      * List static routes for a site (v1 API).
      */
     public async listRoutes(siteId?: string): Promise<unknown[]> {
