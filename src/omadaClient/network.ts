@@ -136,6 +136,122 @@ export class NetworkOperations {
     }
 
     /**
+     * Create a new SSID in a WLAN group.
+     *
+     * @param wlanId - WLAN group ID (can be obtained from getWlanGroupList)
+     * @param data - SSID configuration data
+     */
+    public async createSsid(wlanId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        if (!wlanId) {
+            throw new Error('A wlanId must be provided. Use getWlanGroupList to get available WLAN group IDs.');
+        }
+
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(
+            `/sites/${encodeURIComponent(resolvedSiteId)}/wireless-network/wlans/${encodeURIComponent(wlanId)}/ssids`
+        );
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * PATCH a specific aspect of an SSID configuration.
+     */
+    private async patchSsid(wlanId: string, ssidId: string, action: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        if (!wlanId) {
+            throw new Error('A wlanId must be provided. Use getWlanGroupList to get available WLAN group IDs.');
+        }
+        if (!ssidId) {
+            throw new Error('An ssidId must be provided. Use getSsidList to get available SSID IDs.');
+        }
+
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(
+            `/sites/${encodeURIComponent(resolvedSiteId)}/wireless-network/wlans/${encodeURIComponent(wlanId)}/ssids/${encodeURIComponent(ssidId)}/${action}`
+        );
+        const response = await this.request.request<OmadaApiResponse<unknown>>({ method: 'PATCH', url: path, data });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update SSID basic config (name, band, security, VLAN, etc.).
+     * OperationId: updateSsidBasicConfig
+     */
+    public async updateSsidBasicConfig(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-basic-config', data, siteId);
+    }
+
+    /**
+     * Update SSID rate limit config (client and SSID rate limits).
+     * OperationId: updateSsidRateLimitConfig
+     */
+    public async updateSsidRateLimit(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-rate-limit', data, siteId);
+    }
+
+    /**
+     * Update SSID 802.11 rate control config.
+     * OperationId: updateSsidRateControlConfig
+     */
+    public async updateSsidRateControl(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-rate-control', data, siteId);
+    }
+
+    /**
+     * Update SSID multicast/broadcast management config.
+     * OperationId: updateSsidMultiCastConfig
+     */
+    public async updateSsidMultiCastConfig(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-multicast-config', data, siteId);
+    }
+
+    /**
+     * Update SSID MAC filter config.
+     * OperationId: updateSsidMacFilterConfig
+     */
+    public async updateSsidMacFilter(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-mac-filter', data, siteId);
+    }
+
+    /**
+     * Update SSID WLAN schedule config.
+     * OperationId: updateSsidWlanSchedule
+     */
+    public async updateSsidWlanSchedule(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-wlan-schedule', data, siteId);
+    }
+
+    /**
+     * Update SSID Hotspot 2.0 config.
+     * OperationId: updateSsidHotspotV2Setting
+     */
+    public async updateSsidHotspotV2(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return this.patchSsid(wlanId, ssidId, 'update-hotspotv2', data, siteId);
+    }
+
+    /**
+     * Delete an SSID from a WLAN group.
+     *
+     * @param wlanId - WLAN group ID (can be obtained from getWlanGroupList)
+     * @param ssidId - SSID ID (can be obtained from getSsidList)
+     */
+    public async deleteSsid(wlanId: string, ssidId: string, siteId?: string): Promise<unknown> {
+        if (!wlanId) {
+            throw new Error('A wlanId must be provided. Use getWlanGroupList to get available WLAN group IDs.');
+        }
+        if (!ssidId) {
+            throw new Error('An ssidId must be provided. Use getSsidList to get available SSID IDs.');
+        }
+
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(
+            `/sites/${encodeURIComponent(resolvedSiteId)}/wireless-network/wlans/${encodeURIComponent(wlanId)}/ssids/${encodeURIComponent(ssidId)}`
+        );
+        const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
      * Get firewall settings for a site.
      * OperationId: getFirewallSetting
      */

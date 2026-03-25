@@ -15,9 +15,11 @@ import { registerBatchSetSwitchPortStatusTool } from './batchSetSwitchPortStatus
 import { registerBlockClientTool } from './blockClient.js';
 import { registerCreateFirewallAclTool } from './createFirewallAcl.js';
 import { registerCreateLanNetworkTool } from './createLanNetwork.js';
+import { registerCreateSsidTool } from './createSsid.js';
 import { registerCreateLanProfileTool } from './createLanProfile.js';
 import { registerDeleteFirewallAclTool } from './deleteFirewallAcl.js';
 import { registerDeleteLanNetworkTool } from './deleteLanNetwork.js';
+import { registerDeleteSsidTool } from './deleteSsid.js';
 import { registerGenericApiCallTool } from './genericApiCall.js';
 import { registerGetCableTestResultsTool } from './getCableTestResults.js';
 import { registerGetClientTool } from './getClient.js';
@@ -66,6 +68,13 @@ import { registerUpdateClientTool } from './updateClient.js';
 import { registerUpdateFirewallSettingTool } from './updateFirewallSetting.js';
 import { registerUpdateLanNetworkTool } from './updateLanNetwork.js';
 import { registerUpdateLanProfileTool } from './updateLanProfile.js';
+import { registerUpdateSsidBasicConfigTool } from './updateSsidBasicConfig.js';
+import { registerUpdateSsidHotspotV2Tool } from './updateSsidHotspotV2.js';
+import { registerUpdateSsidMacFilterTool } from './updateSsidMacFilter.js';
+import { registerUpdateSsidMultiCastConfigTool } from './updateSsidMultiCastConfig.js';
+import { registerUpdateSsidRateControlTool } from './updateSsidRateControl.js';
+import { registerUpdateSsidRateLimitTool } from './updateSsidRateLimit.js';
+import { registerUpdateSsidWlanScheduleTool } from './updateSsidWlanSchedule.js';
 import { registerUpdateSwitchPortTool } from './updateSwitchPort.js';
 
 export function registerAllTools(server: McpServer, client: OmadaClient): void {
@@ -113,6 +122,15 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerUpdateFirewallSettingTool(server, client);
     registerCreateFirewallAclTool(server, client);
     registerDeleteFirewallAclTool(server, client);
+    registerCreateSsidTool(server, client);
+    registerDeleteSsidTool(server, client);
+    registerUpdateSsidBasicConfigTool(server, client);
+    registerUpdateSsidRateLimitTool(server, client);
+    registerUpdateSsidRateControlTool(server, client);
+    registerUpdateSsidMultiCastConfigTool(server, client);
+    registerUpdateSsidMacFilterTool(server, client);
+    registerUpdateSsidWlanScheduleTool(server, client);
+    registerUpdateSsidHotspotV2Tool(server, client);
     registerUpdateSwitchPortTool(server, client);
     registerUpdateClientTool(server, client);
     registerSetSwitchNetworksTool(server, client);

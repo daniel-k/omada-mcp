@@ -39,7 +39,11 @@ const BANDS = [
 function formatLoadBalance(data: LoadBalanceResult): string {
     const lines: string[] = [];
 
-    lines.push(`Load Balance: ${data.enable ? 'enabled' : 'disabled'}`);
+    const enabled = !!data.enable;
+    lines.push(`Load Balance: ${enabled ? 'enabled' : 'disabled'}`);
+    if (!enabled) {
+        lines.push('NOTE: All settings below are NOT active because load balancing is disabled. The values shown are stored defaults that only take effect if load balancing is enabled.');
+    }
     lines.push('');
 
     // Max clients
@@ -52,7 +56,7 @@ function formatLoadBalance(data: LoadBalanceResult): string {
         }
     }
     if (clientLines.length > 0) {
-        lines.push('Max Clients:');
+        lines.push(`Max Clients${!enabled ? ' (inactive)' : ''}:`);
         lines.push(...clientLines);
         lines.push('');
     }
@@ -62,14 +66,14 @@ function formatLoadBalance(data: LoadBalanceResult): string {
     for (const { suffix, label } of BANDS) {
         const enableKey = `rssiEnable${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}` as keyof LoadBalanceResult;
         const threshKey = `threshold${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}` as keyof LoadBalanceResult;
-        const enabled = data[enableKey];
+        const rssiEnabled = data[enableKey];
         const threshold = data[threshKey];
-        if (enabled !== undefined) {
-            rssiLines.push(`  ${label}: ${enabled ? `enabled at ${threshold} dBm` : `disabled (${threshold} dBm)`}`);
+        if (rssiEnabled !== undefined) {
+            rssiLines.push(`  ${label}: ${rssiEnabled ? `enabled at ${threshold} dBm` : `disabled (${threshold} dBm)`}`);
         }
     }
     if (rssiLines.length > 0) {
-        lines.push('RSSI Thresholds:');
+        lines.push(`RSSI Thresholds${!enabled ? ' (inactive)' : ''}:`);
         lines.push(...rssiLines);
     }
 

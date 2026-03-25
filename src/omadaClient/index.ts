@@ -208,6 +208,42 @@ export class OmadaClient {
         return await this.networkOps.getSsidDetail(wlanId, ssidId, siteId);
     }
 
+    public async createSsid(wlanId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.createSsid(wlanId, data, siteId);
+    }
+
+    public async updateSsidBasicConfig(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidBasicConfig(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidRateLimit(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidRateLimit(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidRateControl(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidRateControl(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidMultiCastConfig(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidMultiCastConfig(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidMacFilter(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidMacFilter(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidWlanSchedule(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidWlanSchedule(wlanId, ssidId, data, siteId);
+    }
+
+    public async updateSsidHotspotV2(wlanId: string, ssidId: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateSsidHotspotV2(wlanId, ssidId, data, siteId);
+    }
+
+    public async deleteSsid(wlanId: string, ssidId: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.deleteSsid(wlanId, ssidId, siteId);
+    }
+
     public async getFirewallSetting(siteId?: string): Promise<unknown> {
         return await this.networkOps.getFirewallSetting(siteId);
     }

@@ -136,6 +136,15 @@ Available at `http://localhost:3000/mcp` (stream) or `http://localhost:3000/sse`
 | `updateFirewallSetting` | Update firewall settings |
 | `createFirewallAcl` | Create a firewall ACL rule |
 | `deleteFirewallAcl` | Delete a firewall ACL rule |
+| `createSsid` | Create a new SSID (wireless network) in a WLAN group |
+| `deleteSsid` | Delete an SSID from a WLAN group |
+| `updateSsidBasicConfig` | Update SSID basic config (name, band, security, VLAN, guest, PMF, 802.11r) |
+| `updateSsidRateLimit` | Update SSID per-client and per-SSID bandwidth limits |
+| `updateSsidRateControl` | Update SSID 802.11 data rate control (min/max rates per band) |
+| `updateSsidMultiCastConfig` | Update SSID multicast/broadcast management |
+| `updateSsidMacFilter` | Update SSID MAC address filtering |
+| `updateSsidWlanSchedule` | Update SSID WLAN schedule (time-based radio on/off) |
+| `updateSsidHotspotV2` | Update SSID Hotspot 2.0 (Passpoint) config |
 | `updateSwitchPort` | Update switch port config (profile, PoE, speed, STP) |
 | `updateClient` | Update client settings |
 | `setSwitchNetworks` | Set switch VLAN trunking configuration |
