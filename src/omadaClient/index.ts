@@ -131,6 +131,28 @@ export class OmadaClient {
         return await this.deviceOps.listDevicesStats(options);
     }
 
+    // AP radio operations
+    public async getApRadioConfig(apMac: string, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.getApRadioConfig(apMac, siteId);
+    }
+
+    public async updateApRadioConfig(apMac: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.updateApRadioConfig(apMac, data, siteId);
+    }
+
+    public async getApRadioDetail(apMac: string, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.getApRadioDetail(apMac, siteId);
+    }
+
+    // AP load balance / RSSI operations
+    public async getApLoadBalance(apMac: string, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.getApLoadBalance(apMac, siteId);
+    }
+
+    public async updateApLoadBalance(apMac: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.updateApLoadBalance(apMac, data, siteId);
+    }
+
     // Client operations
     public async listClients(siteId?: string): Promise<OmadaClientInfo[]> {
         return await this.clientOps.listClients(siteId);

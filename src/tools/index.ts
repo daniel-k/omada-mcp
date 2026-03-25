@@ -4,6 +4,11 @@ import type { OmadaClient } from '../omadaClient/index.js';
 
 import { registerAdoptDeviceTool } from './adoptDevice.js';
 import { registerBatchSetSwitchPortNameTool } from './batchSetSwitchPortName.js';
+import { registerGetApLoadBalanceTool } from './getApLoadBalance.js';
+import { registerGetApRadioConfigTool } from './getApRadioConfig.js';
+import { registerGetApRadioDetailTool } from './getApRadioDetail.js';
+import { registerUpdateApRadioConfigTool } from './updateApRadioConfig.js';
+import { registerUpdateApRssiThresholdTool } from './updateApRssiThreshold.js';
 import { registerBatchSetSwitchPortPoeTool } from './batchSetSwitchPortPoe.js';
 import { registerBatchSetSwitchPortProfileTool } from './batchSetSwitchPortProfile.js';
 import { registerBatchSetSwitchPortStatusTool } from './batchSetSwitchPortStatus.js';
@@ -95,6 +100,9 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerGetSwitchTool(server, client);
     registerGetCableTestResultsTool(server, client);
     registerGetSwitchNetworksTool(server, client);
+    registerGetApRadioConfigTool(server, client);
+    registerGetApRadioDetailTool(server, client);
+    registerGetApLoadBalanceTool(server, client);
 
     // Write tools
     registerCreateLanNetworkTool(server, client);
@@ -108,6 +116,10 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerUpdateSwitchPortTool(server, client);
     registerUpdateClientTool(server, client);
     registerSetSwitchNetworksTool(server, client);
+
+    // AP radio tools
+    registerUpdateApRadioConfigTool(server, client);
+    registerUpdateApRssiThresholdTool(server, client);
 
     // Switch port tools
     registerSetSwitchPortProfileTool(server, client);
