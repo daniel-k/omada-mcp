@@ -248,6 +248,22 @@ export class OmadaClient {
         return await this.networkOps.getFirewallSetting(siteId);
     }
 
+    public async getBeaconControl(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getBeaconControl(siteId);
+    }
+
+    public async updateBeaconControl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateBeaconControl(data, siteId);
+    }
+
+    public async getBandSteering(siteId?: string): Promise<unknown> {
+        return await this.networkOps.getBandSteering(siteId);
+    }
+
+    public async updateBandSteering(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateBandSteering(data, siteId);
+    }
+
     // Network write operations
     public async createLanNetwork(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
         return await this.networkOps.createLanNetwork(data, siteId);

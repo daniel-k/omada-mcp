@@ -456,6 +456,46 @@ export class NetworkOperations {
     }
 
     /**
+     * Get beacon control and airtime fairness settings for a site.
+     */
+    public async getBeaconControl(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/beacon-control`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update beacon control and/or airtime fairness settings for a site.
+     */
+    public async updateBeaconControl(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/beacon-control`);
+        const response = await this.request.request<OmadaApiResponse<unknown>>({ method: 'PATCH', url: path, data });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Get band steering settings for a site.
+     */
+    public async getBandSteering(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/band-steering`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Update band steering settings for a site.
+     */
+    public async updateBandSteering(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/band-steering`);
+        const response = await this.request.request<OmadaApiResponse<unknown>>({ method: 'PATCH', url: path, data });
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
      * List static routes for a site (v1 API).
      */
     public async listRoutes(siteId?: string): Promise<unknown[]> {
