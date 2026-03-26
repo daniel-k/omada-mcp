@@ -46,18 +46,26 @@ export function registerUpdateSsidBasicConfigTool(server: McpServer, client: Oma
         'updateSsidBasicConfig',
         {
             description:
-                'Update SSID basic config (name, band, security, VLAN, guest network, PMF, 802.11r, MLO). Use getSsidDetail first to see current values — all required fields must be provided. IMPORTANT: Do NOT include pskSetting unless the user wants to change the Wi-Fi password. When pskSetting is omitted, the existing password is preserved automatically.',
+                'Update SSID basic config (name, band, security, VLAN, guest network, PMF, 802.11r, MLO). Use getSsidDetail first to see current values — all required fields must be provided. pskSetting is optional — the existing password and PSK config are preserved automatically. You can include pskSetting with just the fields you want to change (e.g. versionPsk to switch WPA mode) without providing securityKey; missing fields are merged from the current config.',
             inputSchema: updateSsidBasicConfigSchema.shape,
             annotations: {
                 destructiveHint: true,
             },
         },
         wrapToolHandler('updateSsidBasicConfig', async ({ wlanId, ssidId, siteId, ...data }) => {
-            // If pskSetting wasn't provided and security requires one, carry forward the existing PSK
-            if (data.pskSetting === undefined && data.security === 3) {
+            // For WPA-Personal, merge existing pskSetting so callers don't need the password
+            // just to change WPA version, encryption, or other fields.
+            if (data.security === 3) {
                 const current = (await client.getSsidDetail(wlanId, ssidId, siteId)) as Record<string, unknown>;
-                if (current.pskSetting) {
-                    data.pskSetting = current.pskSetting as typeof data.pskSetting;
+                const existingPsk = current.pskSetting as Record<string, unknown> | undefined;
+                if (data.pskSetting === undefined) {
+                    // pskSetting fully omitted — carry forward the entire existing setting
+                    if (existingPsk) {
+                        data.pskSetting = existingPsk as typeof data.pskSetting;
+                    }
+                } else if (existingPsk) {
+                    // pskSetting provided but may be missing securityKey — merge from existing
+                    data.pskSetting = { ...existingPsk, ...data.pskSetting } as typeof data.pskSetting;
                 }
             }
 
