@@ -1,13 +1,14 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
+import { coercedObject } from './coerce.js';
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const createFirewallAclSchema = z.object({
     siteId: z.string().min(1).optional(),
-    rule: z
-        .record(z.unknown())
+    rule: coercedObject(z
+        .record(z.unknown()))
         .describe('Firewall ACL rule object (fields vary by controller version; use listFirewallAcls to see existing rule shapes)'),
 });
 

@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -9,9 +10,9 @@ const updateClientSchema = z.object({
     clientMac: z.string().min(1, 'clientMac is required'),
     name: z.string().optional().describe('Display name for the client'),
     fixedIp: z.string().optional().describe('Static DHCP IP address'),
-    rateLimitEnable: z.boolean().optional().describe('Enable rate limiting'),
-    upLimit: z.number().int().optional().describe('Upload rate limit (kbps)'),
-    downLimit: z.number().int().optional().describe('Download rate limit (kbps)'),
+    rateLimitEnable: coercedBoolean().optional().describe('Enable rate limiting'),
+    upLimit: z.coerce.number().int().optional().describe('Upload rate limit (kbps)'),
+    downLimit: z.coerce.number().int().optional().describe('Download rate limit (kbps)'),
 });
 
 export function registerUpdateClientTool(server: McpServer, client: OmadaClient): void {

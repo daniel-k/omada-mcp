@@ -1,12 +1,13 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const updateChannelLimitSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
-    enable: z.boolean().describe('Enable or disable the channel limit'),
+    enable: coercedBoolean().describe('Enable or disable the channel limit'),
 });
 
 export function registerUpdateChannelLimitTool(server: McpServer, client: OmadaClient): void {

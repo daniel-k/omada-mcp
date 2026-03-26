@@ -6,8 +6,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const listRfPlanningHistorySchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
-    page: z.number().int().min(1).default(1).optional().describe('Page number (starts at 1)'),
-    pageSize: z.number().int().min(1).max(1000).default(10).optional().describe('Entries per page (1-1000)'),
+    page: z.coerce.number().int().min(1).default(1).optional().describe('Page number (starts at 1)'),
+    pageSize: z.coerce.number().int().min(1).max(1000).default(10).optional().describe('Entries per page (1-1000)'),
 });
 
 export function registerListRfPlanningHistoryTool(server: McpServer, client: OmadaClient): void {

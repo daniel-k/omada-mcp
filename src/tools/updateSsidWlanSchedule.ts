@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -7,8 +8,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const updateSsidWlanScheduleSchema = z.object({
     wlanId: z.string().min(1, 'wlanId is required. Use getWlanGroupList to get available WLAN group IDs.'),
     ssidId: z.string().min(1, 'ssidId is required. Use getSsidList to get available SSID IDs.'),
-    wlanScheduleEnable: z.boolean().describe('Whether WLAN scheduling is enabled'),
-    action: z.number().int().optional().describe('Schedule action: 0=radio off during schedule, 1=radio on during schedule'),
+    wlanScheduleEnable: coercedBoolean().describe('Whether WLAN scheduling is enabled'),
+    action: z.coerce.number().int().optional().describe('Schedule action: 0=radio off during schedule, 1=radio on during schedule'),
     scheduleId: z.string().optional().describe('Time Range Profile ID for the schedule'),
     siteId: z.string().min(1).optional(),
 });

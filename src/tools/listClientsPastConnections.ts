@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -12,9 +13,9 @@ const clientsPastConnectionsInputSchema = z.object({
         .enum(['asc', 'desc'])
         .optional()
         .describe('Sort by last seen time. Values: asc or desc. When multiple sorts exist, first one takes effect.'),
-    timeStart: z.number().int().optional().describe('Filter by time range start timestamp (milliseconds).'),
-    timeEnd: z.number().int().optional().describe('Filter by time range end timestamp (milliseconds).'),
-    guest: z.boolean().optional().describe('Filter by guest status (true/false).'),
+    timeStart: z.coerce.number().int().optional().describe('Filter by time range start timestamp (milliseconds).'),
+    timeEnd: z.coerce.number().int().optional().describe('Filter by time range end timestamp (milliseconds).'),
+    guest: coercedBoolean().optional().describe('Filter by guest status (true/false).'),
     searchKey: z.string().optional().describe('Fuzzy search by name, MAC address, or SSID.'),
 });
 

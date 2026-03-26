@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -7,8 +8,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const updateSsidMacFilterSchema = z.object({
     wlanId: z.string().min(1, 'wlanId is required. Use getWlanGroupList to get available WLAN group IDs.'),
     ssidId: z.string().min(1, 'ssidId is required. Use getSsidList to get available SSID IDs.'),
-    macFilterEnable: z.boolean().describe('Whether MAC filtering is enabled'),
-    policy: z.number().int().optional().describe('Filter policy: 0=Deny List, 1=Allow List'),
+    macFilterEnable: coercedBoolean().describe('Whether MAC filtering is enabled'),
+    policy: z.coerce.number().int().optional().describe('Filter policy: 0=Deny List, 1=Allow List'),
     macFilterId: z.string().optional().describe('MAC Group Profile ID for the filter list'),
     siteId: z.string().min(1).optional(),
 });

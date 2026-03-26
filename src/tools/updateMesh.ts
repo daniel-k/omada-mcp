@@ -1,16 +1,17 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const updateMeshSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
-    meshEnable: z.boolean().optional().describe('Enable or disable mesh networking'),
-    autoFailoverEnable: z.boolean().optional().describe('Enable auto failover'),
-    defGatewayEnable: z.boolean().optional().describe('Connectivity detection: true = auto (recommended), false = custom IP'),
+    meshEnable: coercedBoolean().optional().describe('Enable or disable mesh networking'),
+    autoFailoverEnable: coercedBoolean().optional().describe('Enable auto failover'),
+    defGatewayEnable: coercedBoolean().optional().describe('Connectivity detection: true = auto (recommended), false = custom IP'),
     gateway: z.string().optional().describe('Custom gateway IP for connectivity detection (used when defGatewayEnable is false)'),
-    fullSector: z.boolean().optional().describe('Enable full-sector DFS'),
+    fullSector: coercedBoolean().optional().describe('Enable full-sector DFS'),
 });
 
 export function registerUpdateMeshTool(server: McpServer, client: OmadaClient): void {

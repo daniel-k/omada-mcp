@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -35,7 +36,7 @@ const updateApRadioConfigSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
     apMac: z.string().min(1).describe('AP MAC address, e.g. AA-BB-CC-DD-EE-FF'),
     band: z.enum(['2g', '5g', '5g1', '5g2', '6g']).describe('Radio band to configure'),
-    radioEnable: z.boolean().optional().describe('Enable or disable this radio'),
+    radioEnable: coercedBoolean().optional().describe('Enable or disable this radio'),
     channel: z
         .string()
         .optional()
@@ -48,14 +49,14 @@ const updateApRadioConfigSchema = z.object({
         .enum(['low', 'medium', 'high', 'custom', 'auto'])
         .optional()
         .describe('Transmit power level'),
-    txPower: z
+    txPower: z.coerce
         .number()
         .int()
         .optional()
         .describe('Custom TX power in dBm (only used when txPowerLevel is "custom")'),
-    wirelessMode: z.number().int().optional().describe('Wireless mode ID (use getApRadioConfig to see current value)'),
-    channelLimitEnable: z.boolean().optional().describe('Enable channel limit'),
-    freq: z.number().int().optional().describe('Frequency setting'),
+    wirelessMode: z.coerce.number().int().optional().describe('Wireless mode ID (use getApRadioConfig to see current value)'),
+    channelLimitEnable: coercedBoolean().optional().describe('Enable channel limit'),
+    freq: z.coerce.number().int().optional().describe('Frequency setting'),
 });
 
 export function registerUpdateApRadioConfigTool(server: McpServer, client: OmadaClient): void {

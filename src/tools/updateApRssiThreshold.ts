@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -17,8 +18,8 @@ const updateApRssiThresholdSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
     apMac: z.string().min(1).describe('AP MAC address, e.g. AA-BB-CC-DD-EE-FF'),
     band: z.enum(['2g', '5g', '5g1', '5g2', '6g']).describe('Radio band to configure'),
-    rssiEnable: z.boolean().describe('Enable or disable RSSI threshold for this band'),
-    threshold: z
+    rssiEnable: coercedBoolean().describe('Enable or disable RSSI threshold for this band'),
+    threshold: z.coerce
         .number()
         .int()
         .min(-95)

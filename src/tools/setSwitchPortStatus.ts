@@ -7,8 +7,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const setSwitchPortStatusSchema = z.object({
     siteId: z.string().min(1).optional(),
     switchMac: z.string().min(1, 'switchMac is required'),
-    port: z.number().int().min(1, 'port number is required'),
-    status: z.number().int().min(0).max(1).describe('0=off, 1=on'),
+    port: z.coerce.number().int().min(1, 'port number is required'),
+    status: z.coerce.number().int().min(0).max(1).describe('0=off, 1=on'),
 });
 
 export function registerSetSwitchPortStatusTool(server: McpServer, client: OmadaClient): void {

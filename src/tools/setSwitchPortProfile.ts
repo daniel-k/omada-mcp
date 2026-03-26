@@ -7,7 +7,7 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const setSwitchPortProfileSchema = z.object({
     siteId: z.string().min(1).optional(),
     switchMac: z.string().min(1, 'switchMac is required'),
-    port: z.number().int().min(1, 'port number is required'),
+    port: z.coerce.number().int().min(1, 'port number is required'),
     profileId: z.string().min(1, 'profileId is required'),
 });
 

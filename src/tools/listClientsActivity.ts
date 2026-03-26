@@ -6,8 +6,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const clientActivityInputSchema = z.object({
     siteId: z.string().optional().describe('Optional site ID. If not provided, uses the default site from configuration.'),
-    start: z.number().int().optional().describe('Optional start timestamp in seconds (e.g., 1682000000)'),
-    end: z.number().int().optional().describe('Optional end timestamp in seconds (e.g., 1682000000)'),
+    start: z.coerce.number().int().optional().describe('Optional start timestamp in seconds (e.g., 1682000000)'),
+    end: z.coerce.number().int().optional().describe('Optional end timestamp in seconds (e.g., 1682000000)'),
 });
 
 export function registerListClientsActivityTool(server: McpServer, client: OmadaClient): void {

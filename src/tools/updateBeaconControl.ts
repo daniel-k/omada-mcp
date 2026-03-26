@@ -1,23 +1,24 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const updateBeaconControlSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
-    beaconInterval2g: z.number().int().min(40).max(500).optional().describe('2.4 GHz beacon interval (40-500)'),
-    dtimPeriod2g: z.number().int().min(1).max(255).optional().describe('2.4 GHz DTIM period (1-255)'),
-    rtsThreshold2g: z.number().int().min(1).max(2347).optional().describe('2.4 GHz RTS threshold (1-2347)'),
-    beaconInterval5g: z.number().int().min(40).max(500).optional().describe('5 GHz beacon interval (40-500)'),
-    dtimPeriod5g: z.number().int().min(1).max(255).optional().describe('5 GHz DTIM period (1-255)'),
-    rtsThreshold5g: z.number().int().min(1).max(2347).optional().describe('5 GHz RTS threshold (1-2347)'),
-    beaconInterval6g: z.number().int().min(40).max(500).optional().describe('6 GHz beacon interval (40-500)'),
-    dtimPeriod6g: z.number().int().min(1).max(255).optional().describe('6 GHz DTIM period (1-255)'),
-    rtsThreshold6g: z.number().int().min(1).max(2347).optional().describe('6 GHz RTS threshold (1-2347)'),
-    airtimeFairness2g: z.boolean().optional().describe('Enable 2.4 GHz airtime fairness'),
-    airtimeFairness5g: z.boolean().optional().describe('Enable 5 GHz airtime fairness'),
-    airtimeFairness6g: z.boolean().optional().describe('Enable 6 GHz airtime fairness'),
+    beaconInterval2g: z.coerce.number().int().min(40).max(500).optional().describe('2.4 GHz beacon interval (40-500)'),
+    dtimPeriod2g: z.coerce.number().int().min(1).max(255).optional().describe('2.4 GHz DTIM period (1-255)'),
+    rtsThreshold2g: z.coerce.number().int().min(1).max(2347).optional().describe('2.4 GHz RTS threshold (1-2347)'),
+    beaconInterval5g: z.coerce.number().int().min(40).max(500).optional().describe('5 GHz beacon interval (40-500)'),
+    dtimPeriod5g: z.coerce.number().int().min(1).max(255).optional().describe('5 GHz DTIM period (1-255)'),
+    rtsThreshold5g: z.coerce.number().int().min(1).max(2347).optional().describe('5 GHz RTS threshold (1-2347)'),
+    beaconInterval6g: z.coerce.number().int().min(40).max(500).optional().describe('6 GHz beacon interval (40-500)'),
+    dtimPeriod6g: z.coerce.number().int().min(1).max(255).optional().describe('6 GHz DTIM period (1-255)'),
+    rtsThreshold6g: z.coerce.number().int().min(1).max(2347).optional().describe('6 GHz RTS threshold (1-2347)'),
+    airtimeFairness2g: coercedBoolean().optional().describe('Enable 2.4 GHz airtime fairness'),
+    airtimeFairness5g: coercedBoolean().optional().describe('Enable 5 GHz airtime fairness'),
+    airtimeFairness6g: coercedBoolean().optional().describe('Enable 6 GHz airtime fairness'),
 });
 
 export function registerUpdateBeaconControlTool(server: McpServer, client: OmadaClient): void {

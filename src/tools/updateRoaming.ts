@@ -1,14 +1,15 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
 
 const updateRoamingSchema = z.object({
     siteId: z.string().min(1).optional().describe('Site ID (omit to use default site)'),
-    fastRoamingEnable: z.boolean().optional().describe('Enable fast roaming (802.11r)'),
-    aiRoamingEnable: z.boolean().optional().describe('Enable AI roaming (only effective when fast roaming is enabled)'),
-    nonStickRoamingEnable: z.boolean().optional().describe('Enable non-stick roaming'),
+    fastRoamingEnable: coercedBoolean().optional().describe('Enable fast roaming (802.11r)'),
+    aiRoamingEnable: coercedBoolean().optional().describe('Enable AI roaming (only effective when fast roaming is enabled)'),
+    nonStickRoamingEnable: coercedBoolean().optional().describe('Enable non-stick roaming'),
 });
 
 export function registerUpdateRoamingTool(server: McpServer, client: OmadaClient): void {

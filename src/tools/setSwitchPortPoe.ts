@@ -7,8 +7,8 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const setSwitchPortPoeSchema = z.object({
     siteId: z.string().min(1).optional(),
     switchMac: z.string().min(1, 'switchMac is required'),
-    port: z.number().int().min(1, 'port number is required'),
-    poeMode: z.number().int().min(0).max(1).describe('1=on (802.3at/af), 0=off'),
+    port: z.coerce.number().int().min(1, 'port number is required'),
+    poeMode: z.coerce.number().int().min(0).max(1).describe('1=on (802.3at/af), 0=off'),
 });
 
 export function registerSetSwitchPortPoeTool(server: McpServer, client: OmadaClient): void {

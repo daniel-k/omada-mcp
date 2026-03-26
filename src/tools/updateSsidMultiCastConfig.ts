@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -7,15 +8,15 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const updateSsidMultiCastConfigSchema = z.object({
     wlanId: z.string().min(1, 'wlanId is required. Use getWlanGroupList to get available WLAN group IDs.'),
     ssidId: z.string().min(1, 'ssidId is required. Use getSsidList to get available SSID IDs.'),
-    multiCastEnable: z.boolean().describe('Whether multicast-to-unicast conversion is enabled'),
-    channelUtil: z
+    multiCastEnable: coercedBoolean().describe('Whether multicast-to-unicast conversion is enabled'),
+    channelUtil: z.coerce
         .number()
         .int()
         .describe('Channel utilization threshold (0-100). When reached, multicast is no longer converted to unicast. Default: 100.'),
-    arpCastEnable: z.boolean().describe('Whether ARP-to-unicast conversion is enabled'),
-    ipv6CastEnable: z.boolean().describe('Whether IPv6 multicast (MLD) to unicast conversion is enabled'),
-    filterEnable: z.boolean().describe('Whether multicast filtering is enabled'),
-    filterMode: z
+    arpCastEnable: coercedBoolean().describe('Whether ARP-to-unicast conversion is enabled'),
+    ipv6CastEnable: coercedBoolean().describe('Whether IPv6 multicast (MLD) to unicast conversion is enabled'),
+    filterEnable: coercedBoolean().describe('Whether multicast filtering is enabled'),
+    filterMode: z.coerce
         .number()
         .int()
         .optional()

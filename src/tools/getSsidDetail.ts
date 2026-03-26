@@ -1,5 +1,6 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { coercedBoolean } from './coerce.js';
 
 import type { OmadaClient } from '../omadaClient/index.js';
 import { toToolResult, wrapToolHandler } from '../server/common.js';
@@ -7,7 +8,7 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const ssidDetailSchema = z.object({
     wlanId: z.string().min(1, 'wlanId is required. Use getWlanGroupList to get available WLAN group IDs.'),
     ssidId: z.string().min(1, 'ssidId is required. Use getSsidList to get available SSID IDs.'),
-    includeSecrets: z.boolean().optional().describe('Include sensitive fields like pskSetting.securityKey. Defaults to false (secrets are redacted).'),
+    includeSecrets: coercedBoolean().optional().describe('Include sensitive fields like pskSetting.securityKey. Defaults to false (secrets are redacted).'),
     siteId: z.string().min(1).optional(),
 });
 

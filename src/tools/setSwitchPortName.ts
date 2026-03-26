@@ -7,7 +7,7 @@ import { toToolResult, wrapToolHandler } from '../server/common.js';
 const setSwitchPortNameSchema = z.object({
     siteId: z.string().min(1).optional(),
     switchMac: z.string().min(1, 'switchMac is required'),
-    port: z.number().int().min(1, 'port number is required'),
+    port: z.coerce.number().int().min(1, 'port number is required'),
     name: z.string().min(1).max(128, 'name must be 1-128 characters'),
 });
 
