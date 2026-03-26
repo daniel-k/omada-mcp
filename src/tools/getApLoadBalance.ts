@@ -39,14 +39,9 @@ const BANDS = [
 function formatLoadBalance(data: LoadBalanceResult): string {
     const lines: string[] = [];
 
-    const enabled = !!data.enable;
-    lines.push(`Load Balance: ${enabled ? 'enabled' : 'disabled'}`);
-    if (!enabled) {
-        lines.push('NOTE: All settings below are NOT active because load balancing is disabled. The values shown are stored defaults that only take effect if load balancing is enabled.');
-    }
-    lines.push('');
-
-    // Max clients
+    // Max Associated Clients — has its own enable toggle ("enable" field)
+    const maxClientsEnabled = !!data.enable;
+    lines.push(`Maximum Associated Clients: ${maxClientsEnabled ? 'enabled' : 'disabled'}`);
     const clientLines: string[] = [];
     for (const { suffix, label } of BANDS) {
         const key = `maxClients${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}` as keyof LoadBalanceResult;
@@ -56,25 +51,20 @@ function formatLoadBalance(data: LoadBalanceResult): string {
         }
     }
     if (clientLines.length > 0) {
-        lines.push(`Max Clients${!enabled ? ' (inactive)' : ''}:`);
         lines.push(...clientLines);
-        lines.push('');
     }
+    lines.push('');
 
-    // RSSI thresholds
-    const rssiLines: string[] = [];
+    // RSSI Thresholds — each band has its own enable toggle
+    lines.push('RSSI Thresholds:');
     for (const { suffix, label } of BANDS) {
         const enableKey = `rssiEnable${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}` as keyof LoadBalanceResult;
         const threshKey = `threshold${suffix.charAt(0).toUpperCase()}${suffix.slice(1)}` as keyof LoadBalanceResult;
         const rssiEnabled = data[enableKey];
         const threshold = data[threshKey];
         if (rssiEnabled !== undefined) {
-            rssiLines.push(`  ${label}: ${rssiEnabled ? `enabled at ${threshold} dBm` : `disabled (${threshold} dBm)`}`);
+            lines.push(`  ${label}: ${rssiEnabled ? `enabled at ${threshold} dBm` : 'disabled'}`);
         }
-    }
-    if (rssiLines.length > 0) {
-        lines.push(`RSSI Thresholds${!enabled ? ' (inactive)' : ''}:`);
-        lines.push(...rssiLines);
     }
 
     return lines.join('\n');
