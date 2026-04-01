@@ -4,9 +4,28 @@ Full CRUD MCP server for TP-Link Omada SDN controllers. Exposes 60+ tools for re
 
 ## Quick Start
 
-### Using with Claude Code / Claude Desktop (stdio)
+### Using npx (no local clone required)
 
-Add to your MCP client configuration:
+```json
+{
+  "mcpServers": {
+    "omada": {
+      "command": "npx",
+      "args": ["--yes", "github:daniel-k/omada-mcp"],
+      "env": {
+        "OMADA_BASE_URL": "https://your-omada-controller.local",
+        "OMADA_CLIENT_ID": "your-client-id",
+        "OMADA_CLIENT_SECRET": "your-client-secret",
+        "OMADA_OMADAC_ID": "your-omadac-id",
+        "OMADA_SITE_ID": "your-site-id",
+        "OMADA_STRICT_SSL": "false"
+      }
+    }
+  }
+}
+```
+
+### Using a local clone
 
 ```json
 {
