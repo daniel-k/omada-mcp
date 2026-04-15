@@ -65,6 +65,18 @@ export class DeviceOperations {
     }
 
     /**
+     * Get available channel list for an AP, grouped by radio ID. Each entry
+     * contains the real 802.11 channel number, frequency in MHz, available
+     * channel widths, and the opaque index used by the radio-config endpoint.
+     */
+    public async getApAvailableChannels(apMac: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/aps/${encodeURIComponent(apMac)}/available-channel`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
      * Get AP load balance config (includes RSSI thresholds and max clients per band).
      */
     public async getApLoadBalance(apMac: string, siteId?: string): Promise<unknown> {

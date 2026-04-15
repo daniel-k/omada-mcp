@@ -140,6 +140,10 @@ export class OmadaClient {
         return await this.deviceOps.updateApRadioConfig(apMac, data, siteId);
     }
 
+    public async getApAvailableChannels(apMac: string, siteId?: string): Promise<unknown> {
+        return await this.deviceOps.getApAvailableChannels(apMac, siteId);
+    }
+
     public async getApRadioDetail(apMac: string, siteId?: string): Promise<unknown> {
         return await this.deviceOps.getApRadioDetail(apMac, siteId);
     }
