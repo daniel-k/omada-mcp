@@ -362,12 +362,44 @@ export class OmadaClient {
         return await this.networkOps.updateFirewallSetting(data, siteId);
     }
 
-    public async listEvents(siteId?: string, page?: number, pageSize?: number): Promise<PaginatedResult<unknown>> {
-        return await this.networkOps.listEvents(siteId, page, pageSize);
+    public async listEvents(
+        siteId: string | undefined,
+        page: number,
+        pageSize: number,
+        timeStart: number,
+        timeEnd: number,
+        module?: string
+    ): Promise<PaginatedResult<unknown>> {
+        return await this.networkOps.listEvents(siteId, page, pageSize, timeStart, timeEnd, module);
     }
 
-    public async listLogs(siteId?: string, page?: number, pageSize?: number): Promise<PaginatedResult<unknown>> {
-        return await this.networkOps.listLogs(siteId, page, pageSize);
+    public async listLogs(
+        siteId: string | undefined,
+        page: number,
+        pageSize: number,
+        timeStart: number,
+        timeEnd: number,
+        module?: string,
+        resolved?: boolean
+    ): Promise<PaginatedResult<unknown>> {
+        return await this.networkOps.listLogs(siteId, page, pageSize, timeStart, timeEnd, module, resolved);
+    }
+
+    // Reboot schedule operations
+    public async listRebootSchedules(siteId?: string): Promise<unknown> {
+        return await this.networkOps.listRebootSchedules(siteId);
+    }
+
+    public async createRebootSchedule(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.createRebootSchedule(data, siteId);
+    }
+
+    public async updateRebootSchedule(id: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.networkOps.updateRebootSchedule(id, data, siteId);
+    }
+
+    public async deleteRebootSchedule(id: string, siteId?: string): Promise<unknown> {
+        return await this.networkOps.deleteRebootSchedule(id, siteId);
     }
 
     // Device and client actions

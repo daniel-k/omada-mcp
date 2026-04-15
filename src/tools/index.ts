@@ -71,6 +71,10 @@ import { registerListMostActiveClientsTool } from './listMostActiveClients.js';
 import { registerListRoutesTool } from './listRoutes.js';
 import { registerListSitesTool } from './listSites.js';
 import { registerRebootDeviceTool } from './rebootDevice.js';
+import { registerListRebootSchedulesTool } from './listRebootSchedules.js';
+import { registerCreateRebootScheduleTool } from './createRebootSchedule.js';
+import { registerUpdateRebootScheduleTool } from './updateRebootSchedule.js';
+import { registerDeleteRebootScheduleTool } from './deleteRebootSchedule.js';
 import { registerReconnectClientTool } from './reconnectClient.js';
 import { registerSearchDevicesTool } from './searchDevices.js';
 import { registerSetDeviceLedTool } from './setDeviceLed.js';
@@ -194,6 +198,12 @@ export function registerAllTools(server: McpServer, client: OmadaClient): void {
     registerBatchSetSwitchPortStatusTool(server, client);
     registerBatchSetSwitchPortNameTool(server, client);
     registerStartCableTestTool(server, client);
+
+    // Reboot schedule tools
+    registerListRebootSchedulesTool(server, client);
+    registerCreateRebootScheduleTool(server, client);
+    registerUpdateRebootScheduleTool(server, client);
+    registerDeleteRebootScheduleTool(server, client);
 
     // Action tools
     registerRebootDeviceTool(server, client);

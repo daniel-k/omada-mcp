@@ -323,28 +323,56 @@ export class NetworkOperations {
     }
 
     /**
-     * Get paginated events for a site (v1 API).
+     * Get paginated site event log (v1 API).
+     * Endpoint: GET /sites/{siteId}/logs/events
+     * timeStart/timeEnd are required by the controller; module is optional.
      */
-    public async listEvents(siteId?: string, page = 1, pageSize = 10): Promise<PaginatedResult<unknown>> {
+    public async listEvents(
+        siteId: string | undefined,
+        page: number,
+        pageSize: number,
+        timeStart: number,
+        timeEnd: number,
+        module?: string
+    ): Promise<PaginatedResult<unknown>> {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
-        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/events`);
-        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, {
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/logs/events`);
+        const params: Record<string, unknown> = {
             page,
             pageSize,
-        });
+            'filters.timeStart': timeStart,
+            'filters.timeEnd': timeEnd,
+        };
+        if (module) params['filters.module'] = module;
+        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, params);
         return this.request.ensureSuccess(response);
     }
 
     /**
-     * Get paginated logs for a site (v1 API).
+     * Get paginated site alert log (v1 API).
+     * Endpoint: GET /sites/{siteId}/logs/alerts
+     * timeStart/timeEnd are required by the controller; module and resolved are optional.
      */
-    public async listLogs(siteId?: string, page = 1, pageSize = 10): Promise<PaginatedResult<unknown>> {
+    public async listLogs(
+        siteId: string | undefined,
+        page: number,
+        pageSize: number,
+        timeStart: number,
+        timeEnd: number,
+        module?: string,
+        resolved?: boolean
+    ): Promise<PaginatedResult<unknown>> {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
-        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/logs`);
-        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, {
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/logs/alerts`);
+        const params: Record<string, unknown> = {
             page,
             pageSize,
-        });
+            'filters.timeStart': timeStart,
+            'filters.timeEnd': timeEnd,
+        };
+        if (module) params['filters.module'] = module;
+        if (resolved !== undefined) params['filters.resolved'] = resolved;
+        const response = await this.request.get<OmadaApiResponse<PaginatedResult<unknown>>>(path, params);
         return this.request.ensureSuccess(response);
     }
 
@@ -672,5 +700,49 @@ export class NetworkOperations {
         const resolvedSiteId = this.site.resolveSiteId(siteId);
         const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/setting/routes`);
         return await this.request.fetchPaginated<unknown>(path);
+    }
+
+    /**
+     * List reboot schedules for a site.
+     * Endpoint: GET /sites/{siteId}/reboot-schedules
+     */
+    public async listRebootSchedules(siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/reboot-schedules`);
+        const response = await this.request.get<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Create a new reboot schedule.
+     * Endpoint: POST /sites/{siteId}/reboot-schedules
+     */
+    public async createRebootSchedule(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/reboot-schedules`);
+        const response = await this.request.post<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Modify an existing reboot schedule.
+     * Endpoint: PUT /sites/{siteId}/reboot-schedules/{id}
+     */
+    public async updateRebootSchedule(id: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/reboot-schedules/${encodeURIComponent(id)}`);
+        const response = await this.request.put<OmadaApiResponse<unknown>>(path, data);
+        return this.request.ensureSuccess(response);
+    }
+
+    /**
+     * Delete a reboot schedule.
+     * Endpoint: DELETE /sites/{siteId}/reboot-schedules/{id}
+     */
+    public async deleteRebootSchedule(id: string, siteId?: string): Promise<unknown> {
+        const resolvedSiteId = this.site.resolveSiteId(siteId);
+        const path = this.buildPath(`/sites/${encodeURIComponent(resolvedSiteId)}/reboot-schedules/${encodeURIComponent(id)}`);
+        const response = await this.request.delete<OmadaApiResponse<unknown>>(path);
+        return this.request.ensureSuccess(response);
     }
 }
