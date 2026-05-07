@@ -1,0 +1,35 @@
+import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { z } from 'zod';
+
+import type { OmadaClient } from '../omadaClient/index.js';
+import { toToolResult, wrapToolHandler } from '../server/common.js';
+
+const deleteEventLogsSchema = z.object({
+    scope: z.enum(['site', 'global']).default('site').describe("'site' deletes from a site, 'global' deletes from the global view."),
+    siteId: z.string().min(1).optional().describe("Site ID; used (or default) when scope='site'."),
+    selectType: z
+        .enum(['include', 'exclude', 'all'])
+        .describe("'include' deletes only the listed log IDs, 'exclude' deletes all but those, 'all' deletes every event in the time window."),
+    logs: z.array(z.string()).optional().describe('Event log IDs (from getEventLogs). Required for include/exclude.'),
+    startTime: z.coerce.number().int().describe('Start timestamp (ms).'),
+    endTime: z.coerce.number().int().describe('End timestamp (ms).'),
+    filterModule: z
+        .enum(['System', 'Device', 'Client'])
+        .optional()
+        .describe("Module filter; required when selectType='all'. Site allows System/Device/Client; global allows System/Device."),
+});
+
+export function registerDeleteEventLogsTool(server: McpServer, client: OmadaClient): void {
+    server.registerTool(
+        'deleteEventLogs',
+        {
+            description: 'Delete event log entries from a site or from the global view.',
+            inputSchema: deleteEventLogsSchema.shape,
+        },
+        wrapToolHandler('deleteEventLogs', async ({ scope, siteId, selectType, logs, startTime, endTime, filterModule }) => {
+            const payload = { selectType, logs, startTime, endTime, filterModule };
+            const result = scope === 'global' ? await client.deleteEventLogsForGlobal(payload) : await client.deleteEventLogsForSite(payload, siteId);
+            return toToolResult(result);
+        })
+    );
+}

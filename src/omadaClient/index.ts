@@ -29,11 +29,29 @@ import { DeviceOperations } from './device.js';
 import { GenericOperations } from './generic.js';
 import { InternalAuthManager } from './internalAuth.js';
 import { InternalRequestHandler } from './internalRequest.js';
+import {
+    type DeleteAlertLogPayload,
+    type DeleteEventLogPayload,
+    type ExportLogPayload,
+    type GetAuditLogOptions,
+    type GetEventOrAlertLogOptions,
+    LogOperations,
+    type ResolveSiteAlertPayload,
+} from './log.js';
 import { NetworkOperations } from './network.js';
 import { RequestHandler } from './request.js';
 import { SecurityOperations } from './security.js';
 import { SiteOperations } from './site.js';
 import { SwitchOperations } from './switch.js';
+
+export type {
+    DeleteAlertLogPayload,
+    DeleteEventLogPayload,
+    ExportLogPayload,
+    GetAuditLogOptions,
+    GetEventOrAlertLogOptions,
+    ResolveSiteAlertPayload,
+} from './log.js';
 
 export type OmadaClientOptions = EnvironmentConfig;
 
@@ -63,6 +81,8 @@ export class OmadaClient {
     private readonly genericOps: GenericOperations;
 
     private readonly switchOps: SwitchOperations;
+
+    private readonly logOps: LogOperations;
 
     private readonly omadacId: string;
 
@@ -95,6 +115,7 @@ export class OmadaClient {
         this.actionOps = new ActionOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
         this.genericOps = new GenericOperations(this.request, this.buildOmadaPath.bind(this));
         this.switchOps = new SwitchOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
+        this.logOps = new LogOperations(this.request, this.siteOps, this.buildOmadaPath.bind(this));
 
         // Initialize internal API support if web credentials are configured
         if (options.webUsername && options.webPassword) {
@@ -527,6 +548,101 @@ export class OmadaClient {
 
     public async setSwitchNetworks(switchMac: string, data: Record<string, unknown>, siteId?: string): Promise<unknown> {
         return await this.switchOps.setSwitchNetworks(switchMac, data, siteId);
+    }
+
+    // Log operations: event/alert/audit log retrieval
+    public async getEventLogsForSite(options: GetEventOrAlertLogOptions, siteId?: string): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getEventLogsForSite(options, siteId);
+    }
+
+    public async getEventLogsForGlobal(options: GetEventOrAlertLogOptions): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getEventLogsForGlobal(options);
+    }
+
+    public async getAlertLogsForSite(options: GetEventOrAlertLogOptions, siteId?: string): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getAlertLogsForSite(options, siteId);
+    }
+
+    public async getAlertLogsForGlobal(options: GetEventOrAlertLogOptions): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getAlertLogsForGlobal(options);
+    }
+
+    public async getAuditLogsForSite(options: GetAuditLogOptions, siteId?: string): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getAuditLogsForSite(options, siteId);
+    }
+
+    public async getAuditLogsForGlobal(options: GetAuditLogOptions): Promise<PaginatedResult<unknown>> {
+        return await this.logOps.getAuditLogsForGlobal(options);
+    }
+
+    // Log operations: resolve / delete / export
+    public async resolveAlertForSite(payload: ResolveSiteAlertPayload, siteId?: string): Promise<unknown> {
+        return await this.logOps.resolveAlertForSite(payload, siteId);
+    }
+
+    public async deleteEventLogsForSite(payload: DeleteEventLogPayload, siteId?: string): Promise<unknown> {
+        return await this.logOps.deleteEventLogsForSite(payload, siteId);
+    }
+
+    public async deleteAlertLogsForSite(payload: DeleteAlertLogPayload, siteId?: string): Promise<unknown> {
+        return await this.logOps.deleteAlertLogsForSite(payload, siteId);
+    }
+
+    public async deleteEventLogsForGlobal(payload: DeleteEventLogPayload): Promise<unknown> {
+        return await this.logOps.deleteEventLogsForGlobal(payload);
+    }
+
+    public async deleteAlertLogsForGlobal(payload: DeleteAlertLogPayload): Promise<unknown> {
+        return await this.logOps.deleteAlertLogsForGlobal(payload);
+    }
+
+    public async exportLogListForGlobal(payload: ExportLogPayload): Promise<unknown> {
+        return await this.logOps.exportLogListForGlobal(payload);
+    }
+
+    public async exportAuditLogListForGlobal(payload: ExportLogPayload): Promise<unknown> {
+        return await this.logOps.exportAuditLogListForGlobal(payload);
+    }
+
+    // Log notification settings (controls which events are captured / emailed / webhooked)
+    public async getLogNotificationForSite(siteId?: string): Promise<unknown> {
+        return await this.logOps.getLogNotificationForSite(siteId);
+    }
+
+    public async modifyLogNotificationForSite(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.logOps.modifyLogNotificationForSite(data, siteId);
+    }
+
+    public async getLogNotificationForGlobal(): Promise<unknown> {
+        return await this.logOps.getLogNotificationForGlobal();
+    }
+
+    public async modifyLogNotificationForGlobal(data: Record<string, unknown>): Promise<unknown> {
+        return await this.logOps.modifyLogNotificationForGlobal(data);
+    }
+
+    public async resetLogNotificationForSite(siteId?: string): Promise<unknown> {
+        return await this.logOps.resetLogNotificationForSite(siteId);
+    }
+
+    public async resetLogNotificationForGlobal(): Promise<unknown> {
+        return await this.logOps.resetLogNotificationForGlobal();
+    }
+
+    public async getAuditNotificationForSite(siteId?: string): Promise<unknown> {
+        return await this.logOps.getAuditNotificationForSite(siteId);
+    }
+
+    public async modifyAuditNotificationForSite(data: Record<string, unknown>, siteId?: string): Promise<unknown> {
+        return await this.logOps.modifyAuditNotificationForSite(data, siteId);
+    }
+
+    public async getAuditNotificationForGlobal(): Promise<unknown> {
+        return await this.logOps.getAuditNotificationForGlobal();
+    }
+
+    public async modifyAuditNotificationForGlobal(data: Record<string, unknown>): Promise<unknown> {
+        return await this.logOps.modifyAuditNotificationForGlobal(data);
     }
 
     // Generic API operations
